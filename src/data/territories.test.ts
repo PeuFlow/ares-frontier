@@ -13,6 +13,6 @@ describe("territories", () => {
     expect(r.map((t) => t.id)).toEqual(["arcadia-n016", "elysium-a104"]);
   });
   it("searches by lot identifier", () => {
-    expect(filterTerritories(TERRITORIES, "d-208", "all", "none")[0].id).toBe("utopia-d208");
+    expect(filterTerritories(TERRITORIES, "d-208", "all", "none")[0]?.id).toBe("utopia-d208");
   });
 });

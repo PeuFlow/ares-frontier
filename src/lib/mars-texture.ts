@@ -19,7 +19,7 @@ function makeNoise(seed: number) {
   const v = (x: number, y: number) => {
     const xi = Math.floor(x), yi = Math.floor(y);
     const xf = s(x - xi), yf = s(y - yi);
-    const at = (i: number, j: number) => g[(((j % N) + N) % N) * N + (((i % N) + N) % N)];
+    const at = (i: number, j: number) => g[(((j % N) + N) % N) * N + (((i % N) + N) % N)]!;
     const a = at(xi, yi), b = at(xi + 1, yi), c = at(xi, yi + 1), d = at(xi + 1, yi + 1);
     return a + (b - a) * xf + (c - a) * yf + (a - b - c + d) * xf * yf;
   };
@@ -66,7 +66,7 @@ export function paintMars(width = 1024, seed = 2089): MarsMaps {
         const x = Math.round((cx + dx + width) % width), y = Math.round(cy + dy);
         if (y < 0 || y >= height) continue;
         const k = d < 1 ? -0.18 * (1 - d * d) : 0.08 * (1 - (d - 1) / 0.4);
-        h[y * width + x] += k * Math.min(1, r / 10);
+        h[y * width + x]! += k * Math.min(1, r / 10);
       }
     }
   }
@@ -76,12 +76,12 @@ export function paintMars(width = 1024, seed = 2089): MarsMaps {
   color.height = bump.height = height;
   const ci = color.getContext("2d")!.createImageData(width, height);
   const bi = bump.getContext("2d")!.createImageData(width, height);
-  const dark = [70, 28, 18], mid = [168, 74, 42], light = [222, 140, 92];
+  const dark: [number, number, number] = [70, 28, 18], mid: [number, number, number] = [168, 74, 42], light: [number, number, number] = [222, 140, 92];
   for (let y = 0; y < height; y++) {
     const lat = Math.abs(y / height - 0.5) * 2;
     for (let x = 0; x < width; x++) {
       const i = y * width + x;
-      const v = Math.max(0, Math.min(1, (h[i] - 0.35) * 1.6));
+      const v = Math.max(0, Math.min(1, (h[i]! - 0.35) * 1.6));
       const t = v < 0.5 ? v * 2 : (v - 0.5) * 2;
       const A = v < 0.5 ? dark : mid, B = v < 0.5 ? mid : light;
       let r = A[0] + (B[0] - A[0]) * t, g = A[1] + (B[1] - A[1]) * t, b = A[2] + (B[2] - A[2]) * t;
@@ -93,7 +93,7 @@ export function paintMars(width = 1024, seed = 2089): MarsMaps {
       }
       const o = i * 4;
       ci.data[o] = r; ci.data[o + 1] = g; ci.data[o + 2] = b; ci.data[o + 3] = 255;
-      const bv = Math.max(0, Math.min(255, h[i] * 200));
+      const bv = Math.max(0, Math.min(255, h[i]! * 200));
       bi.data[o] = bi.data[o + 1] = bi.data[o + 2] = bv; bi.data[o + 3] = 255;
     }
   }

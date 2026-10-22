@@ -23,7 +23,7 @@ const Ctx = createContext<FrontierState | null>(null);
 const LS_KEY = "ares-frontier:v1";
 
 export function FrontierProvider({ children }: { children: ReactNode }) {
-  const [selectedId, setSelectedId] = useState(TERRITORIES[0].id);
+  const [selectedId, setSelectedId] = useState(TERRITORIES[0]!.id);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [compare, setCompare] = useState<string[]>([]);
   const [detailsId, setDetailsId] = useState<string | null>(null);

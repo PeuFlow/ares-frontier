@@ -139,7 +139,7 @@ export function CompareDialog() {
                 </tr>
               </thead>
               <tbody>
-                {rows(items[0], items[1]).map((row) => (
+                {rows(items[0]!, items[1]).map((row) => (
                   <tr key={row.k} className="border-b border-border/60">
                     <td className="py-3 text-muted-foreground">{row.k}</td>
                     {items.map((t, i) => (

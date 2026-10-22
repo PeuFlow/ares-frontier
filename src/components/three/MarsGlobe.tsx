@@ -15,7 +15,7 @@ function latLonToVec(lat: number, lon: number, r: number) {
 
 function Marker({
   lat, lon, selected, onSelect, reduced, label,
-}: { lat: number; lon: number; selected: boolean; onSelect?: () => void; reduced: boolean; label: string }) {
+}: { lat: number; lon: number; selected: boolean; onSelect?: (() => void) | undefined; reduced: boolean; label: string }) {
   const pos = useMemo(() => latLonToVec(lat, lon, R * 1.005), [lat, lon]);
   const quat = useMemo(() => new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), pos.clone().normalize()), [pos]);
   const ring = useRef<THREE.Mesh>(null);
@@ -120,7 +120,7 @@ function OrbitRings() {
 
 export interface GlobeProps {
   selectedId: string;
-  onSelect?: (id: string) => void;
+  onSelect?: ((id: string) => void) | undefined;
   interactive?: boolean;
 }
 
