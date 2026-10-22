@@ -114,7 +114,7 @@ export function paintRegion(seed: number, w = 480, h = 300): string {
       const n = fbm(x / 70, y / 70, 5);
       const contour = Math.abs(((n * 14) % 1) - 0.5) < 0.04;
       const o = (y * w + x) * 4;
-      const base = 30 + n * 120;
+      const base = 40 + n * 190;
       img.data[o] = base * 1.15 + (contour ? 60 : 0);
       img.data[o + 1] = base * 0.48 + (contour ? 30 : 0);
       img.data[o + 2] = base * 0.32 + (contour ? 18 : 0);

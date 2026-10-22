@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Ares Frontier phase 1 is frontend-only: territory data lives in `src/data/territories.ts`, shared UI state in `src/hooks/use-frontier.tsx` (localStorage persistence) — keeps later backend swap in one place.
+- 3D code lives in `src/components/three/` and is lazy-loaded client-side via `GlobeStage` — three.js must never run during SSR.
