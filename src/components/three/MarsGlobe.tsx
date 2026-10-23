@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, PerformanceMonitor, Stars } from "@react-three/drei";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isLowPower } from "./perf";
@@ -54,7 +54,48 @@ function Marker({
   );
 }
 
-function Planet({ selectedId, onSelect, reduced, interactive, low }: GlobeProps & { reduced: boolean; low: boolean }) {
+function CameraRig({
+  group,
+  selectedId,
+  reduced,
+  interactive,
+  onFly,
+  cancelRef,
+}: {
+  group: React.RefObject<THREE.Group | null>;
+  selectedId: string;
+  reduced: boolean;
+  interactive: boolean;
+  onFly: () => void;
+  cancelRef: React.MutableRefObject<(() => void) | null>;
+}) {
+  const camera = useThree((s) => s.camera);
+  const desired = useRef<THREE.Vector3 | null>(null);
+
+  useEffect(() => {
+    cancelRef.current = () => { desired.current = null; };
+  }, [cancelRef]);
+
+  useEffect(() => {
+    if (!interactive) return;
+    const t = TERRITORIES.find((x) => x.id === selectedId);
+    if (!t) return;
+    const dir = latLonToVec(t.lat, t.lon, 1).normalize();
+    dir.applyQuaternion(group.current?.quaternion ?? new THREE.Quaternion());
+    desired.current = dir.normalize().multiplyScalar(3.7);
+    onFly();
+  }, [selectedId, interactive, group, onFly, cancelRef]);
+
+  useFrame((_, d) => {
+    const target = desired.current;
+    if (!target) return;
+    camera.position.lerp(target, reduced ? 1 : Math.min(1, d * 2.2));
+    if (camera.position.distanceTo(target) < 0.05) desired.current = null;
+  });
+  return null;
+}
+
+function Planet({ selectedId, onSelect, reduced, interactive, low, onFly, cancelRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; cancelRef: React.MutableRefObject<(() => void) | null> }) {
   const group = useRef<THREE.Group>(null);
   const maps = useMemo(() => {
     const m = paintMars(low ? 512 : 1024);
