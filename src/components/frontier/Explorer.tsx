@@ -6,7 +6,8 @@ import { TERRITORIES, formatArea, formatMC } from "@/data/territories";
 import { cn } from "@/lib/utils";
 
 export function Explorer() {
-  const { selectedId, select } = useFrontier();
+  const { selectedId, select, byId } = useFrontier();
+  const t = byId(selectedId)!;
   return (
     <section id="explorar" className="scroll-mt-16 border-t border-border py-24">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
