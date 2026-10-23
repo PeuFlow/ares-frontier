@@ -24,6 +24,16 @@ export function Explorer() {
           <div className="instrument relative h-[440px] overflow-hidden sm:h-[560px]">
             <div className="tech-grid pointer-events-none absolute inset-0 opacity-60" />
             <GlobeStage selectedId={selectedId} onSelect={select} interactive />
+            <div
+              key={t.id}
+              className="animate-rise pointer-events-none absolute left-3 top-3 z-10 max-w-[230px] border border-border bg-background/80 p-3 backdrop-blur"
+              aria-live="polite"
+            >
+              <p className="eyebrow !text-[10px]">{t.lot}</p>
+              <p className="font-display text-lg font-semibold leading-tight">{t.region}</p>
+              <p className="mt-1 font-mono text-xs text-mineral">{formatMC(t.priceMC)}</p>
+              <p className="font-mono text-[10px] text-muted-foreground">{formatArea(t.areaKm2)}</p>
+            </div>
             <div className="absolute inset-x-0 bottom-0 flex gap-1 overflow-x-auto border-t border-border bg-background/70 p-2 backdrop-blur" role="tablist" aria-label="Marcadores">
               {TERRITORIES.map((t, i) => (
                 <button
