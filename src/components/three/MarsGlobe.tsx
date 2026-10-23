@@ -138,6 +138,7 @@ function Planet({ selectedId, onSelect, reduced, interactive, low, onFly, cancel
           onSelect={onSelect ? () => onSelect(t.id) : undefined}
         />
       ))}
+      <CameraRig group={group} selectedId={selectedId} reduced={reduced} interactive={interactive} onFly={onFly} cancelRef={cancelRef} />
     </group>
   );
 }
@@ -174,6 +175,9 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
   );
   const low = useMemo(() => isLowPower(), []);
   const [dpr, setDpr] = useState(low ? 1 : 1.5);
+  const [rotating, setRotating] = useState(true);
+  const stopRotation = useCallback(() => setRotating(false), []);
+  const cancelFlyRef = useRef<(() => void) | null>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
