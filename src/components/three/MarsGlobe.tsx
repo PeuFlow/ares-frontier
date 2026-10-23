@@ -1,6 +1,6 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, PerformanceMonitor, Stars } from "@react-three/drei";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { isLowPower } from "./perf";
 import * as THREE from "three";
 import { paintMars } from "@/lib/mars-texture";
@@ -54,7 +54,48 @@ function Marker({
   );
 }
 
-function Planet({ selectedId, onSelect, reduced, interactive, low }: GlobeProps & { reduced: boolean; low: boolean }) {
+function CameraRig({
+  group,
+  selectedId,
+  reduced,
+  interactive,
+  onFly,
+  cancelRef,
+}: {
+  group: React.RefObject<THREE.Group | null>;
+  selectedId: string;
+  reduced: boolean;
+  interactive: boolean;
+  onFly: () => void;
+  cancelRef: React.MutableRefObject<(() => void) | null>;
+}) {
+  const camera = useThree((s) => s.camera);
+  const desired = useRef<THREE.Vector3 | null>(null);
+
+  useEffect(() => {
+    cancelRef.current = () => { desired.current = null; };
+  }, [cancelRef]);
+
+  useEffect(() => {
+    if (!interactive) return;
+    const t = TERRITORIES.find((x) => x.id === selectedId);
+    if (!t) return;
+    const dir = latLonToVec(t.lat, t.lon, 1).normalize();
+    dir.applyQuaternion(group.current?.quaternion ?? new THREE.Quaternion());
+    desired.current = dir.normalize().multiplyScalar(3.7);
+    onFly();
+  }, [selectedId, interactive, group, onFly, cancelRef]);
+
+  useFrame((_, d) => {
+    const target = desired.current;
+    if (!target) return;
+    camera.position.lerp(target, reduced ? 1 : Math.min(1, d * 2.2));
+    if (camera.position.distanceTo(target) < 0.05) desired.current = null;
+  });
+  return null;
+}
+
+function Planet({ selectedId, onSelect, reduced, interactive = false, low, onFly, cancelRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; cancelRef: React.MutableRefObject<(() => void) | null> }) {
   const group = useRef<THREE.Group>(null);
   const maps = useMemo(() => {
     const m = paintMars(low ? 512 : 1024);
@@ -97,6 +138,7 @@ function Planet({ selectedId, onSelect, reduced, interactive, low }: GlobeProps 
           onSelect={onSelect ? () => onSelect(t.id) : undefined}
         />
       ))}
+      <CameraRig group={group} selectedId={selectedId} reduced={reduced} interactive={interactive} onFly={onFly} cancelRef={cancelRef} />
     </group>
   );
 }
@@ -133,6 +175,9 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
   );
   const low = useMemo(() => isLowPower(), []);
   const [dpr, setDpr] = useState(low ? 1 : 1.5);
+  const [rotating, setRotating] = useState(true);
+  const stopRotation = useCallback(() => setRotating(false), []);
+  const cancelFlyRef = useRef<(() => void) | null>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
@@ -164,9 +209,10 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
       <directionalLight position={[-6, 3, 4]} intensity={2.6} color="#fff1e6" />
       <directionalLight position={[5, -2, -4]} intensity={0.25} color="#7a8aa0" />
       <Stars radius={60} depth={30} count={low ? 500 : 1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
-      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} />
+      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} cancelRef={cancelFlyRef} />
       <OrbitRings />
       <OrbitControls
+        makeDefault
         enablePan={false}
         enableZoom={interactive}
         enableRotate
@@ -175,8 +221,9 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
         rotateSpeed={0.5}
         enableDamping
         dampingFactor={0.08}
-        autoRotate={interactive && !reduced}
+        autoRotate={interactive && !reduced && rotating}
         autoRotateSpeed={0.25}
+        onStart={() => cancelFlyRef.current?.()}
       />
     </Canvas>
     </div>
