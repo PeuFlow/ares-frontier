@@ -1,6 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
-import { useMemo, useRef, useState } from "react";
+import { OrbitControls, PerformanceMonitor, Stars } from "@react-three/drei";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { isLowPower } from "./perf";
 import * as THREE from "three";
 import { paintMars } from "@/lib/mars-texture";
 import { TERRITORIES } from "@/data/territories";
@@ -53,28 +54,29 @@ function Marker({
   );
 }
 
-function Planet({ selectedId, onSelect, reduced, interactive }: GlobeProps & { reduced: boolean }) {
+function Planet({ selectedId, onSelect, reduced, interactive, low }: GlobeProps & { reduced: boolean; low: boolean }) {
   const group = useRef<THREE.Group>(null);
   const maps = useMemo(() => {
-    const m = paintMars(1024);
+    const m = paintMars(low ? 512 : 1024);
     const color = new THREE.CanvasTexture(m.color);
     color.colorSpace = THREE.SRGBColorSpace;
     color.anisotropy = 4;
     const bump = new THREE.CanvasTexture(m.bump);
     return { color, bump };
-  }, []);
+  }, [low]);
+  useEffect(() => () => { maps.color.dispose(); maps.bump.dispose(); }, [maps]);
   useFrame((_, d) => {
     if (group.current && !reduced && !interactive) group.current.rotation.y += Math.min(d, 0.05) * 0.04;
   });
   return (
     <group ref={group} rotation={[0.25, -0.6, 0]}>
       <mesh>
-        <sphereGeometry args={[R, 96, 96]} />
+        <sphereGeometry args={[R, low ? 48 : 96, low ? 48 : 96]} />
         <meshStandardMaterial map={maps.color} bumpMap={maps.bump} bumpScale={3} roughness={0.95} metalness={0} />
       </mesh>
       {/* atmosphere rim */}
       <mesh scale={1.06}>
-        <sphereGeometry args={[R, 64, 64]} />
+        <sphereGeometry args={[R, low ? 32 : 64, low ? 32 : 64]} />
         <shaderMaterial
           transparent
           side={THREE.BackSide}
@@ -129,18 +131,40 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
   );
+  const low = useMemo(() => isLowPower(), []);
+  const [dpr, setDpr] = useState(low ? 1 : 1.5);
+  const wrap = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const el = wrap.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([e]) => setVisible(!!e?.isIntersecting), { rootMargin: "100px" });
+    io.observe(el);
+    const onVis = () => setVisible(document.visibilityState === "visible" && el.getBoundingClientRect().bottom > 0);
+    document.addEventListener("visibilitychange", onVis);
+    return () => { io.disconnect(); document.removeEventListener("visibilitychange", onVis); };
+  }, []);
   return (
+    <div ref={wrap} className="absolute inset-0">
     <Canvas
-      dpr={[1, 1.75]}
+      dpr={dpr}
+      frameloop={visible ? "always" : "never"}
       camera={{ position: [0, 0.4, interactive ? 6.2 : 6.8], fov: 40 }}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: !low, alpha: true, powerPreference: low ? "low-power" : "high-performance" }}
       aria-label="Visualização 3D de Marte"
     >
+      <PerformanceMonitor
+        bounds={() => [40, 58]}
+        flipflops={3}
+        onIncline={() => setDpr((d) => Math.min(low ? 1.25 : 1.75, d + 0.25))}
+        onDecline={() => setDpr((d) => Math.max(0.75, d - 0.25))}
+        onFallback={() => setDpr(0.75)}
+      />
       <ambientLight intensity={0.12} />
       <directionalLight position={[-6, 3, 4]} intensity={2.6} color="#fff1e6" />
       <directionalLight position={[5, -2, -4]} intensity={0.25} color="#7a8aa0" />
-      <Stars radius={60} depth={30} count={1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
-      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} />
+      <Stars radius={60} depth={30} count={low ? 500 : 1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
+      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} />
       <OrbitRings />
       <OrbitControls
         enablePan={false}
@@ -155,5 +179,6 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
         autoRotateSpeed={0.25}
       />
     </Canvas>
+    </div>
   );
 }
