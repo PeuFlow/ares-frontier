@@ -2,7 +2,7 @@ import { Move3d } from "lucide-react";
 import { GlobeStage } from "@/components/three/GlobeStage";
 import { TerritoryPanel } from "./TerritoryPanel";
 import { useFrontier } from "@/hooks/use-frontier";
-import { TERRITORIES } from "@/data/territories";
+import { TERRITORIES, formatArea, formatMC } from "@/data/territories";
 import { cn } from "@/lib/utils";
 
 export function Explorer() {

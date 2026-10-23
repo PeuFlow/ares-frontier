@@ -209,9 +209,10 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
       <directionalLight position={[-6, 3, 4]} intensity={2.6} color="#fff1e6" />
       <directionalLight position={[5, -2, -4]} intensity={0.25} color="#7a8aa0" />
       <Stars radius={60} depth={30} count={low ? 500 : 1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
-      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} />
+      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} cancelRef={cancelFlyRef} />
       <OrbitRings />
       <OrbitControls
+        makeDefault
         enablePan={false}
         enableZoom={interactive}
         enableRotate
@@ -220,8 +221,9 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
         rotateSpeed={0.5}
         enableDamping
         dampingFactor={0.08}
-        autoRotate={interactive && !reduced}
+        autoRotate={interactive && !reduced && rotating}
         autoRotateSpeed={0.25}
+        onStart={() => cancelFlyRef.current?.()}
       />
     </Canvas>
     </div>
