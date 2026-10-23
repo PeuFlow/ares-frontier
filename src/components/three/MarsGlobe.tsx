@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, PerformanceMonitor, Stars } from "@react-three/drei";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { isLowPower } from "./perf";
 import * as THREE from "three";
 import { paintMars } from "@/lib/mars-texture";
@@ -95,7 +95,7 @@ function CameraRig({
   return null;
 }
 
-function Planet({ selectedId, onSelect, reduced, interactive, low, onFly, cancelRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; cancelRef: React.MutableRefObject<(() => void) | null> }) {
+function Planet({ selectedId, onSelect, reduced, interactive = false, low, onFly, cancelRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; cancelRef: React.MutableRefObject<(() => void) | null> }) {
   const group = useRef<THREE.Group>(null);
   const maps = useMemo(() => {
     const m = paintMars(low ? 512 : 1024);
