@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Move3d } from "lucide-react";
 import { GlobeStage } from "@/components/three/GlobeStage";
 import { TerritoryPanel } from "./TerritoryPanel";
@@ -7,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function Explorer() {
   const { selectedId, select, byId } = useFrontier();
+  const [reselect, setReselect] = useState(0);
   const t = byId(selectedId)!;
   return (
     <section id="explorar" className="scroll-mt-16 border-t border-border py-24">
@@ -17,13 +19,13 @@ export function Explorer() {
             <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">Exploração planetária</h2>
           </div>
           <p className="flex items-center gap-2 font-mono text-[11px] text-muted-foreground">
-            <Move3d className="h-4 w-4" /> Arraste para girar · role para aproximar · clique nos marcadores
+            <Move3d className="h-4 w-4" /> Arraste para girar · role para aproximar · clique nos marcadores · clique de novo para voltar
           </p>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
           <div className="instrument relative h-[440px] overflow-hidden sm:h-[560px]">
             <div className="tech-grid pointer-events-none absolute inset-0 opacity-60" />
-            <GlobeStage selectedId={selectedId} onSelect={select} interactive />
+            <GlobeStage selectedId={selectedId} onSelect={select} interactive reselectSignal={reselect} />
             <div
               key={t.id}
               className="animate-rise pointer-events-none absolute left-3 top-3 z-10 max-w-[230px] border border-border bg-background/80 p-3 backdrop-blur"
@@ -40,7 +42,7 @@ export function Explorer() {
                   key={t.id}
                   role="tab"
                   aria-selected={t.id === selectedId}
-                  onClick={() => select(t.id)}
+                  onClick={() => (t.id === selectedId ? setReselect((n) => n + 1) : select(t.id))}
                   className={cn(
                     "shrink-0 px-3 py-2 text-left font-mono text-[10px] uppercase tracking-wider transition-colors",
                     t.id === selectedId ? "bg-primary/15 text-mineral" : "text-muted-foreground hover:text-foreground",
