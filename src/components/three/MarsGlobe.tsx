@@ -110,8 +110,10 @@ function CameraRig({
     flyBackRef.current = toggleFly;
   });
 
+  const mounted = useRef(false);
   useEffect(() => {
     if (!interactive) return;
+    if (!mounted.current) { mounted.current = true; return; }
     const t = TERRITORIES.find((x) => x.id === selectedId);
     if (!t) return;
     flyTo(t);
