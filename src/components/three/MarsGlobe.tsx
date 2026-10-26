@@ -236,6 +236,7 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false, r
     lastReselect.current = reselectSignal;
     flyBackRef.current?.();
   }, [reselectSignal]);
+  const cancelFlyRef = useRef<(() => void) | null>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
@@ -267,7 +268,7 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false, r
       <directionalLight position={[-6, 3, 4]} intensity={2.6} color="#fff1e6" />
       <directionalLight position={[5, -2, -4]} intensity={0.25} color="#7a8aa0" />
       <Stars radius={60} depth={30} count={low ? 500 : 1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
-      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} cancelRef={cancelFlyRef} />
+      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} onReturn={resumeRotation} cancelRef={cancelFlyRef} flyBackRef={flyBackRef} />
       <OrbitRings />
       <OrbitControls
         makeDefault
