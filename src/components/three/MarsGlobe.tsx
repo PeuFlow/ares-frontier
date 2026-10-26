@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { isLowPower } from "./perf";
 import * as THREE from "three";
 import { paintMars } from "@/lib/mars-texture";
-import { TERRITORIES } from "@/data/territories";
+import { TERRITORIES, type Territory } from "@/data/territories";
 
 const R = 2;
 
@@ -60,31 +60,64 @@ function CameraRig({
   reduced,
   interactive,
   onFly,
+  onReturn,
   cancelRef,
+  flyBackRef,
 }: {
   group: React.RefObject<THREE.Group | null>;
   selectedId: string;
   reduced: boolean;
   interactive: boolean;
   onFly: () => void;
+  onReturn: () => void;
   cancelRef: React.MutableRefObject<(() => void) | null>;
+  flyBackRef: React.MutableRefObject<(() => void) | null>;
 }) {
   const camera = useThree((s) => s.camera);
   const desired = useRef<THREE.Vector3 | null>(null);
+  const prevPos = useRef<THREE.Vector3 | null>(null);
+  const focused = useRef(false);
 
   useEffect(() => {
     cancelRef.current = () => { desired.current = null; };
   }, [cancelRef]);
 
+  const flyTo = useCallback(
+    (t: Territory) => {
+      prevPos.current = camera.position.clone();
+      const dir = latLonToVec(t.lat, t.lon, 1).normalize();
+      dir.applyQuaternion(group.current?.quaternion ?? new THREE.Quaternion());
+      desired.current = dir.normalize().multiplyScalar(3.7);
+      focused.current = true;
+      onFly();
+    },
+    [group, camera, onFly],
+  );
+
+  const toggleFly = useCallback(() => {
+    if (focused.current) {
+      if (!prevPos.current) return;
+      desired.current = prevPos.current.clone();
+      focused.current = false;
+      onReturn();
+      return;
+    }
+    const t = TERRITORIES.find((x) => x.id === selectedId);
+    if (t) flyTo(t);
+  }, [selectedId, flyTo, onReturn]);
+
+  useEffect(() => {
+    flyBackRef.current = toggleFly;
+  });
+
+  const initialId = useRef(selectedId);
   useEffect(() => {
     if (!interactive) return;
+    if (selectedId === initialId.current) return;
     const t = TERRITORIES.find((x) => x.id === selectedId);
     if (!t) return;
-    const dir = latLonToVec(t.lat, t.lon, 1).normalize();
-    dir.applyQuaternion(group.current?.quaternion ?? new THREE.Quaternion());
-    desired.current = dir.normalize().multiplyScalar(3.7);
-    onFly();
-  }, [selectedId, interactive, group, onFly, cancelRef]);
+    flyTo(t);
+  }, [selectedId, interactive, flyTo]);
 
   useFrame((_, d) => {
     const target = desired.current;
@@ -95,8 +128,18 @@ function CameraRig({
   return null;
 }
 
-function Planet({ selectedId, onSelect, reduced, interactive = false, low, onFly, cancelRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; cancelRef: React.MutableRefObject<(() => void) | null> }) {
+function Planet({ selectedId, onSelect, reduced, interactive = false, low, onFly, onReturn, cancelRef, flyBackRef }: GlobeProps & { reduced: boolean; low: boolean; onFly: () => void; onReturn: () => void; cancelRef: React.MutableRefObject<(() => void) | null>; flyBackRef: React.MutableRefObject<(() => void) | null> }) {
   const group = useRef<THREE.Group>(null);
+  const handleMarker = useCallback(
+    (id: string) => {
+      if (onSelect && interactive && id === selectedId) {
+        flyBackRef.current?.();
+        return;
+      }
+      onSelect?.(id);
+    },
+    [onSelect, interactive, selectedId, flyBackRef],
+  );
   const maps = useMemo(() => {
     const m = paintMars(low ? 512 : 1024);
     const color = new THREE.CanvasTexture(m.color);
@@ -135,10 +178,19 @@ function Planet({ selectedId, onSelect, reduced, interactive = false, low, onFly
           lon={t.lon}
           reduced={reduced}
           selected={t.id === selectedId}
-          onSelect={onSelect ? () => onSelect(t.id) : undefined}
+          onSelect={onSelect ? () => handleMarker(t.id) : undefined}
         />
       ))}
-      <CameraRig group={group} selectedId={selectedId} reduced={reduced} interactive={interactive} onFly={onFly} cancelRef={cancelRef} />
+      <CameraRig
+        group={group}
+        selectedId={selectedId}
+        reduced={reduced}
+        interactive={interactive}
+        onFly={onFly}
+        onReturn={onReturn}
+        cancelRef={cancelRef}
+        flyBackRef={flyBackRef}
+      />
     </group>
   );
 }
@@ -166,9 +218,10 @@ export interface GlobeProps {
   selectedId: string;
   onSelect?: ((id: string) => void) | undefined;
   interactive?: boolean;
+  reselectSignal?: number;
 }
 
-export default function MarsGlobe({ selectedId, onSelect, interactive = false }: GlobeProps) {
+export default function MarsGlobe({ selectedId, onSelect, interactive = false, reselectSignal = 0 }: GlobeProps) {
   const reduced = useMemo(
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
@@ -177,6 +230,14 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
   const [dpr, setDpr] = useState(low ? 1 : 1.5);
   const [rotating, setRotating] = useState(true);
   const stopRotation = useCallback(() => setRotating(false), []);
+  const resumeRotation = useCallback(() => setRotating(true), []);
+  const flyBackRef = useRef<(() => void) | null>(null);
+  const lastReselect = useRef(reselectSignal);
+  useEffect(() => {
+    if (lastReselect.current === reselectSignal) return;
+    lastReselect.current = reselectSignal;
+    flyBackRef.current?.();
+  }, [reselectSignal]);
   const cancelFlyRef = useRef<(() => void) | null>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
@@ -209,7 +270,7 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false }:
       <directionalLight position={[-6, 3, 4]} intensity={2.6} color="#fff1e6" />
       <directionalLight position={[5, -2, -4]} intensity={0.25} color="#7a8aa0" />
       <Stars radius={60} depth={30} count={low ? 500 : 1400} factor={2.2} saturation={0} fade speed={reduced ? 0 : 0.3} />
-      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} cancelRef={cancelFlyRef} />
+      <Planet selectedId={selectedId} onSelect={onSelect} reduced={reduced} interactive={interactive} low={low} onFly={stopRotation} onReturn={resumeRotation} cancelRef={cancelFlyRef} flyBackRef={flyBackRef} />
       <OrbitRings />
       <OrbitControls
         makeDefault
