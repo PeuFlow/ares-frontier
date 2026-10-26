@@ -228,7 +228,14 @@ export default function MarsGlobe({ selectedId, onSelect, interactive = false, r
   const [dpr, setDpr] = useState(low ? 1 : 1.5);
   const [rotating, setRotating] = useState(true);
   const stopRotation = useCallback(() => setRotating(false), []);
-  const cancelFlyRef = useRef<(() => void) | null>(null);
+  const resumeRotation = useCallback(() => setRotating(true), []);
+  const flyBackRef = useRef<(() => void) | null>(null);
+  const lastReselect = useRef(reselectSignal);
+  useEffect(() => {
+    if (lastReselect.current === reselectSignal) return;
+    lastReselect.current = reselectSignal;
+    flyBackRef.current?.();
+  }, [reselectSignal]);
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
