@@ -36,7 +36,7 @@ export function TerritoryPanel() {
         <Meter label="Relevo" value={t.relief} />
         <Meter label="Exposição solar" value={t.solar} />
       </div>
-      <ValueFactors t={t} className="mt-6 border-t border-border pt-4" />
+      <ValueFactors t={t} className="mt-6" />
       <p className="mt-3 font-mono text-[10px] text-muted-foreground/70">Indicadores e fatores de valor ilustrativos — não são dados científicos.</p>
       <div className="mt-6 grid gap-2 sm:grid-cols-2">
         <Button onClick={() => openDetails(t.id)}><Eye /> Ver detalhes</Button>
