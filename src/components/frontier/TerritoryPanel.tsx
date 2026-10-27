@@ -1,6 +1,7 @@
 import { Eye, GitCompare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Meter } from "./Meter";
+import { ValueFactors } from "./ValueFactors";
 import { useFrontier } from "@/hooks/use-frontier";
 import { PROFILE_LABEL, formatArea, formatMC } from "@/data/territories";
 
@@ -35,7 +36,8 @@ export function TerritoryPanel() {
         <Meter label="Relevo" value={t.relief} />
         <Meter label="Exposição solar" value={t.solar} />
       </div>
-      <p className="mt-3 font-mono text-[10px] text-muted-foreground/70">Indicadores ilustrativos — não são dados científicos.</p>
+      <ValueFactors t={t} className="mt-6 border-t border-border pt-4" />
+      <p className="mt-3 font-mono text-[10px] text-muted-foreground/70">Indicadores e fatores de valor ilustrativos — não são dados científicos.</p>
       <div className="mt-6 grid gap-2 sm:grid-cols-2">
         <Button onClick={() => openDetails(t.id)}><Eye /> Ver detalhes</Button>
         <Button variant="outline" onClick={() => toggleCompare(t.id)} aria-pressed={inCompare}>

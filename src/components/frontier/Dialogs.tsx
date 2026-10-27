@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button";
 import { Meter } from "./Meter";
 import { RegionThumb } from "./RegionThumb";
+import { ValueFactors } from "./ValueFactors";
 import { useFrontier } from "@/hooks/use-frontier";
 import { MAX_COMPARE, PROFILE_LABEL, formatArea, formatMC, type Territory } from "@/data/territories";
 import { cn } from "@/lib/utils";
@@ -35,6 +36,7 @@ export function DetailsDialog() {
                 <Meter label="Estabilidade" value={t.stability} />
               </div>
               <p className="mt-3 font-mono text-[10px] text-muted-foreground/70">Métricas demonstrativas.</p>
+              <ValueFactors t={t} className="mt-6" />
               <div className="mt-6 flex flex-wrap gap-2">
                 <Button onClick={() => { openDetails(null); openReserve(t.id); }}>Simular reserva</Button>
                 <Button variant="outline" onClick={() => toggleCompare(t.id)}><GitCompare /> {compare.includes(t.id) ? "Remover da comparação" : "Comparar"}</Button>

@@ -15,4 +15,12 @@ describe("territories", () => {
   it("searches by lot identifier", () => {
     expect(filterTerritories(TERRITORIES, "d-208", "all", "none")[0]?.id).toBe("utopia-d208");
   });
+  it("every lot justifies its price with resources and risks", () => {
+    for (const t of TERRITORIES) {
+      expect(t.resources.length).toBeGreaterThanOrEqual(1);
+      expect(t.risks.length).toBeGreaterThanOrEqual(1);
+      expect(t.resources.every((r) => r.impact > 0)).toBe(true);
+      expect(t.risks.every((r) => r.impact < 0)).toBe(true);
+    }
+  });
 });
