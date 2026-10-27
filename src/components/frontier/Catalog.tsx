@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Heart, Search, RotateCcw, Crosshair, Check } from "lucide-react";
+import { Heart, Search, RotateCcw, Crosshair, Check, Gem, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -39,6 +39,20 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-xl font-semibold">{t.region}</h3>
         <p className="font-mono text-xs text-mineral">{t.lot}</p>
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {t.resources.slice(0, 2).map((r) => (
+            <span key={r.label} className="flex items-center gap-1 border border-mineral/40 bg-mineral/10 px-1.5 py-1 font-mono text-[10px]">
+              <Gem className="h-3 w-3 text-mineral" />
+              <span className="truncate max-w-[140px]" title={r.label}>{r.label}</span>
+            </span>
+          ))}
+          {t.risks.slice(0, 1).map((r) => (
+            <span key={r.label} className="flex items-center gap-1 border border-destructive/40 bg-destructive/10 px-1.5 py-1 font-mono text-[10px]">
+              <TriangleAlert className="h-3 w-3 text-destructive" />
+              <span className="truncate max-w-[140px]" title={r.label}>{r.label}</span>
+            </span>
+          ))}
+        </div>
         <dl className="mt-4 grid grid-cols-2 gap-y-3 font-mono text-xs">
           <div><dt className="text-muted-foreground">Área</dt><dd className="tabular-nums">{formatArea(t.areaKm2)}</dd></div>
           <div><dt className="text-muted-foreground">Preço</dt><dd className="tabular-nums">{formatMC(t.priceMC)}</dd></div>
