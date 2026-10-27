@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RegionThumb } from "./RegionThumb";
 import { useFrontier } from "@/hooks/use-frontier";
 import {
-  PROFILE_LABEL, TERRITORIES, filterTerritories, formatArea, formatMC,
+  PROFILE_LABEL, TERRITORIES, filterTerritories, formatArea, formatImpact, formatMC,
   type MissionProfile, type SortKey, type Territory,
 } from "@/data/territories";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
   const { selectedId, select, favorites, toggleFavorite, compare, toggleCompare, openDetails } = useFrontier();
   const fav = favorites.includes(t.id);
   const cmp = compare.includes(t.id);
+  const net = [...t.resources, ...t.risks].reduce((s, r) => s + r.impact, 0);
   const sel = selectedId === t.id;
   return (
     <article className={cn("group flex flex-col border bg-card transition-colors duration-300", sel ? "border-mineral/70" : "border-border hover:border-muted-foreground/50")}>
@@ -53,7 +54,11 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
             </span>
           ))}
         </div>
-        <dl className="mt-4 grid grid-cols-2 gap-y-3 font-mono text-xs">
+        <p className="mt-2 font-mono text-[10px] text-muted-foreground">
+          Fatores de valor:{" "}
+          <span className={cn("font-semibold tabular-nums", net >= 0 ? "text-mineral" : "text-destructive")}>{formatImpact(net)}</span>
+        </p>
+        <dl className="mt-3 grid grid-cols-2 gap-y-3 font-mono text-xs">
           <div><dt className="text-muted-foreground">Área</dt><dd className="tabular-nums">{formatArea(t.areaKm2)}</dd></div>
           <div><dt className="text-muted-foreground">Preço</dt><dd className="tabular-nums">{formatMC(t.priceMC)}</dd></div>
           <div><dt className="text-muted-foreground">Relevo</dt><dd className="tabular-nums">{t.relief}/100</dd></div>

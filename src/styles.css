@@ -131,6 +131,13 @@
 @utility animate-rise {
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
+@keyframes arrive {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: none; }
+}
+@utility animate-arrive {
+  animation: arrive 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
 @keyframes scan {
   from { transform: translateY(-100%); }
   to { transform: translateY(100%); }
