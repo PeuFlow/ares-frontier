@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RegionThumb } from "./RegionThumb";
 import { useFrontier } from "@/hooks/use-frontier";
 import {
-  PROFILE_LABEL, TERRITORIES, filterTerritories, formatArea, formatMC,
+  PROFILE_LABEL, TERRITORIES, filterTerritories, formatArea, formatImpact, formatMC,
   type MissionProfile, type SortKey, type Territory,
 } from "@/data/territories";
 import { cn } from "@/lib/utils";
