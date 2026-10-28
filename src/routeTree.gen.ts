@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as ContaRouteImport } from './routes/conta'
+import { Route as EsqueciSenhaRouteImport } from './routes/esqueci-senha'
+import { Route as ExperienciasRouteImport } from './routes/experiencias'
+import { Route as HospedagensRouteImport } from './routes/hospedagens'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MissaoRouteImport } from './routes/missao'
+import { Route as TerritoriosRouteImport } from './routes/territorios'
+import { Route as ViagensRouteImport } from './routes/viagens'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsqueciSenhaRoute = EsqueciSenhaRouteImport.update({
+  id: '/esqueci-senha',
+  path: '/esqueci-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienciasRoute = ExperienciasRouteImport.update({
+  id: '/experiencias',
+  path: '/experiencias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HospedagensRoute = HospedagensRouteImport.update({
+  id: '/hospedagens',
+  path: '/hospedagens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissaoRoute = MissaoRouteImport.update({
+  id: '/missao',
+  path: '/missao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerritoriosRoute = TerritoriosRouteImport.update({
+  id: '/territorios',
+  path: '/territorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViagensRoute = ViagensRouteImport.update({
+  id: '/viagens',
+  path: '/viagens',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
+  '/conta': typeof ContaRoute
+  '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/experiencias': typeof ExperienciasRoute
+  '/hospedagens': typeof HospedagensRoute
+  '/login': typeof LoginRoute
+  '/missao': typeof MissaoRoute
+  '/territorios': typeof TerritoriosRoute
+  '/viagens': typeof ViagensRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
+  '/conta': typeof ContaRoute
+  '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/experiencias': typeof ExperienciasRoute
+  '/hospedagens': typeof HospedagensRoute
+  '/login': typeof LoginRoute
+  '/missao': typeof MissaoRoute
+  '/territorios': typeof TerritoriosRoute
+  '/viagens': typeof ViagensRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cadastro': typeof CadastroRoute
+  '/conta': typeof ContaRoute
+  '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/experiencias': typeof ExperienciasRoute
+  '/hospedagens': typeof HospedagensRoute
+  '/login': typeof LoginRoute
+  '/missao': typeof MissaoRoute
+  '/territorios': typeof TerritoriosRoute
+  '/viagens': typeof ViagensRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cadastro'
+    | '/conta'
+    | '/esqueci-senha'
+    | '/experiencias'
+    | '/hospedagens'
+    | '/login'
+    | '/missao'
+    | '/territorios'
+    | '/viagens'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cadastro'
+    | '/conta'
+    | '/esqueci-senha'
+    | '/experiencias'
+    | '/hospedagens'
+    | '/login'
+    | '/missao'
+    | '/territorios'
+    | '/viagens'
+  id:
+    | '__root__'
+    | '/'
+    | '/cadastro'
+    | '/conta'
+    | '/esqueci-senha'
+    | '/experiencias'
+    | '/hospedagens'
+    | '/login'
+    | '/missao'
+    | '/territorios'
+    | '/viagens'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CadastroRoute: typeof CadastroRoute
+  ContaRoute: typeof ContaRoute
+  EsqueciSenhaRoute: typeof EsqueciSenhaRoute
+  ExperienciasRoute: typeof ExperienciasRoute
+  HospedagensRoute: typeof HospedagensRoute
+  LoginRoute: typeof LoginRoute
+  MissaoRoute: typeof MissaoRoute
+  TerritoriosRoute: typeof TerritoriosRoute
+  ViagensRoute: typeof ViagensRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/esqueci-senha': {
+      id: '/esqueci-senha'
+      path: '/esqueci-senha'
+      fullPath: '/esqueci-senha'
+      preLoaderRoute: typeof EsqueciSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiencias': {
+      id: '/experiencias'
+      path: '/experiencias'
+      fullPath: '/experiencias'
+      preLoaderRoute: typeof ExperienciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hospedagens': {
+      id: '/hospedagens'
+      path: '/hospedagens'
+      fullPath: '/hospedagens'
+      preLoaderRoute: typeof HospedagensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missao': {
+      id: '/missao'
+      path: '/missao'
+      fullPath: '/missao'
+      preLoaderRoute: typeof MissaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/territorios': {
+      id: '/territorios'
+      path: '/territorios'
+      fullPath: '/territorios'
+      preLoaderRoute: typeof TerritoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/viagens': {
+      id: '/viagens'
+      path: '/viagens'
+      fullPath: '/viagens'
+      preLoaderRoute: typeof ViagensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CadastroRoute: CadastroRoute,
+  ContaRoute: ContaRoute,
+  EsqueciSenhaRoute: EsqueciSenhaRoute,
+  ExperienciasRoute: ExperienciasRoute,
+  HospedagensRoute: HospedagensRoute,
+  LoginRoute: LoginRoute,
+  MissaoRoute: MissaoRoute,
+  TerritoriosRoute: TerritoriosRoute,
+  ViagensRoute: ViagensRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
