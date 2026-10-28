@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
-import { Heart, Search, RotateCcw, Crosshair, Check, Gem, TriangleAlert } from "lucide-react";
+import { Heart, Search, RotateCcw, Crosshair, Check, Rocket, Gem, TriangleAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RegionThumb } from "./RegionThumb";
 import { useFrontier } from "@/hooks/use-frontier";
+import { useMission } from "@/hooks/use-mission";
 import {
   PROFILE_LABEL, TERRITORIES, filterTerritories, formatArea, formatImpact, formatMC,
   type MissionProfile, type SortKey, type Territory,
@@ -17,6 +18,8 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
   const { selectedId, select, favorites, toggleFavorite, compare, toggleCompare, openDetails } = useFrontier();
   const fav = favorites.includes(t.id);
   const cmp = compare.includes(t.id);
+  const { mission, setTerritory } = useMission();
+  const inMission = mission.territoryId === t.id;
   const net = [...t.resources, ...t.risks].reduce((s, r) => s + r.impact, 0);
   const sel = selectedId === t.id;
   return (
@@ -68,6 +71,9 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
           <Button size="sm" onClick={() => openDetails(t.id)}>Detalhes</Button>
           <Button size="sm" variant="outline" onClick={() => { select(t.id); document.getElementById("explorar")?.scrollIntoView(); }} aria-label={`Localizar ${t.region} no globo`}>
             <Crosshair />
+          </Button>
+          <Button size="sm" variant={inMission ? "secondary" : "outline"} onClick={() => setTerritory(inMission ? null : t.id)} aria-pressed={inMission} aria-label={inMission ? `Remover ${t.region} da missão` : `Adicionar ${t.region} à missão`}>
+            <Rocket />
           </Button>
           <label className={cn("ml-auto flex cursor-pointer items-center gap-2 font-mono text-[10px] uppercase tracking-wider", cmp ? "text-mineral" : "text-muted-foreground")}>
             <input type="checkbox" className="peer sr-only" checked={cmp} onChange={() => toggleCompare(t.id)} />

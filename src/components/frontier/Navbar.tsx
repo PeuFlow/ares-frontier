@@ -1,44 +1,53 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Menu, X, UserRound } from "lucide-react";
 import { Logo } from "./Logo";
-import { Button } from "@/components/ui/button";
+import { useMission } from "@/hooks/use-mission";
 
 const LINKS = [
-  { href: "#explorar", label: "Explorar Marte" },
-  { href: "#terrenos", label: "Terrenos" },
-  { href: "#como-funciona", label: "Como funciona" },
-];
+  { to: "/", label: "Explorar" },
+  { to: "/viagens", label: "Viagens" },
+  { to: "/hospedagens", label: "Hospedagens" },
+  { to: "/experiencias", label: "Experiências" },
+  { to: "/territorios", label: "Territórios" },
+  { to: "/missao", label: "Minha missão" },
+] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { lines, user } = useMission();
+  const count = lines.length;
+  const cls = "font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground";
+  const active = { className: "!text-mineral" };
+  const label = (l: (typeof LINKS)[number]) => (
+    <>
+      {l.label}
+      {l.to === "/missao" && count > 0 && <span className="ml-1.5 bg-primary px-1.5 py-0.5 text-[9px] text-primary-foreground">{count}</span>}
+    </>
+  );
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/75 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8" aria-label="Principal">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:px-8" aria-label="Principal">
         <Logo />
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">
-              {l.label}
-            </a>
+            <Link key={l.to} to={l.to} className={cls} activeProps={active} activeOptions={{ exact: true }}>{label(l)}</Link>
           ))}
-          <Button asChild size="sm">
-            <a href="#explorar">Explorar agora</a>
-          </Button>
+          <Link to="/conta" className="flex items-center gap-2 border border-border px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] hover:border-mineral" activeProps={active}>
+            <UserRound className="h-3.5 w-3.5" /> {user ? user.name.split(" ")[0] : "Minha conta"}
+          </Link>
         </div>
-        <button className="p-2 md:hidden" onClick={() => setOpen((o) => !o)} aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open}>
+        <button className="p-2 lg:hidden" onClick={() => setOpen((o) => !o)} aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
       {open && (
-        <div className="border-t border-border bg-background px-5 py-4 md:hidden">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-3 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">
+        <div className="border-t border-border bg-background px-5 py-4 lg:hidden">
+          {[...LINKS, { to: "/conta", label: "Minha conta" } as const].map((l) => (
+            <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="block py-3 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground" activeProps={active} activeOptions={{ exact: true }}>
               {l.label}
-            </a>
+            </Link>
           ))}
-          <Button asChild className="mt-3 w-full">
-            <a href="#explorar" onClick={() => setOpen(false)}>Explorar agora</a>
-          </Button>
         </div>
       )}
     </header>

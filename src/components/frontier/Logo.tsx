@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 export function LogoMark({ className = "h-7 w-7" }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden fill="none">
@@ -10,12 +11,12 @@ export function LogoMark({ className = "h-7 w-7" }: { className?: string }) {
 
 export function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-3" aria-label="Ares Frontier — início">
+    <Link to="/" className="flex items-center gap-3" aria-label="Ares Frontier — início">
       <LogoMark />
       <span className="flex flex-col leading-none">
         <span className="font-display text-sm font-semibold tracking-[0.24em]">ARES FRONTIER</span>
         <span className="mt-1 font-mono text-[9px] tracking-[0.3em] text-muted-foreground">MARS TERRITORY EXCHANGE</span>
       </span>
-    </a>
+    </Link>
   );
 }

@@ -9,6 +9,13 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { FrontierProvider } from "@/hooks/use-frontier";
+import { MissionProvider } from "@/hooks/use-mission";
+import { Navbar } from "@/components/frontier/Navbar";
+import { Footer } from "@/components/frontier/Footer";
+import { CompareBar, CompareDialog, DetailsDialog, ReserveDialog } from "@/components/frontier/Dialogs";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -105,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
@@ -123,7 +130,26 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <MissionProvider>
+        <FrontierProvider>
+          <Chrome />
+        </FrontierProvider>
+      </MissionProvider>
     </QueryClientProvider>
+  );
+}
+
+const AUTH_PAGES = ["/login", "/cadastro", "/esqueci-senha"];
+function Chrome() {
+  const path = useRouterState({ select: (s) => s.location.pathname });
+  const bare = AUTH_PAGES.includes(path);
+  return (
+    <>
+      {!bare && <Navbar />}
+      <Outlet />
+      {!bare && <Footer />}
+      {!bare && <><CompareBar /><DetailsDialog /><ReserveDialog /><CompareDialog /></>}
+      <Toaster position="top-right" toastOptions={{ classNames: { toast: "!rounded-sm !border-border !bg-card !text-foreground !font-mono !text-xs" } }} />
+    </>
   );
 }
