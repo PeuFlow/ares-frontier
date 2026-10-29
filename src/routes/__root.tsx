@@ -18,6 +18,7 @@ import { shouldShowEntry } from "@/lib/entry-screen";
 import { Navbar } from "@/components/frontier/Navbar";
 import { Footer } from "@/components/frontier/Footer";
 import { CompareBar, CompareDialog, DetailsDialog, ReserveDialog } from "@/components/frontier/Dialogs";
+import { AstroBuddy } from "@/components/frontier/AstroBuddy";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -155,7 +156,7 @@ function Chrome() {
       {!bare && <Navbar />}
       <Outlet />
       {!bare && <Footer />}
-      {!bare && <><CompareBar /><DetailsDialog /><ReserveDialog /><CompareDialog /></>}
+      {!bare && <><CompareBar /><DetailsDialog /><ReserveDialog /><CompareDialog /><AstroBuddy /></>}
       <Toaster position="top-right" toastOptions={{ classNames: { toast: "!rounded-sm !border-border !bg-card !text-foreground !font-mono !text-xs" } }} />
     </>
   );
