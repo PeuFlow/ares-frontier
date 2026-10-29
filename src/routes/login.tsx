@@ -19,7 +19,7 @@ export const Route = createFileRoute("/login")({
   component: Login,
 });
 
-function Login() {
+export function Login() {
   const { signIn } = useMission();
   const nav = useNavigate();
   const [email, setEmail] = useState("");
@@ -37,12 +37,12 @@ function Login() {
     setLoading(true);
     await wait(700);
     if (pw === "erro123") { setLoading(false); setErr({ form: "Falha na comunicação com a central. Tente novamente." }); return; }
-    signIn({ name: email.split("@")[0]!, email: email.trim(), guest: false });
-    nav({ to: "/conta" });
+    signIn({ name: email.split("@")[0] || "Explorador", email: email.trim(), guest: false });
+    nav({ to: "/" });
   };
 
   return (
-    <AuthShell title="RETORNE À FRONTEIRA">
+    <AuthShell title="BEM-VINDO À FRONTEIRA">
       <form onSubmit={submit} noValidate className="space-y-4">
         <Field label="E-mail" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} error={err.email} />
         <PasswordField label="Senha" autoComplete="current-password" value={pw} onChange={(e) => setPw(e.target.value)} error={err.pw} />

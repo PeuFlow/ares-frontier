@@ -12,4 +12,5 @@
 ## Project rules
 - Ares Frontier phase 1 is frontend-only: territory data lives in `src/data/territories.ts`, shared UI state in `src/hooks/use-frontier.tsx` (localStorage persistence) — keeps later backend swap in one place.
 - Phase 2 adds demo-only auth + mission planner in `src/hooks/use-mission.tsx` and travel/stay/experience data in `src/data/catalog.ts`; providers and site chrome live in `__root.tsx` so state survives navigation. Never store passwords.
+- The root chrome reuses the login screen until persisted demo state is hydrated and an explorer or guest session exists; this is a presentation gate only, not secure authentication.
 - 3D code lives in `src/components/three/` and is lazy-loaded client-side via `GlobeStage` — three.js must never run during SSR.
