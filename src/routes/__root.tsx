@@ -12,7 +12,9 @@ import { useEffect, type ReactNode } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { FrontierProvider } from "@/hooks/use-frontier";
-import { MissionProvider } from "@/hooks/use-mission";
+import { MissionProvider, useMission } from "@/hooks/use-mission";
+import { Login } from "@/routes/login";
+import { shouldShowEntry } from "@/lib/entry-screen";
 import { Navbar } from "@/components/frontier/Navbar";
 import { Footer } from "@/components/frontier/Footer";
 import { CompareBar, CompareDialog, DetailsDialog, ReserveDialog } from "@/components/frontier/Dialogs";
@@ -142,7 +144,12 @@ function RootComponent() {
 const AUTH_PAGES = ["/login", "/cadastro", "/esqueci-senha"];
 function Chrome() {
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const { user, loaded } = useMission();
   const bare = AUTH_PAGES.includes(path);
+  if (!loaded) {
+    return <main className="flex min-h-screen items-center justify-center bg-background"><p role="status" className="font-mono text-xs text-muted-foreground">Conectando à fronteira…</p></main>;
+  }
+  if (shouldShowEntry(Boolean(user), path)) return <Login />;
   return (
     <>
       {!bare && <Navbar />}

@@ -10,6 +10,7 @@ const EMPTY: MissionSelection = { tripId: null, stayId: null, nights: 3, experie
 const LS_KEY = "ares-frontier:mission:v1";
 
 interface MissionState {
+  loaded: boolean;
   user: DemoUser | null;
   /** Demo only — never receives or stores a password. Replace with real auth later. */
   signIn: (u: DemoUser) => void;
@@ -61,6 +62,7 @@ export function MissionProvider({ children }: { children: ReactNode }) {
   const value = useMemo<MissionState>(() => {
     const lines = missionLines(mission, territoryInfo);
     return {
+      loaded,
       user,
       signIn: (u) => { setUser(u); log(u.guest ? "Entrou como visitante" : "Entrou na central"); },
       signOut: () => { setUser(null); toast("Sessão demonstrativa encerrada"); },
@@ -90,7 +92,7 @@ export function MissionProvider({ children }: { children: ReactNode }) {
       reservations,
       history,
     };
-  }, [user, mission, reservations, history, log]);
+  }, [loaded, user, mission, reservations, history, log]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
