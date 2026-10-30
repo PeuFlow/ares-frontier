@@ -40,6 +40,9 @@ export function AstroBuddy() {
   const [msg, setMsg] = useState<string | null>(null);
   const [mood, setMood] = useState<Mood>("idle");
   const [flip, setFlip] = useState(false);
+  const [out, setOut] = useState(false);
+  const [bye, setBye] = useState(false);
+  const rocketRef = useRef<HTMLButtonElement>(null);
   const pathRef = useRef(path);
   pathRef.current = path;
 
@@ -48,15 +51,35 @@ export function AstroBuddy() {
   }, []);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || !out) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const target = { x: window.innerWidth - 120, y: window.innerHeight - 140 };
-    const pos = { ...target };
+    const r0 = rocketRef.current?.getBoundingClientRect();
+    const home = r0 ? { x: r0.left + r0.width / 2 - 26, y: r0.top - 30 } : { x: 40, y: window.innerHeight - 120 };
+    const target = { ...home };
+    const pos = { ...home };
+    let armed = false;
+    let leaving = false;
+    setMsg("Partiu exploração!"); setMood("wow");
     let raf = 0;
     let lastX = pos.x;
     let timer: ReturnType<typeof setTimeout> | undefined;
-    const onMove = (e: PointerEvent) => { target.x = e.clientX + 22; target.y = e.clientY + 18; };
+    const onMove = (e: PointerEvent) => {
+      if (leaving) return;
+      target.x = e.clientX + 22; target.y = e.clientY + 18;
+      const r = rocketRef.current?.getBoundingClientRect();
+      if (!r) return;
+      const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+      if (d > 120) armed = true;
+      else if (armed && d < 50) {
+        leaving = true;
+        target.x = r.left + r.width / 2 - 26; target.y = r.top;
+        clearTimeout(timer);
+        setMsg("Até a próxima, comandante! 👋"); setMood("happy");
+        timer = setTimeout(() => { setMsg(null); setMood("idle"); setOut(false); setBye(true); setTimeout(() => setBye(false), 1600); }, 1300);
+      }
+    };
     const onDown = (e: PointerEvent) => {
+      if (leaving || rocketRef.current?.contains(e.target as Node)) return;
       const [m, md] = reactTo(e.target as HTMLElement, pathRef.current);
       setMsg(m); setMood(md);
       clearTimeout(timer);
@@ -74,6 +97,7 @@ export function AstroBuddy() {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
+    timer = setTimeout(() => { setMsg(null); setMood("idle"); }, 1600);
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerdown", onDown);
     return () => {
@@ -81,12 +105,34 @@ export function AstroBuddy() {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
     };
-  }, [enabled]);
+  }, [enabled, out]);
 
   if (!enabled) return null;
+  const rocket = (
+    <button
+      ref={rocketRef}
+      type="button"
+      onClick={() => !out && setOut(true)}
+      aria-label={out ? "Astronauta explorando — leve-o de volta ao foguete" : "Soltar o mini astronauta"}
+      title={out ? "Traga o astronauta até aqui para ele voltar" : "Soltar o mini astronauta"}
+      className="group fixed bottom-5 left-5 z-[59] flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card/90 backdrop-blur transition-transform hover:scale-110"
+    >
+      <svg width="30" height="30" viewBox="0 0 32 32" className={out ? "opacity-60" : ""}>
+        <path d="M16 2c5 4 7 10 6 18H10C9 12 11 6 16 2z" fill="var(--foreground)" />
+        <circle cx="16" cy="12" r="3" fill={out ? "var(--background)" : "var(--mineral)"} stroke="var(--border)" />
+        <path d="M10 16l-4 6h5zM22 16l4 6h-5z" fill="var(--primary)" />
+        <path d="M13 22h6l-3 7z" fill="var(--mineral)" className={out ? "" : "animate-pulse"} />
+      </svg>
+      {!out && <span className="glow-dot absolute right-1 top-1 h-2 w-2 rounded-full bg-primary" />}
+      {bye && <span className="animate-rise absolute bottom-full left-0 mb-2 whitespace-nowrap rounded-sm border border-border bg-card px-2 py-1 font-mono text-[10px] text-foreground">Astronauta a bordo 🚀</span>}
+    </button>
+  );
+  if (!out) return rocket;
   const eyes = mood === "wow" ? "M22 26h0M30 26h0" : mood === "happy" ? "M20 27q2-3 4 0M28 27q2-3 4 0" : "M22 26h0M30 26h0";
 
   return (
+    <>
+    {rocket}
     <div ref={ref} aria-hidden className="pointer-events-none fixed left-0 top-0 z-[60] will-change-transform">
       {msg && (
         <div key={msg} className="animate-rise absolute bottom-full left-1/2 mb-1 -translate-x-1/2 whitespace-nowrap rounded-sm border border-border bg-card px-2 py-1 font-mono text-[10px] text-foreground shadow-lg">
@@ -116,5 +162,6 @@ export function AstroBuddy() {
         <circle cx="26" cy="1" r="1.8" fill="var(--primary)" />
       </svg>
     </div>
+    </>
   );
 }
