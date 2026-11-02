@@ -3,7 +3,6 @@ import { Heart, Search, RotateCcw, Crosshair, Check, Rocket, Gem, TriangleAlert 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { RegionThumb } from "./RegionThumb";
 import { useFrontier } from "@/hooks/use-frontier";
 import { useMission } from "@/hooks/use-mission";
 import {
@@ -25,8 +24,8 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
   return (
     <article className={cn("group flex flex-col border bg-card transition-colors duration-300", sel ? "border-mineral/70" : "border-border hover:border-muted-foreground/50")}>
       <div className="relative aspect-[16/10] overflow-hidden">
-        <RegionThumb seed={t.seed} alt={`Representação topográfica de ${t.region}`} className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100" />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
+        <img src={t.image} alt={t.imageAlt} title={t.imageSource} loading="lazy" decoding="async" width={1440} height={912} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card/70 to-transparent" />
         <span className="absolute left-3 top-3 font-mono text-[10px] text-foreground/80">{String(index + 1).padStart(2, "0")}</span>
         <span className="absolute right-3 top-3 border border-border bg-background/70 px-2 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">
           {PROFILE_LABEL[t.profile]}
