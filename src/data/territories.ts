@@ -1,3 +1,10 @@
+import vallesImage from "@/assets/terrain-valles.jpg";
+import elysiumImage from "@/assets/terrain-elysium.jpg";
+import utopiaImage from "@/assets/terrain-utopia.jpg";
+import arcadiaImage from "@/assets/terrain-arcadia.jpg";
+import jezeroImage from "@/assets/terrain-jezero.jpg";
+import olympusImage from "@/assets/terrain-olympus.jpg";
+
 export type MissionProfile = "cientifico" | "residencial" | "industrial";
 
 export interface ValueFactor {
@@ -20,6 +27,10 @@ export interface Territory {
   /** Illustrative 0-100 */
   stability: number;
   summary: string;
+  /** Original AI-generated artistic landscape, not a scientific photograph. */
+  image: string;
+  imageAlt: string;
+  imageSource: string;
   /** Factors that raise the demo price */
   resources: ValueFactor[];
   /** Factors that lower the demo price */
@@ -39,6 +50,9 @@ export const PROFILE_LABEL: Record<MissionProfile, string> = {
 export const TERRITORIES: Territory[] = [
   {
     id: "valles-07",
+    image: vallesImage,
+    imageAlt: "Representação artística de Valles Marineris: cânion monumental com paredes profundas e rochas em camadas, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Valles Marineris",
     lot: "Setor 07",
     areaKm2: 420,
@@ -62,6 +76,9 @@ export const TERRITORIES: Territory[] = [
   },
   {
     id: "elysium-a104",
+    image: elysiumImage,
+    imageAlt: "Representação artística de Elysium Planitia: planície alaranjada com pequenas pedras e horizonte amplo, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Elysium Planitia",
     lot: "Lote A-104",
     areaKm2: 260,
@@ -85,6 +102,9 @@ export const TERRITORIES: Territory[] = [
   },
   {
     id: "utopia-d208",
+    image: utopiaImage,
+    imageAlt: "Representação artística de Utopia Planitia: vista aérea de solo poligonal, depressões e pequenas crateras, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Utopia Planitia",
     lot: "Lote D-208",
     areaKm2: 510,
@@ -108,6 +128,9 @@ export const TERRITORIES: Territory[] = [
   },
   {
     id: "arcadia-n016",
+    image: arcadiaImage,
+    imageAlt: "Representação artística de Arcadia Planitia: cratera com gelo branco exposto em contraste com o solo vermelho, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Arcadia Planitia",
     lot: "Lote N-016",
     areaKm2: 180,
@@ -131,6 +154,9 @@ export const TERRITORIES: Territory[] = [
   },
   {
     id: "jezero-j021",
+    image: jezeroImage,
+    imageAlt: "Representação artística de Jezero Basin: antigo delta sedimentar com terraços rochosos e depósitos erodidos, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Jezero Basin",
     lot: "Setor científico J-021",
     areaKm2: 95,
@@ -154,6 +180,9 @@ export const TERRITORIES: Territory[] = [
   },
   {
     id: "olympus-o052",
+    image: olympusImage,
+    imageAlt: "Representação artística de Olympus Mons: vista orbital de vulcão em escudo com encostas extensas e caldeira no topo, gerada por IA.",
+    imageSource: "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
     region: "Olympus Mons",
     lot: "Perímetro O-052",
     areaKm2: 340,

@@ -2,6 +2,15 @@ import { describe, expect, it } from "vitest";
 import { TERRITORIES, addToCompare, filterTerritories } from "./territories";
 
 describe("territories", () => {
+  it("assigns six individual original artistic images to the six territories", () => {
+    expect(TERRITORIES).toHaveLength(6);
+    expect(new Set(TERRITORIES.map((t) => t.image)).size).toBe(6);
+    for (const t of TERRITORIES) {
+      expect(t.image).toMatch(/terrain-.*\.jpg/);
+      expect(t.imageAlt).toContain(t.region);
+      expect(t.imageSource).toContain("não é uma fotografia científica");
+    }
+  });
   it("compare allows at most two lots", () => {
     expect(addToCompare(["a", "b"], "c")).toBeNull();
   });
