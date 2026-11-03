@@ -22,7 +22,7 @@ export function Explorer() {
             <Move3d className="h-4 w-4" /> Arraste para girar · role para aproximar · clique nos marcadores · clique de novo para voltar
           </p>
         </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+        <div className="mt-10 grid items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
           <div className="instrument relative h-[440px] overflow-hidden sm:h-[560px]">
             <div className="tech-grid pointer-events-none absolute inset-0 opacity-60" />
             <GlobeStage selectedId={selectedId} onSelect={select} interactive reselectSignal={reselect} />
