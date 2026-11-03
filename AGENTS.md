@@ -14,4 +14,4 @@
 - Phase 2 adds demo-only auth + mission planner in `src/hooks/use-mission.tsx` and travel/stay/experience data in `src/data/catalog.ts`; providers and site chrome live in `__root.tsx` so state survives navigation. Never store passwords.
 - The root chrome reuses the login screen until persisted demo state is hydrated and an explorer or guest session exists; this is a presentation gate only, not secure authentication.
 - 3D code lives in `src/components/three/` and is lazy-loaded client-side via `GlobeStage` — three.js must never run during SSR.
-- Territory catalog imagery is defined per territory in the shared data model with image, imageAlt, and imageSource; cards consume those fields so individual landscapes can be replaced without changing layout or controls.
+- Territory imagery is defined per territory in the shared data model with image, imageAlt, and imageSource; catalog cards, details dialogs, and the gallery consume those same fields so individual landscapes can be replaced consistently without changing layout or controls.

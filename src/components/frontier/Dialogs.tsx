@@ -3,7 +3,6 @@ import { BadgeCheck, GitCompare, Heart, X } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Meter } from "./Meter";
-import { RegionThumb } from "./RegionThumb";
 import { ValueFactors } from "./ValueFactors";
 import { useFrontier } from "@/hooks/use-frontier";
 import { MAX_COMPARE, PROFILE_LABEL, formatArea, formatMC, type Territory } from "@/data/territories";
@@ -19,7 +18,7 @@ export function DetailsDialog() {
       <DialogContent className={cn(panel, "max-w-2xl gap-0 overflow-hidden p-0")}>
         {t && (
           <>
-            <RegionThumb seed={t.seed} alt={`Topografia ilustrativa de ${t.region}`} className="h-44 w-full object-cover" />
+            <img key={t.id} src={t.image} alt={t.imageAlt} title={t.imageSource} className="h-44 w-full object-cover" />
             <div className="p-6">
               <DialogHeader className="text-left">
                 <p className="eyebrow">{PROFILE_LABEL[t.profile]} · {t.lot}</p>
