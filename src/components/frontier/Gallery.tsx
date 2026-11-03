@@ -56,10 +56,6 @@ export function Gallery() {
         {t && (
           <DialogContent
             className="fixed inset-0 left-0 top-0 z-50 flex max-h-screen max-w-none translate-x-0 translate-y-0 flex-col items-center justify-center gap-4 overflow-hidden border-0 bg-background/95 p-4 sm:rounded-none md:p-8"
-            onKeyDown={(e) => {
-              if (e.key === "ArrowRight") step(1);
-              if (e.key === "ArrowLeft") step(-1);
-            }}
           >
             <div className="sr-only">
               <DialogTitle>{t.region} — {t.lot}</DialogTitle>
