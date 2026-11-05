@@ -1,4 +1,4 @@
-# Screenshot Exact
+# are-frontier
 
 Implement exactly the screenshot and nothing else
 
