@@ -1,0 +1,6 @@
+fastapi[standard]
+sqlalchemy>=2.0,<3
+psycopg[binary]>=3.1,<4
+pydantic-settings>=2,<3
+alembic>=1.13,<2
+pwdlib[argon2]>=0.3,<1

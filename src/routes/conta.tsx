@@ -1,4 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DemoNotice, PageHeader } from "@/components/frontier/PageHeader";
@@ -25,11 +26,13 @@ function Account() {
   const { user, signOut, lines, total, reservations, history } = useMission();
   const { favorites, byId, openDetails } = useFrontier();
   const nav = useNavigate();
+  const [leaving, setLeaving] = useState(false);
+  const [logoutError, setLogoutError] = useState<string>();
 
   if (!user) {
     return (
       <main>
-        <PageHeader eyebrow="Central de Missões" title="Identifique-se para continuar">Entre na conta demonstrativa ou explore como visitante.</PageHeader>
+        <PageHeader eyebrow="Central de Missões" title="Identifique-se para continuar">Entre na sua conta ou explore como visitante.</PageHeader>
         <div className="mx-auto flex max-w-7xl gap-3 px-5 py-12 md:px-8">
           <Button asChild><Link to="/login">Entrar</Link></Button>
           <Button asChild variant="outline"><Link to="/cadastro">Criar conta</Link></Button>
@@ -51,8 +54,14 @@ function Account() {
         <Panel title="Perfil do explorador">
           <p className="font-display text-xl">{user.name}</p>
           <p className="font-mono text-xs text-muted-foreground">{user.email || "sem e-mail · visitante"}</p>
-          <p className="mt-3 font-mono text-[10px] uppercase text-mineral">{user.guest ? "Visitante" : "Explorador demonstrativo"}</p>
-          <Button variant="outline" size="sm" className="mt-5" onClick={() => { signOut(); nav({ to: "/" }); }}><LogOut /> Sair da conta demonstrativa</Button>
+          <p className="mt-3 font-mono text-[10px] uppercase text-mineral">{user.guest ? "Visitante" : "Explorador"}</p>
+          <Button variant="outline" size="sm" className="mt-5" disabled={leaving} onClick={async () => {
+            setLeaving(true); setLogoutError(undefined);
+            try { await signOut(); await nav({ to: "/" }); }
+            catch (error) { setLogoutError(error instanceof Error ? error.message : "Não foi possível sair."); }
+            finally { setLeaving(false); }
+          }}><LogOut /> Sair da conta</Button>
+          {logoutError && <p role="alert" className="mt-3 text-sm text-destructive">{logoutError}</p>}
         </Panel>
         <Panel title="Minha missão atual" className="md:col-span-2">
           {lines.length ? (
@@ -86,7 +95,7 @@ function Account() {
             <ul className="space-y-1 font-mono text-[11px]">{history.slice(0, 10).map((h, i) => <li key={i}><span className="text-muted-foreground">{new Date(h.at).toLocaleString("pt-BR")}</span> · {h.text}</li>)}</ul>
           ) : <p className="text-sm text-muted-foreground">Sem atividades.</p>}
         </Panel>
-        <div className="md:col-span-3"><DemoNotice>Conta demonstrativa local, sem autenticação segura. Dados ficam apenas neste navegador.</DemoNotice></div>
+        <div className="md:col-span-3"><DemoNotice>Missões, reservas simuladas e histórico continuam armazenados apenas neste navegador e são compartilhados pelas contas que usam este navegador.</DemoNotice></div>
       </div>
     </main>
   );

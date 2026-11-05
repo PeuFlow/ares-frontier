@@ -11,7 +11,8 @@
 
 ## Project rules
 - Ares Frontier phase 1 is frontend-only: territory data lives in `src/data/territories.ts`, shared UI state in `src/hooks/use-frontier.tsx` (localStorage persistence) — keeps later backend swap in one place.
-- Phase 2 adds demo-only auth + mission planner in `src/hooks/use-mission.tsx` and travel/stay/experience data in `src/data/catalog.ts`; providers and site chrome live in `__root.tsx` so state survives navigation. Never store passwords.
-- The root chrome reuses the login screen until persisted demo state is hydrated and an explorer or guest session exists; this is a presentation gate only, not secure authentication.
+- Auth uses FastAPI routes in `backend/app/routers/auth.py`, Argon2 password hashes and revocable database sessions via an HttpOnly cookie. Never persist plaintext passwords or browser tokens in frontend storage. Mission planning remains a local demo in `src/hooks/use-mission.tsx`; catalog data lives in `src/data/catalog.ts`. Providers and chrome live in `__root.tsx`.
+- The root chrome waits for `/api/auth/me` before restoring an explorer; only guest state may restore from localStorage. The entry screen is a presentation gate; private backend endpoints must enforce `current_user` and CSRF checks for mutations. See `backend/README.md` for setup.
+- User administration lives in `src/routes/admin.tsx` and `backend/app/routers/admin.py`. Enforce the live `admin` role on every administrative endpoint. Role/status changes revoke affected sessions; preserve an active administrator and prohibit removing one's own admin access. Bootstrap an existing account with `python -m app.cli promote-admin EMAIL`; never add default admin credentials.
 - 3D code lives in `src/components/three/` and is lazy-loaded client-side via `GlobeStage` — three.js must never run during SSR.
 - Territory imagery is defined per territory in the shared data model with image, imageAlt, and imageSource; catalog cards, details dialogs, and the gallery consume those same fields so individual landscapes can be replaced consistently without changing layout or controls.

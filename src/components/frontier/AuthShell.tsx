@@ -19,7 +19,7 @@ export function AuthShell({ title, children }: { title: string; children: ReactN
           <h1 className="mt-8 font-display text-3xl font-semibold tracking-tight">{title}</h1>
           <div className="mt-6">{children}</div>
           <p className="mt-6 border-t border-border pt-4 font-mono text-[10px] leading-relaxed text-muted-foreground">
-            Autenticação demonstrativa, <span className="text-mineral">não segura</span>. Senhas não são salvas. Não use dados reais.
+            Seu acesso usa uma sessão com expiração. As senhas são protegidas por hash no servidor.
           </p>
         </div>
       </div>

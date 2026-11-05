@@ -36,6 +36,7 @@ export function Navbar() {
           <Link to="/conta" className="flex items-center gap-2 border border-border px-3 py-2 font-mono text-[11px] uppercase tracking-[0.16em] hover:border-mineral" activeProps={active}>
             <UserRound className="h-3.5 w-3.5" /> {user ? user.name.split(" ")[0] : "Minha conta"}
           </Link>
+          {user?.role === "admin" && !user.guest && <Link to="/admin" className={cls} activeProps={active}>Admin</Link>}
         </div>
         <button className="p-2 lg:hidden" onClick={() => setOpen((o) => !o)} aria-label={open ? "Fechar menu" : "Abrir menu"} aria-expanded={open}>
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -43,6 +44,7 @@ export function Navbar() {
       </nav>
       {open && (
         <div className="border-t border-border bg-background px-5 py-4 lg:hidden">
+          {user?.role === "admin" && !user.guest && <Link to="/admin" onClick={() => setOpen(false)} className="block py-3 font-mono text-xs uppercase tracking-wider text-mineral">Administração</Link>}
           {[...LINKS, { to: "/conta", label: "Minha conta" } as const].map((l) => (
             <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="block py-3 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground" activeProps={active} activeOptions={{ exact: true }}>
               {l.label}
