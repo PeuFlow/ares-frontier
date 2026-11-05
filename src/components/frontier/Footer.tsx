@@ -13,7 +13,7 @@ export function Footer() {
             </div>
             <p className="mt-4 font-display text-2xl">O futuro começa em novas fronteiras.</p>
           </div>
-          <nav className="flex gap-8 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground" aria-label="Rodapé">
+          <nav className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground" aria-label="Rodapé">
             <Link to="/viagens" className="hover:text-foreground">Viagens</Link>
             <Link to="/hospedagens" className="hover:text-foreground">Hospedagens</Link>
             <Link to="/territorios" className="hover:text-foreground">Territórios</Link>
