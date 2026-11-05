@@ -1,4 +1,4 @@
-# are-frontier
+# ares-frontier
 
 Implement exactly the screenshot and nothing else
 
