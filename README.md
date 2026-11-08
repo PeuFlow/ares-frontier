@@ -8,6 +8,10 @@ Plataforma demonstrativa para explorar Marte em 3D, comparar territórios fictí
 
 Missões e reservas ficam no navegador e são compartilhadas pelas contas que o utilizam. Autenticação e usuários são persistidos no PostgreSQL. A recuperação de senha é demonstrativa.
 
+## Acessar online
+
+Acesse o [Ares Frontier na Vercel](https://ares-frontier-eqed.vercel.app/) diretamente pelo navegador, sem instalar dependências ou configurar o ambiente local.
+
 ## Tecnologias
 
 React 19, TypeScript, TanStack Start, Tailwind CSS, Three.js, FastAPI e PostgreSQL.
@@ -18,7 +22,9 @@ Requisitos: Node.js 22.12+, npm, Python e PostgreSQL. Os comandos abaixo usam Po
 
 ### Frontend
 
-Crie `.env.local`, se ainda não existir, usando [.env.example](.env.example) como referência (`VITE_API_URL=http://localhost:8000`).
+Se precisar de configuração local, use [.env.example](.env.example) como referência.
+Deixe `VITE_API_URL` vazio para acessar `/api` na mesma origem; o Vite encaminha
+essas chamadas à API local na porta 8000.
 
 ```powershell
 npm.cmd install
@@ -49,11 +55,17 @@ Veja [backend/README.md](backend/README.md) para administração de usuários, t
 
 Na raiz do projeto:
 
-| Comando | Função |
-| --- | --- |
-| `npm.cmd test` | Executar testes do frontend. |
-| `npm.cmd run build` | Gerar o build de produção. |
-| `npm.cmd run lint` | Verificar o código. |
+| Comando             | Função                       |
+| ------------------- | ---------------------------- |
+| `npm.cmd test`      | Executar testes do frontend. |
+| `npm.cmd run build` | Gerar o build de produção.   |
+| `npm.cmd run lint`  | Verificar o código.          |
+
+## Deploy na Vercel
+
+O frontend está no projeto `ares-frontier-eqed` e encaminha `/api/*` para o
+backend do projeto `ares-frontier`. Veja [o guia de deploy na Vercel](backend/README.md#deploy-na-vercel)
+para configurar os dois projetos, as variáveis de ambiente e as migrações.
 
 ## Lovable
 
