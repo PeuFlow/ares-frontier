@@ -33,7 +33,7 @@ function Experiences() {
             const on = mission.experienceIds.includes(e.id);
             return (
               <li key={e.id}>
-                <button onClick={() => toggleExperience(e.id)} aria-pressed={on}
+                <button data-ai-section="experiencias" data-ai-element={e.id} onClick={() => toggleExperience(e.id)} aria-pressed={on}
                   className={cn("group grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 py-6 text-left transition-colors md:grid-cols-[auto_1fr_auto_auto]", on && "bg-mineral/5")}>
                   <span className="font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
                   <span>

@@ -90,7 +90,7 @@ function Trips() {
                 </ul>
                 <div className="mt-auto flex flex-wrap items-center gap-3 pt-6">
                   <span className="mr-auto font-display text-2xl tabular-nums">{formatMC(t.priceMC)}</span>
-                  <Button size="sm" onClick={() => setOpen(t)}>Ver expedição</Button>
+                  <Button size="sm" data-ai-section="viagens" data-ai-element={t.id} onClick={() => setOpen(t)}>Ver expedição</Button>
                   <AddBtn t={t} />
                 </div>
               </div>

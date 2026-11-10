@@ -1,5 +1,9 @@
 # Autenticação local
 
+A integração do astronauta com Gemini está documentada em
+[Astronauta Gemini](../docs/gemini-astronauta.md), incluindo auditoria, variáveis
+locais/Vercel, endpoints, atualização dos catálogos e roteiro de testes.
+
 O backend oferece cadastro, login, consulta da sessão e logout em `/api/auth`.
 Senhas usam Argon2; o navegador recebe um cookie HttpOnly e o banco armazena
 somente o SHA-256 do token aleatório da sessão. A sessão dura sete dias por padrão.

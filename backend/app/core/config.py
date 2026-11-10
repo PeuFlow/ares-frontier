@@ -2,13 +2,15 @@
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     app_name: str = "Ares Frontier API"
+    gemini_api_key: SecretStr | None = Field(default=None, repr=False)
+    gemini_model: str | None = None
 
     database_url: str | None = Field(default=None, repr=False)
     direct_database_url: str | None = Field(default=None, repr=False)

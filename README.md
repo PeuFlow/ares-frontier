@@ -5,6 +5,7 @@ Plataforma demonstrativa para explorar Marte em 3D, comparar territórios fictí
 - Globo interativo, galeria, favoritos e comparação de territórios.
 - Planejamento de missões e simulação de reservas.
 - Cadastro, login, acesso como visitante e administração de usuários.
+- Astronauta com IA Gemini: explicações contextuais durante a navegação e chat sobre os catálogos da plataforma.
 
 Missões e reservas ficam no navegador e são compartilhadas pelas contas que o utilizam. Autenticação e usuários são persistidos no PostgreSQL. A recuperação de senha é demonstrativa.
 
@@ -14,7 +15,7 @@ Acesse o [Ares Frontier na Vercel](https://ares-frontier-eqed.vercel.app/) diret
 
 ## Tecnologias
 
-React 19, TypeScript, TanStack Start, Tailwind CSS, Three.js, FastAPI e PostgreSQL.
+React 19, TypeScript, TanStack Start, Tailwind CSS, Three.js, FastAPI, PostgreSQL e Google Gemini.
 
 ## Rodar localmente
 
@@ -51,15 +52,36 @@ Mantenha frontend e backend em terminais separados, usando o mesmo hostname (`lo
 
 Veja [backend/README.md](backend/README.md) para administração de usuários, testes da API e publicação.
 
+### Astronauta com IA
+
+Entre com sua conta e abra o botão da nave. **Soltar astronauta** ativa o guia com explicações sobre as seções e os itens selecionados; **Conversar com o astronauta** abre o chat. As explicações podem ser pausadas pela nave ou pelo balão.
+
+Para habilitar a IA, configure somente no `backend/.env`, preservando as demais variáveis:
+
+```dotenv
+GEMINI_API_KEY=SUA_CHAVE
+GEMINI_MODEL=ID_DO_MODELO_HABILITADO
+```
+
+Instale as dependências de `backend/requirements.txt` e reinicie a API. A chave e o modelo ficam no backend, sem prefixo `VITE_`. O chat exige autenticação; seu histórico é temporário e não é salvo no navegador ou no banco.
+
+As respostas usam os catálogos da plataforma e os blocos de conteúdo publicados. O astronauta orienta a exploração, sem efetuar compras, reservas ou alterações na missão. Os territórios, preços e serviços fazem parte da demonstração fictícia.
+
+Na Vercel, configure `GEMINI_API_KEY` e `GEMINI_MODEL` no projeto **backend** e publique novamente esse projeto. O frontend também deve receber esta atualização. O `.env` local não é enviado à hospedagem.
+
+Veja [o guia do astronauta Gemini](docs/gemini-astronauta.md) para endpoints, limites, testes e atualização da base de conhecimento. Ao alterar os catálogos TypeScript, execute `npm.cmd run ai:catalog` e versione o JSON gerado junto das alterações.
+
 ## Comandos úteis
 
 Na raiz do projeto:
 
-| Comando             | Função                       |
-| ------------------- | ---------------------------- |
-| `npm.cmd test`      | Executar testes do frontend. |
-| `npm.cmd run build` | Gerar o build de produção.   |
-| `npm.cmd run lint`  | Verificar o código.          |
+| Comando                        | Função                                            |
+| ------------------------------ | ------------------------------------------------- |
+| `npm.cmd test`                 | Executar testes do frontend.                      |
+| `npm.cmd run build`            | Gerar o build de produção.                        |
+| `npm.cmd run lint`             | Verificar o código.                               |
+| `npm.cmd run ai:catalog`       | Atualizar os catálogos usados pela IA.            |
+| `npm.cmd run ai:catalog:check` | Verificar se a base da IA acompanha os catálogos. |
 
 ## Deploy na Vercel
 

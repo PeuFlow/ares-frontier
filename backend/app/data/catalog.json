@@ -1,0 +1,541 @@
+[
+  {
+    "slug": "valles-07",
+    "section": "territorios",
+    "title": "Valles Marineris · Setor 07",
+    "summary": "Cânions profundos e paredes estratificadas, ideais para expedições geológicas de longa duração.",
+    "context_data": {
+      "id": "valles-07",
+      "image": "/src/assets/terrain-valles.jpg",
+      "imageAlt": "Representação artística de Valles Marineris: cânion monumental com paredes profundas e rochas em camadas, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Valles Marineris",
+      "lot": "Setor 07",
+      "areaKm2": 420,
+      "priceMC": 1280000,
+      "profile": "cientifico",
+      "relief": 92,
+      "solar": 64,
+      "stability": 48,
+      "summary": "Cânions profundos e paredes estratificadas, ideais para expedições geológicas de longa duração.",
+      "resources": [
+        {
+          "label": "Depósitos de sulfatos hidratados — registro geológico raro",
+          "impact": 14
+        },
+        {
+          "label": "Cânions profundos: abrigos com radiação naturalmente reduzida",
+          "impact": 9
+        }
+      ],
+      "risks": [
+        {
+          "label": "Deslizamentos recorrentes nas paredes do cânion",
+          "impact": -18
+        },
+        {
+          "label": "Poeira em suspensão quase permanente",
+          "impact": -7
+        }
+      ],
+      "lat": -10,
+      "lon": -40,
+      "seed": 7,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "elysium-a104",
+    "section": "territorios",
+    "title": "Elysium Planitia · Lote A-104",
+    "summary": "Planície ampla e estável, com boa exposição solar para módulos habitacionais modulares.",
+    "context_data": {
+      "id": "elysium-a104",
+      "image": "/src/assets/terrain-elysium.jpg",
+      "imageAlt": "Representação artística de Elysium Planitia: planície alaranjada com pequenas pedras e horizonte amplo, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Elysium Planitia",
+      "lot": "Lote A-104",
+      "areaKm2": 260,
+      "priceMC": 640000,
+      "profile": "residencial",
+      "relief": 22,
+      "solar": 86,
+      "stability": 81,
+      "summary": "Planície ampla e estável, com boa exposição solar para módulos habitacionais modulares.",
+      "resources": [
+        {
+          "label": "Regolito solto e uniforme, fácil de escavar",
+          "impact": 11
+        },
+        {
+          "label": "Vetas de gelo de água em subsolo raso",
+          "impact": 13
+        },
+        {
+          "label": "Insolação constante para painéis solares",
+          "impact": 6
+        }
+      ],
+      "risks": [
+        {
+          "label": "Faixa norte restrita aos corredores de pouso oficiais",
+          "impact": -4
+        }
+      ],
+      "lat": 5,
+      "lon": 140,
+      "seed": 104,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "utopia-d208",
+    "section": "territorios",
+    "title": "Utopia Planitia · Lote D-208",
+    "summary": "Grande extensão plana, pensada para estruturas de processamento e logística de superfície.",
+    "context_data": {
+      "id": "utopia-d208",
+      "image": "/src/assets/terrain-utopia.jpg",
+      "imageAlt": "Representação artística de Utopia Planitia: vista aérea de solo poligonal, depressões e pequenas crateras, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Utopia Planitia",
+      "lot": "Lote D-208",
+      "areaKm2": 510,
+      "priceMC": 720000,
+      "profile": "industrial",
+      "relief": 18,
+      "solar": 58,
+      "stability": 88,
+      "summary": "Grande extensão plana, pensada para estruturas de processamento e logística de superfície.",
+      "resources": [
+        {
+          "label": "Um dos maiores reservatórios de gelo subsuperficial do planeta",
+          "impact": 22
+        },
+        {
+          "label": "Subsolo sólido, ideal para fundações industriais pesadas",
+          "impact": 8
+        }
+      ],
+      "risks": [
+        {
+          "label": "Invernos com acúmulo de gelo seco sobre estruturas",
+          "impact": -10
+        },
+        {
+          "label": "Longe dos corredores logísticos atuais",
+          "impact": -8
+        }
+      ],
+      "lat": 45,
+      "lon": 110,
+      "seed": 208,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "arcadia-n016",
+    "section": "territorios",
+    "title": "Arcadia Planitia · Lote N-016",
+    "summary": "Território de transição ao norte, com relevo suave e espaço para assentamentos compactos.",
+    "context_data": {
+      "id": "arcadia-n016",
+      "image": "/src/assets/terrain-arcadia.jpg",
+      "imageAlt": "Representação artística de Arcadia Planitia: cratera com gelo branco exposto em contraste com o solo vermelho, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Arcadia Planitia",
+      "lot": "Lote N-016",
+      "areaKm2": 180,
+      "priceMC": 410000,
+      "profile": "residencial",
+      "relief": 30,
+      "solar": 52,
+      "stability": 76,
+      "summary": "Território de transição ao norte, com relevo suave e espaço para assentamentos compactos.",
+      "resources": [
+        {
+          "label": "Gelo raso mapeado por radar, pronto para extração",
+          "impact": 14
+        },
+        {
+          "label": "Latitude tranquila quanto a tempestades globais",
+          "impact": 5
+        }
+      ],
+      "risks": [
+        {
+          "label": "Nenhum eixo logístico próximo — frete encarece tudo",
+          "impact": -21
+        },
+        {
+          "label": "Permafrost exige fundações aquecidas",
+          "impact": -6
+        }
+      ],
+      "lat": 48,
+      "lon": -160,
+      "seed": 16,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "jezero-j021",
+    "section": "territorios",
+    "title": "Jezero Basin · Setor científico J-021",
+    "summary": "Antigo delta sedimentar, reservado a laboratórios de campo e estações de amostragem.",
+    "context_data": {
+      "id": "jezero-j021",
+      "image": "/src/assets/terrain-jezero.jpg",
+      "imageAlt": "Representação artística de Jezero Basin: antigo delta sedimentar com terraços rochosos e depósitos erodidos, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Jezero Basin",
+      "lot": "Setor científico J-021",
+      "areaKm2": 95,
+      "priceMC": 980000,
+      "profile": "cientifico",
+      "relief": 55,
+      "solar": 71,
+      "stability": 69,
+      "summary": "Antigo delta sedimentar, reservado a laboratórios de campo e estações de amostragem.",
+      "resources": [
+        {
+          "label": "Delta sedimentar com material orgânico preservado",
+          "impact": 26
+        },
+        {
+          "label": "Borda de cratera propícia a observatórios",
+          "impact": 7
+        }
+      ],
+      "risks": [
+        {
+          "label": "Área pequena e não expansível",
+          "impact": -9
+        },
+        {
+          "label": "Paredões íngremes restringem o acesso de veículos",
+          "impact": -11
+        }
+      ],
+      "lat": 18,
+      "lon": 77,
+      "seed": 21,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "olympus-o052",
+    "section": "territorios",
+    "title": "Olympus Mons · Perímetro O-052",
+    "summary": "Encostas do grande vulcão escudo, com altitude extrema e insolação privilegiada.",
+    "context_data": {
+      "id": "olympus-o052",
+      "image": "/src/assets/terrain-olympus.jpg",
+      "imageAlt": "Representação artística de Olympus Mons: vista orbital de vulcão em escudo com encostas extensas e caldeira no topo, gerada por IA.",
+      "imageSource": "Representação artística original gerada por IA para Ares Frontier; não é uma fotografia científica.",
+      "region": "Olympus Mons",
+      "lot": "Perímetro O-052",
+      "areaKm2": 340,
+      "priceMC": 1560000,
+      "profile": "industrial",
+      "relief": 97,
+      "solar": 93,
+      "stability": 57,
+      "summary": "Encostas do grande vulcão escudo, com altitude extrema e insolação privilegiada.",
+      "resources": [
+        {
+          "label": "Insolação máxima em altitude privilegiada",
+          "impact": 18
+        },
+        {
+          "label": "Olivina e basalto vulcânico como matéria-prima",
+          "impact": 16
+        },
+        {
+          "label": "Curiosidade científica global — valor de marca",
+          "impact": 11
+        }
+      ],
+      "risks": [
+        {
+          "label": "Sismos residuais da caldera",
+          "impact": -20
+        },
+        {
+          "label": "Radiação intensificada pela altitude",
+          "impact": -13
+        },
+        {
+          "label": "Encostas limitam as áreas planas de construção",
+          "impact": -15
+        }
+      ],
+      "lat": 18,
+      "lon": -134,
+      "seed": 52,
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "orbita-vermelha",
+    "section": "viagens",
+    "title": "Órbita Vermelha",
+    "summary": "Experiência orbital panorâmica com sete passagens sobre o hemisfério norte e vista do nascer do Sol marciano.",
+    "context_data": {
+      "id": "orbita-vermelha",
+      "name": "Órbita Vermelha",
+      "image": "/src/assets/trip-orbit.jpg",
+      "category": "orbital",
+      "days": 6,
+      "capacity": 12,
+      "priceMC": 180000,
+      "adventure": 2,
+      "description": "Experiência orbital panorâmica com sete passagens sobre o hemisfério norte e vista do nascer do Sol marciano.",
+      "includes": [
+        "Cabine panorâmica",
+        "Briefing de voo",
+        "Refeições a bordo"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "horizonte-valles",
+    "section": "viagens",
+    "title": "Horizonte de Valles",
+    "summary": "Expedição demonstrativa por rover através dos cânions de Valles Marineris, com acampamentos pressurizados.",
+    "context_data": {
+      "id": "horizonte-valles",
+      "name": "Horizonte de Valles",
+      "image": "/src/assets/trip-canyon.jpg",
+      "category": "expedicao",
+      "days": 14,
+      "capacity": 6,
+      "priceMC": 420000,
+      "adventure": 5,
+      "description": "Expedição demonstrativa por rover através dos cânions de Valles Marineris, com acampamentos pressurizados.",
+      "includes": [
+        "Rover dedicado",
+        "Guia de superfície",
+        "Traje EVA"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "refugio-elysium",
+    "section": "viagens",
+    "title": "Refúgio de Elysium",
+    "summary": "Pacote de permanência em habitat nas planícies de Elysium, com estufas e observatório próprio.",
+    "context_data": {
+      "id": "refugio-elysium",
+      "name": "Refúgio de Elysium",
+      "image": "/src/assets/stay-dome.jpg",
+      "category": "estadia",
+      "days": 21,
+      "capacity": 20,
+      "priceMC": 360000,
+      "adventure": 1,
+      "description": "Pacote de permanência em habitat nas planícies de Elysium, com estufas e observatório próprio.",
+      "includes": [
+        "Transfer orbital",
+        "Habitat incluso",
+        "Spa de gravidade baixa"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "fronteira-cientifica",
+    "section": "viagens",
+    "title": "Fronteira Científica",
+    "summary": "Missão focada em pesquisa: coleta de amostras, laboratório móvel e acompanhamento de cientistas.",
+    "context_data": {
+      "id": "fronteira-cientifica",
+      "name": "Fronteira Científica",
+      "image": "/src/assets/stay-station.jpg",
+      "category": "cientifica",
+      "days": 30,
+      "capacity": 8,
+      "priceMC": 540000,
+      "adventure": 4,
+      "description": "Missão focada em pesquisa: coleta de amostras, laboratório móvel e acompanhamento de cientistas.",
+      "includes": [
+        "Laboratório móvel",
+        "Kit de amostragem",
+        "Certificado de pesquisa"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "aurora-dome",
+    "section": "hospedagens",
+    "title": "Aurora Dome",
+    "summary": "Cúpula geodésica transparente com vista de 360° do céu marciano e jardim hidropônico.",
+    "context_data": {
+      "id": "aurora-dome",
+      "name": "Aurora Dome",
+      "image": "/src/assets/stay-dome.jpg",
+      "kind": "Habitat panorâmico",
+      "capacity": 4,
+      "nightMC": 9500,
+      "description": "Cúpula geodésica transparente com vista de 360° do céu marciano e jardim hidropônico.",
+      "amenities": [
+        "Teto panorâmico",
+        "Jardim hidropônico",
+        "Suporte vital premium"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "olympus-station",
+    "section": "hospedagens",
+    "title": "Olympus Station",
+    "summary": "Módulos conectados na encosta do Olympus Mons, base ideal para saídas de exploração.",
+    "context_data": {
+      "id": "olympus-station",
+      "name": "Olympus Station",
+      "image": "/src/assets/stay-station.jpg",
+      "kind": "Módulo de exploração",
+      "capacity": 6,
+      "nightMC": 7200,
+      "description": "Módulos conectados na encosta do Olympus Mons, base ideal para saídas de exploração.",
+      "amenities": [
+        "Câmara de EVA",
+        "Garagem de rover",
+        "Antena de longo alcance"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "elysium-habitat",
+    "section": "hospedagens",
+    "title": "Elysium Habitat",
+    "summary": "Acomodação de longa permanência com áreas comuns, academia e estações de trabalho.",
+    "context_data": {
+      "id": "elysium-habitat",
+      "name": "Elysium Habitat",
+      "image": "/src/assets/trip-orbit.jpg",
+      "kind": "Longa permanência",
+      "capacity": 10,
+      "nightMC": 5400,
+      "description": "Acomodação de longa permanência com áreas comuns, academia e estações de trabalho.",
+      "amenities": [
+        "Academia",
+        "Cozinha compartilhada",
+        "Estações de trabalho"
+      ],
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "rover",
+    "section": "experiencias",
+    "title": "Passeio de rover",
+    "summary": "Percurso guiado por dunas e campos de rochas basálticas.",
+    "context_data": {
+      "id": "rover",
+      "name": "Passeio de rover",
+      "hours": 4,
+      "priceMC": 12000,
+      "description": "Percurso guiado por dunas e campos de rochas basálticas.",
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "astro",
+    "section": "experiencias",
+    "title": "Observação astronômica",
+    "summary": "Phobos, Deimos e a Terra vistos de um observatório de cratera.",
+    "context_data": {
+      "id": "astro",
+      "name": "Observação astronômica",
+      "hours": 3,
+      "priceMC": 6500,
+      "description": "Phobos, Deimos e a Terra vistos de um observatório de cratera.",
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "treino",
+    "section": "experiencias",
+    "title": "Treinamento de astronauta",
+    "summary": "Simulações de EVA, gravidade reduzida e procedimentos de emergência.",
+    "context_data": {
+      "id": "treino",
+      "name": "Treinamento de astronauta",
+      "hours": 8,
+      "priceMC": 18000,
+      "description": "Simulações de EVA, gravidade reduzida e procedimentos de emergência.",
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "geo",
+    "section": "experiencias",
+    "title": "Expedição geológica",
+    "summary": "Coleta guiada de amostras em camadas sedimentares antigas.",
+    "context_data": {
+      "id": "geo",
+      "name": "Expedição geológica",
+      "hours": 6,
+      "priceMC": 15000,
+      "description": "Coleta guiada de amostras em camadas sedimentares antigas.",
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  },
+  {
+    "slug": "lab",
+    "section": "experiencias",
+    "title": "Visita a instalação científica",
+    "summary": "Tour demonstrativo por laboratórios de pesquisa e estufas.",
+    "context_data": {
+      "id": "lab",
+      "name": "Visita a instalação científica",
+      "hours": 2,
+      "priceMC": 5000,
+      "description": "Tour demonstrativo por laboratórios de pesquisa e estufas.",
+      "fictional": true,
+      "currency": "MC",
+      "availability": "Não há disponibilidade real; catálogo demonstrativo."
+    }
+  }
+]
