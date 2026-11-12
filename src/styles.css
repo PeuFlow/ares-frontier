@@ -79,8 +79,15 @@
     outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -116,32 +123,170 @@
     border-color: var(--mineral);
     pointer-events: none;
   }
-  &::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
-  &::after { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
 }
 
 @utility glow-dot {
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 25%, transparent), 0 0 14px var(--primary);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 0 14px var(--primary);
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 @utility animate-rise {
   animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 @keyframes arrive {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 @utility animate-arrive {
   animation: arrive 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 @keyframes scan {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(100%); }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
 @utility animate-scan {
   animation: scan 2.4s linear infinite;
+}
+
+/* Markers and labels stay informational; only the globe's drag surface accepts input. */
+[data-territory-presentation],
+[data-territory-presentation] * {
+  pointer-events: none !important;
+}
+[data-territory-presentation] [data-territory-drag],
+[data-territory-presentation] [data-territory-drag] canvas {
+  pointer-events: auto !important;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+}
+[data-territory-presentation] [data-territory-drag][data-dragging="true"],
+[data-territory-presentation] [data-territory-drag][data-dragging="true"] canvas {
+  cursor: grabbing;
+}
+.territory-label-anchor {
+  transform: translate(14px, -50%);
+}
+.territory-label {
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+.territory-label[data-phase="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .territory-label {
+    transition: none;
+  }
+}
+
+/* The ship's controls are scoped so other dialogs retain their layout. */
+.astronaut-chat > button:last-child {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 12px;
+  right: 8px;
+}
+.astronaut-message {
+  animation: astronaut-appear 180ms ease-out both;
+}
+
+@media (max-height: 480px) {
+  .astronaut-chat .astronaut-header {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .astronaut-chat .astronaut-header > p:first-child,
+  .astronaut-chat .astronaut-header svg,
+  .astronaut-chat .astronaut-help {
+    display: none;
+  }
+  .astronaut-chat .astronaut-log {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .astronaut-chat .astronaut-composer {
+    padding: 8px;
+  }
+  .astronaut-chat textarea {
+    max-height: min(144px, 20dvh);
+  }
+}
+.astronaut-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: astronaut-thinking 1.2s ease-in-out infinite;
+}
+.astronaut-dot:nth-child(2) {
+  animation-delay: 150ms;
+}
+.astronaut-dot:nth-child(3) {
+  animation-delay: 300ms;
+}
+@keyframes astronaut-appear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes astronaut-thinking {
+  0%,
+  80%,
+  100% {
+    opacity: 0.4;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .astronaut-message,
+  .astronaut-dot {
+    animation: none;
+  }
 }

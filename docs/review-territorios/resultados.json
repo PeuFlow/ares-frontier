@@ -1,0 +1,130 @@
+{
+  "cycle": [
+    {
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris"
+    },
+    {
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris"
+    },
+    {
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 121.49998474121094,
+      "selectedExplorer": "01 · Valles Marineris"
+    },
+    {
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 121.5,
+      "selectedExplorer": "01 · Valles Marineris"
+    },
+    {
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 191.99993896484375,
+      "cardHeight": 82.49996948242188,
+      "selectedExplorer": "01 · Valles Marineris"
+    },
+    {
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 102.00003051757812,
+      "selectedExplorer": "01 · Valles Marineris"
+    }
+  ],
+  "sizes": [
+    {
+      "width": 1366,
+      "height": 768,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 192,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 191.99998474121094,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true,
+      "cardWidth": 191.99998474121094,
+      "cardHeight": 102,
+      "selectedExplorer": "01 · Valles Marineris",
+      "noHorizontalOverflow": true
+    }
+  ],
+  "checks": {
+    "informationalOnly": true,
+    "fadeOutOpacity": 0.0406762,
+    "loopRestarted": true,
+    "reducedMotionStable": true,
+    "reducedLabelVisible": true,
+    "noAiCalls": true,
+    "offscreenPaused": true,
+    "explorerStillInteractive": true,
+    "fallbackShowsTerritory": true
+  },
+  "exceptions": []
+}

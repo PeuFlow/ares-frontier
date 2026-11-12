@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Plus } from "lucide-react";
 import { DemoNotice, PageHeader } from "@/components/frontier/PageHeader";
@@ -7,16 +8,7 @@ import { useMission } from "@/hooks/use-mission";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/experiencias")({
-  head: () => ({
-    meta: [
-      { title: "Experiências em Marte — Ares Frontier" },
-      { name: "description", content: "Rover, observação astronômica, treino de astronauta e mais atividades fictícias." },
-      { property: "og:title", content: "Experiências complementares — Ares Frontier" },
-      { property: "og:description", content: "Atividades demonstrativas para adicionar à sua missão em Marte." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/experiencias", "Experiências em Marte — Ares Frontier", "Rover, observação astronômica, treino de astronauta e mais atividades fictícias."),
   component: Experiences,
 });
 

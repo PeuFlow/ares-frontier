@@ -1,0 +1,804 @@
+{
+  "checks": {
+    "alwaysVisible": true,
+    "heldDuringGap": true,
+    "replacedByNextTerritory": true,
+    "stablePosition": true,
+    "cardsInside": true
+  },
+  "first": "valles-07",
+  "next": "olympus-o052",
+  "sizes": [
+    {
+      "width": 390,
+      "height": 844,
+      "id": "olympus-o052",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 370,
+      "bottom": 587.875
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "id": "olympus-o052",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 300,
+      "bottom": 453.375
+    }
+  ],
+  "samples": [
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 829.619384765625
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828.0026245117188
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "leaving",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "leaving",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "leaving",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "valles-07",
+      "phase": "gap",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 828
+    },
+    {
+      "id": "olympus-o052",
+      "phase": "visible",
+      "labelPhase": "visible",
+      "opacity": 1,
+      "inside": true,
+      "right": 1288.484375,
+      "bottom": 829.9835205078125
+    }
+  ],
+  "exceptions": [],
+  "transitionTravelPixels": 1.9835205078125
+}

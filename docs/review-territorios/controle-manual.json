@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "accessibleControl": true,
+    "autoPausesDuringDrag": true,
+    "mouseRotatesBothAxes": true,
+    "autoResumesAfterRelease": true,
+    "informationStillAppears": true,
+    "keyboardRotates": true,
+    "reducedAutoStops": true,
+    "reducedStillAllowsManual": true,
+    "touchRotates": true,
+    "verticalTouchScrollsPage": true,
+    "verticalTouchDoesNotTilt": true,
+    "markersDoNotSelect": true
+  },
+  "measures": {
+    "mouseYaw": 0.5400000000000004,
+    "mouseTilt": 0.16800000000000015
+  },
+  "exceptions": []
+}

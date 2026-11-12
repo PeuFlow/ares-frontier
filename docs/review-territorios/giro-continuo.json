@@ -1,0 +1,3137 @@
+{
+  "shown": [
+    "valles-07",
+    "olympus-o052",
+    "arcadia-n016",
+    "elysium-a104",
+    "utopia-d208",
+    "jezero-j021",
+    "valles-07"
+  ],
+  "checks": {
+    "sixTerritories": true,
+    "firstTerritoryReturned": true,
+    "oneDirection": true,
+    "noTargetJumps": true,
+    "averageSpeed": 0.08000236804885309,
+    "visibleCardsInside": true,
+    "mobileCard": {
+      "time": 82486.60000000894,
+      "yaw": 4.707327999999305,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    "reducedMotionStopsRotation": true
+  },
+  "samples": [
+    {
+      "time": 4712.9000000059605,
+      "yaw": -1.5146800000011957,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 0.265034,
+      "inside": true
+    },
+    {
+      "time": 5777.70000000298,
+      "yaw": -1.429320000001197,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 5982.5,
+      "yaw": -1.4132960000014354,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 6191.300000011921,
+      "yaw": -1.3962400000011974,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 6404.9000000059605,
+      "yaw": -1.3791760000014361,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 6617.9000000059605,
+      "yaw": -1.3621040000009594,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 6831,
+      "yaw": -1.3450400000011982,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 7045.4000000059605,
+      "yaw": -1.3279520000004836,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 7252.70000000298,
+      "yaw": -1.3119440000009603,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 7457.800000011921,
+      "yaw": -1.294888000000722,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 7671.9000000059605,
+      "yaw": -1.2778160000014374,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 7885.800000011921,
+      "yaw": -1.2607360000014378,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 8098.20000000298,
+      "yaw": -1.2436720000004846,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 8312.10000000894,
+      "yaw": -1.226592000000485,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 8524.800000011921,
+      "yaw": -1.2095200000012007,
+      "index": 0,
+      "phase": "leaving",
+      "id": "valles-07",
+      "opacity": 0.734822,
+      "inside": true
+    },
+    {
+      "time": 8738.60000000894,
+      "yaw": -1.1924560000014397,
+      "index": 0,
+      "phase": "leaving",
+      "id": "valles-07",
+      "opacity": 0.105818,
+      "inside": true
+    },
+    {
+      "time": 8952.300000011921,
+      "yaw": -1.175384000000963,
+      "index": 0,
+      "phase": "leaving",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 9166.5,
+      "yaw": -1.1582720000004865,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 9379,
+      "yaw": -1.141240000001202,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 9592.60000000894,
+      "yaw": -1.1241760000014407,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 9805.70000000298,
+      "yaw": -1.107056000001441,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 10019,
+      "yaw": -1.0900160000014414,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 10232.300000011921,
+      "yaw": -1.0729600000012036,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 10445.800000011921,
+      "yaw": -1.0558800000012034,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 10658.5,
+      "yaw": -1.0388080000007267,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 10872.20000000298,
+      "yaw": -1.021728000000727,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 11085.40000000596,
+      "yaw": -1.0046560000014422,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 11298.90000000596,
+      "yaw": -0.987600000001204,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 11512.5,
+      "yaw": -0.9705120000004889,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 11725.800000011921,
+      "yaw": -0.9534480000007274,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 11940.5,
+      "yaw": -0.936352000000489,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 12152.800000011921,
+      "yaw": -0.9193040000009659,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 12365.70000000298,
+      "yaw": -0.9022400000012044,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 12576.60000000894,
+      "yaw": -0.886216000001443,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 12780.10000000894,
+      "yaw": -0.8691600000012046,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 12982.20000000298,
+      "yaw": -0.8531440000009662,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 13202.60000000894,
+      "yaw": -0.8360880000007278,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 13406.60000000894,
+      "yaw": -0.8190000000012047,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 13616.5,
+      "yaw": -0.8029920000004895,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 13833.5,
+      "yaw": -0.7848560000014433,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 14047.20000000298,
+      "yaw": -0.7677600000012049,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 14252.300000011921,
+      "yaw": -0.7517920000004896,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 14459.70000000298,
+      "yaw": -0.7347120000004896,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 14661.40000000596,
+      "yaw": -0.718720000001205,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 14873.40000000596,
+      "yaw": -0.7016320000004899,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 15086.800000011921,
+      "yaw": -0.6845680000007284,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 15301,
+      "yaw": -0.6674880000007284,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 15513.40000000596,
+      "yaw": -0.6504240000009669,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 15716.300000011921,
+      "yaw": -0.634424000000967,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 15926.90000000596,
+      "yaw": -0.6173520000004903,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 16140.300000011921,
+      "yaw": -0.6002720000004903,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 16340.90000000596,
+      "yaw": -0.5842720000004903,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 16554.40000000596,
+      "yaw": -0.5672000000012056,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 16757.60000000894,
+      "yaw": -0.5511920000004905,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 16967.90000000596,
+      "yaw": -0.5341200000012059,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 17182.10000000894,
+      "yaw": -0.517016000001444,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 17395.30000001192,
+      "yaw": -0.49996000000120544,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 17607.40000000596,
+      "yaw": -0.48291200000049006,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 17821.90000000596,
+      "yaw": -0.46580000000120514,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 18034.20000000298,
+      "yaw": -0.44876800000072814,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 18247.5,
+      "yaw": -0.43169600000144337,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 18461,
+      "yaw": -0.41461600000144333,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 18674.80000001192,
+      "yaw": -0.3975520000004895,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 18882.30000001192,
+      "yaw": -0.38155200000048933,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 19088.30000001192,
+      "yaw": -0.36445600000144296,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 19301.80000001192,
+      "yaw": -0.34740000000120447,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 19514.80000001192,
+      "yaw": -0.33032800000072754,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 19722.5,
+      "yaw": -0.31432000000120425,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 19928.30000001192,
+      "yaw": -0.2972480000007272,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 20141.90000000596,
+      "yaw": -0.2801840000009655,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 20355,
+      "yaw": -0.26310400000096545,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 20568.5,
+      "yaw": -0.24603200000048847,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 20772.5,
+      "yaw": -0.23003200000048846,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 20982,
+      "yaw": -0.21296000000120366,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 21195.30000001192,
+      "yaw": -0.19587200000048838,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 21409.20000000298,
+      "yaw": -0.17881600000144204,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 21622.60000000894,
+      "yaw": -0.16174400000096523,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 21835.60000000894,
+      "yaw": -0.14466400000096521,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 22049,
+      "yaw": -0.12760000000120358,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 22263.70000000298,
+      "yaw": -0.11052000000120361,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 22476,
+      "yaw": -0.09346400000096522,
+      "index": 0,
+      "phase": "gap",
+      "id": "valles-07",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 22689.5,
+      "yaw": -0.07637600000144211,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 23742.60000000894,
+      "yaw": 0.007903999998557879,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 23956.20000000298,
+      "yaw": 0.024983999998557885,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 24160.90000000596,
+      "yaw": 0.04098399999855789,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 24369.60000000894,
+      "yaw": 0.058047999999511574,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 24592.5,
+      "yaw": 0.07513599999903471,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 24796.60000000894,
+      "yaw": 0.09219199999927309,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 25010.40000000596,
+      "yaw": 0.10927199999927305,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 25223,
+      "yaw": 0.12634399999855775,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 25436.60000000894,
+      "yaw": 0.14340799999951143,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 25650.30000001192,
+      "yaw": 0.1604879999995114,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 25863.30000001192,
+      "yaw": 0.17755999999879618,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 26077.10000000894,
+      "yaw": 0.1946239999985578,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 26290.20000000298,
+      "yaw": 0.21170399999855774,
+      "index": 5,
+      "phase": "visible",
+      "id": "olympus-o052",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 26503.60000000894,
+      "yaw": 0.22877599999903458,
+      "index": 5,
+      "phase": "leaving",
+      "id": "olympus-o052",
+      "opacity": 0.448482,
+      "inside": true
+    },
+    {
+      "time": 26717.5,
+      "yaw": 0.2458639999985578,
+      "index": 5,
+      "phase": "leaving",
+      "id": "olympus-o052",
+      "opacity": 0.0405331,
+      "inside": true
+    },
+    {
+      "time": 26930.60000000894,
+      "yaw": 0.2629199999987963,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 27143.90000000596,
+      "yaw": 0.28001599999903487,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 27357.10000000894,
+      "yaw": 0.2970559999990349,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 27571,
+      "yaw": 0.31412799999951185,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 27783.90000000596,
+      "yaw": 0.33120799999951206,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 27997,
+      "yaw": 0.3482719999992738,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 28211.20000000298,
+      "yaw": 0.3653439999985587,
+      "index": 5,
+      "phase": "gap",
+      "id": "olympus-o052",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 28424.5,
+      "yaw": 0.3824239999985588,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 29478.10000000894,
+      "yaw": 0.466719999998798,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 29692.10000000894,
+      "yaw": 0.4837839999985597,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 29895,
+      "yaw": 0.4997919999992751,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 30112.20000000298,
+      "yaw": 0.5168639999985598,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 30318.20000000298,
+      "yaw": 0.5339279999995133,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 30531.5,
+      "yaw": 0.5509999999987981,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 30744.90000000596,
+      "yaw": 0.5680799999987981,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 30952.60000000894,
+      "yaw": 0.5840879999995132,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 31158.40000000596,
+      "yaw": 0.6011439999985595,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 31372.20000000298,
+      "yaw": 0.6182399999987979,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 31585.60000000894,
+      "yaw": 0.6352959999990365,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 31792.40000000596,
+      "yaw": 0.6512959999990364,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 31998.5,
+      "yaw": 0.6683679999995132,
+      "index": 3,
+      "phase": "visible",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 32212.40000000596,
+      "yaw": 0.6854639999985594,
+      "index": 3,
+      "phase": "leaving",
+      "id": "arcadia-n016",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 32425.70000000298,
+      "yaw": 0.7025199999987979,
+      "index": 3,
+      "phase": "leaving",
+      "id": "arcadia-n016",
+      "opacity": 0.281139,
+      "inside": true
+    },
+    {
+      "time": 32639.5,
+      "yaw": 0.7195999999987978,
+      "index": 3,
+      "phase": "leaving",
+      "id": "arcadia-n016",
+      "opacity": 0.0125529,
+      "inside": true
+    },
+    {
+      "time": 32852.40000000596,
+      "yaw": 0.7366559999990362,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 33066.40000000596,
+      "yaw": 0.7537359999990361,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 33282.70000000298,
+      "yaw": 0.7707999999987976,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 33492.20000000298,
+      "yaw": 0.7878719999992745,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 33705.60000000894,
+      "yaw": 0.8049599999987975,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 33912.30000001192,
+      "yaw": 0.8209519999992744,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 34119.70000000298,
+      "yaw": 0.838023999998559,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 34336.30000001192,
+      "yaw": 0.8554239999985589,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 34546.5,
+      "yaw": 0.8721599999987973,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 34760.10000000894,
+      "yaw": 0.889231999999274,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 34962.40000000596,
+      "yaw": 0.9052559999990355,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 35164.30000001192,
+      "yaw": 0.9212479999995122,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 35373.40000000596,
+      "yaw": 0.9383199999987969,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 35582.30000001192,
+      "yaw": 0.9543199999987969,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 35786.30000001192,
+      "yaw": 0.9713919999992737,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 36000.20000000298,
+      "yaw": 0.9884719999992736,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 36203.5,
+      "yaw": 1.0044719999992735,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 36413.40000000596,
+      "yaw": 1.0215439999985583,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 36627.10000000894,
+      "yaw": 1.0386239999985578,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 36840.10000000894,
+      "yaw": 1.055695999999034,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 37054.10000000894,
+      "yaw": 1.0727519999992723,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 37255.70000000298,
+      "yaw": 1.0887599999987956,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 37457.5,
+      "yaw": 1.1047919999992721,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 37666.80000001192,
+      "yaw": 1.1218319999992719,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 37880.60000000894,
+      "yaw": 1.1389119999992716,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 38093.70000000298,
+      "yaw": 1.1559839999985557,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 38308.10000000894,
+      "yaw": 1.173055999999032,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 38521.40000000596,
+      "yaw": 1.190135999999032,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 38722.40000000596,
+      "yaw": 1.2061439999985548,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 38934.30000001192,
+      "yaw": 1.223215999999031,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 39147.70000000298,
+      "yaw": 1.2402719999992693,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 39360.60000000894,
+      "yaw": 1.2573439999985536,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 39574.5,
+      "yaw": 1.2744239999985534,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 39788,
+      "yaw": 1.2915039999985536,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 39992.30000001192,
+      "yaw": 1.30749599999903,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 40201,
+      "yaw": 1.3245679999995064,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 40414.5,
+      "yaw": 1.3416399999987905,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 40628.40000000596,
+      "yaw": 1.3587199999987907,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 40841.5,
+      "yaw": 1.3757839999985524,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 41062.30000001192,
+      "yaw": 1.3928559999990295,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 41267.90000000596,
+      "yaw": 1.4099199999987908,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 41481.90000000596,
+      "yaw": 1.4269999999987903,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 41683.5,
+      "yaw": 1.4430159999990286,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 41894.90000000596,
+      "yaw": 1.4600799999987903,
+      "index": 3,
+      "phase": "gap",
+      "id": "arcadia-n016",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 42108.60000000894,
+      "yaw": 1.4771519999992673,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 43175.10000000894,
+      "yaw": 1.5624959999990276,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 43388.70000000298,
+      "yaw": 1.5795839999985504,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 43590.80000001192,
+      "yaw": 1.59558399999855,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 43802.10000000894,
+      "yaw": 1.6126559999990264,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 44022.40000000596,
+      "yaw": 1.6297279999995036,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 44228.70000000298,
+      "yaw": 1.6467999999987877,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 44442.30000001192,
+      "yaw": 1.6638719999992642,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 44655.90000000596,
+      "yaw": 1.680943999998549,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 44869.10000000894,
+      "yaw": 1.6980159999990252,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 45082.5,
+      "yaw": 1.7150879999995015,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 45296.20000000298,
+      "yaw": 1.7321679999995014,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 45510.40000000596,
+      "yaw": 1.7492239999985473,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 45723,
+      "yaw": 1.7662959999990238,
+      "index": 1,
+      "phase": "visible",
+      "id": "elysium-a104",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 45936.10000000894,
+      "yaw": 1.7833679999995002,
+      "index": 1,
+      "phase": "leaving",
+      "id": "elysium-a104",
+      "opacity": 0.357531,
+      "inside": true
+    },
+    {
+      "time": 46150.10000000894,
+      "yaw": 1.8004479999994996,
+      "index": 1,
+      "phase": "leaving",
+      "id": "elysium-a104",
+      "opacity": 0.0243825,
+      "inside": true
+    },
+    {
+      "time": 46363,
+      "yaw": 1.817519999998784,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 46576.40000000596,
+      "yaw": 1.8345839999985452,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 46791.20000000298,
+      "yaw": 1.8516559999990219,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 47003.5,
+      "yaw": 1.8687439999985447,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 47217.10000000894,
+      "yaw": 1.8858079999994979,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 47429.90000000596,
+      "yaw": 1.9028799999987824,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 47643.20000000298,
+      "yaw": 1.9199679999994972,
+      "index": 1,
+      "phase": "gap",
+      "id": "elysium-a104",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 47857.20000000298,
+      "yaw": 1.9370159999990204,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 48937.5,
+      "yaw": 2.0234399999987795,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 49150.90000000596,
+      "yaw": 2.0405199999987778,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 49355.30000001192,
+      "yaw": 2.0565519999992534,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 49563.90000000596,
+      "yaw": 2.073599999998776,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 49777.80000001192,
+      "yaw": 2.0906719999992514,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 49992.20000000298,
+      "yaw": 2.1077439999985357,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 50204.20000000298,
+      "yaw": 2.1248079999994887,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 50417.5,
+      "yaw": 2.141879999998772,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 50631.20000000298,
+      "yaw": 2.158951999999248,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 50844.90000000596,
+      "yaw": 2.1760399999987707,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 51047.70000000298,
+      "yaw": 2.1920399999987694,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 51257.5,
+      "yaw": 2.2090959999990067,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 51471,
+      "yaw": 2.2261679999994826,
+      "index": 2,
+      "phase": "visible",
+      "id": "utopia-d208",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 51684.60000000894,
+      "yaw": 2.2432479999994825,
+      "index": 2,
+      "phase": "leaving",
+      "id": "utopia-d208",
+      "opacity": 0.448527,
+      "inside": true
+    },
+    {
+      "time": 51898.20000000298,
+      "yaw": 2.260319999998766,
+      "index": 2,
+      "phase": "leaving",
+      "id": "utopia-d208",
+      "opacity": 0.040612,
+      "inside": true
+    },
+    {
+      "time": 52111.70000000298,
+      "yaw": 2.2773999999987655,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 52332.30000001192,
+      "yaw": 2.2944639999985252,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 52532.60000000894,
+      "yaw": 2.310463999998524,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 52738.10000000894,
+      "yaw": 2.3275359999989997,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 52951.80000001192,
+      "yaw": 2.344607999999475,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 53157,
+      "yaw": 2.360615999998997,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 53365.20000000298,
+      "yaw": 2.377679999998757,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 53578.80000001192,
+      "yaw": 2.3947519999992335,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 53791.80000001192,
+      "yaw": 2.411823999998517,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 54005.60000000894,
+      "yaw": 2.428911999999231,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 54218.80000001192,
+      "yaw": 2.445975999998992,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 54421.80000001192,
+      "yaw": 2.461975999998991,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 54632.30000001192,
+      "yaw": 2.4790479999994663,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 54845.90000000596,
+      "yaw": 2.4961439999985116,
+      "index": 2,
+      "phase": "gap",
+      "id": "utopia-d208",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 55052.40000000596,
+      "yaw": 2.5122879999994656,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 56126,
+      "yaw": 2.5985519999992244,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 56340.10000000894,
+      "yaw": 2.6156479999994615,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 56554.40000000596,
+      "yaw": 2.6326959999989836,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 56766.30000001192,
+      "yaw": 2.64976799999946,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 56979.90000000596,
+      "yaw": 2.6668399999987438,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 57192.70000000298,
+      "yaw": 2.68391199999922,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 57406.80000001192,
+      "yaw": 2.700983999998504,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 57619.40000000596,
+      "yaw": 2.7180479999994573,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 57821.90000000596,
+      "yaw": 2.7340639999985026,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 58033.5,
+      "yaw": 2.7511519999992173,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 58237.80000001192,
+      "yaw": 2.7671439999985012,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 58447.20000000298,
+      "yaw": 2.784207999999454,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 58660.30000001192,
+      "yaw": 2.801279999998738,
+      "index": 4,
+      "phase": "visible",
+      "id": "jezero-j021",
+      "opacity": 1,
+      "inside": true
+    },
+    {
+      "time": 58873.60000000894,
+      "yaw": 2.8183599999987363,
+      "index": 4,
+      "phase": "leaving",
+      "id": "jezero-j021",
+      "opacity": 0.963777,
+      "inside": true
+    },
+    {
+      "time": 59088.20000000298,
+      "yaw": 2.835471999999212,
+      "index": 4,
+      "phase": "leaving",
+      "id": "jezero-j021",
+      "opacity": 0.217992,
+      "inside": true
+    },
+    {
+      "time": 59300.30000001192,
+      "yaw": 2.8525039999984956,
+      "index": 4,
+      "phase": "leaving",
+      "id": "jezero-j021",
+      "opacity": 0.00486889,
+      "inside": true
+    },
+    {
+      "time": 59513.60000000894,
+      "yaw": 2.8695599999987325,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 59726.80000001192,
+      "yaw": 2.8866399999987307,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 59940.80000001192,
+      "yaw": 2.9037199999987293,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 60153.60000000894,
+      "yaw": 2.920775999998966,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 60367.40000000596,
+      "yaw": 2.937855999998966,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 60580.40000000596,
+      "yaw": 2.954919999998727,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 60795.5,
+      "yaw": 2.9719999999987254,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 61007.60000000894,
+      "yaw": 2.9890719999992013,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 61220.80000001192,
+      "yaw": 3.0061439999984847,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 61434.30000001192,
+      "yaw": 3.023215999998961,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 61638.30000001192,
+      "yaw": 3.03921599999896,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 61847.80000001192,
+      "yaw": 3.0562879999994363,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 62052.30000001192,
+      "yaw": 3.0722879999994355,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 62261.40000000596,
+      "yaw": 3.0893759999989574,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 62474.70000000298,
+      "yaw": 3.106439999998717,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 62687.90000000596,
+      "yaw": 3.1235119999991925,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 62901.40000000596,
+      "yaw": 3.140575999998952,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 63122.60000000894,
+      "yaw": 3.157647999999428,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 63328.30000001192,
+      "yaw": 3.174719999998712,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 63538.10000000894,
+      "yaw": 3.1907279999994254,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 63754.80000001192,
+      "yaw": 3.2088639999984707,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 63968.10000000894,
+      "yaw": 3.225935999998946,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 64181.40000000596,
+      "yaw": 3.2430079999994215,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 64395,
+      "yaw": 3.2600799999987062,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 64608.90000000596,
+      "yaw": 3.277159999998705,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 64810.10000000894,
+      "yaw": 3.293167999999419,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 65021.90000000596,
+      "yaw": 3.3102479999994183,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 65235.5,
+      "yaw": 3.3273039999984633,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 65448.40000000596,
+      "yaw": 3.3443679999994163,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 65661.70000000298,
+      "yaw": 3.3614399999986997,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 65875.5,
+      "yaw": 3.3785119999991755,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 66089.30000001192,
+      "yaw": 3.3955999999986974,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 66298.90000000596,
+      "yaw": 3.411599999998697,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 66502.5,
+      "yaw": 3.4286639999984576,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 66716.90000000596,
+      "yaw": 3.445743999998458,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 66917.60000000894,
+      "yaw": 3.461751999999173,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 67129.5,
+      "yaw": 3.4788159999989334,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 67332.30000001192,
+      "yaw": 3.4948159999989317,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 67542.90000000596,
+      "yaw": 3.5119119999991697,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 67756.40000000596,
+      "yaw": 3.528959999998691,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 67969.70000000298,
+      "yaw": 3.54603999999869,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 68183.20000000298,
+      "yaw": 3.56311999999869,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 68396.5,
+      "yaw": 3.580207999999405,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 68610,
+      "yaw": 3.597255999998927,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 68814.40000000596,
+      "yaw": 3.613255999998926,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 69025.40000000596,
+      "yaw": 3.6303279999994014,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 69236.90000000596,
+      "yaw": 3.647399999998685,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": true
+    },
+    {
+      "time": 69439.20000000298,
+      "yaw": 3.663399999998684,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 69649.70000000298,
+      "yaw": 3.6804719999991593,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 69854,
+      "yaw": 3.696487999999397,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 70072.30000001192,
+      "yaw": 3.7135599999986804,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 70277.30000001192,
+      "yaw": 3.730631999999156,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 70490.30000001192,
+      "yaw": 3.7477039999984396,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 70695.60000000894,
+      "yaw": 3.763751999999154,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 70903.80000001192,
+      "yaw": 3.7807679999993926,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 71117,
+      "yaw": 3.797839999998676,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 71321.30000001192,
+      "yaw": 3.813839999998675,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 71535.60000000894,
+      "yaw": 3.8309119999991506,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 71744.80000001192,
+      "yaw": 3.8479999999986725,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 71952.80000001192,
+      "yaw": 3.863991999999148,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 72160.80000001192,
+      "yaw": 3.881055999998909,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 72365.90000000596,
+      "yaw": 3.8970639999984313,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 72571.40000000596,
+      "yaw": 3.91414399999843,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 72780.5,
+      "yaw": 3.9301519999991448,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 72984.90000000596,
+      "yaw": 3.9472239999984278,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 73198.30000001192,
+      "yaw": 3.9643039999984273,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 73412.30000001192,
+      "yaw": 3.981359999998664,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 73625.90000000596,
+      "yaw": 3.9984719999991407,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 73827.90000000596,
+      "yaw": 4.014439999998663,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 74031.80000001192,
+      "yaw": 4.030439999998661,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 74239.5,
+      "yaw": 4.047519999998659,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 74452.10000000894,
+      "yaw": 4.064583999998419,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 74654.40000000596,
+      "yaw": 4.0805919999991325,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 74866.40000000596,
+      "yaw": 4.097671999999131,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 75072.5,
+      "yaw": 4.113671999999129,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 75292.60000000894,
+      "yaw": 4.131815999998889,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 75496.10000000894,
+      "yaw": 4.147815999998887,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 75707.40000000596,
+      "yaw": 4.164895999998885,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 75910.5,
+      "yaw": 4.180895999998883,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 76120.60000000894,
+      "yaw": 4.1979759999988815,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 76335.70000000298,
+      "yaw": 4.21505599999888,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 76552.5,
+      "yaw": 4.232119999998639,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 76761.90000000596,
+      "yaw": 4.249183999998399,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 76964.5,
+      "yaw": 4.265183999998397,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 77166,
+      "yaw": 4.281199999998634,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 77372.80000001192,
+      "yaw": 4.298263999998394,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 77592.60000000894,
+      "yaw": 4.315343999998392,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 77793.70000000298,
+      "yaw": 4.33134399999839,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 77999.90000000596,
+      "yaw": 4.348415999998865,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 78201.80000001192,
+      "yaw": 4.364415999998863,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 78404.60000000894,
+      "yaw": 4.380423999998385,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 78617.40000000596,
+      "yaw": 4.39749599999886,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 78827.30000001192,
+      "yaw": 4.414567999999335,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 79039.30000001192,
+      "yaw": 4.431647999999333,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 79262.60000000894,
+      "yaw": 4.448719999998616,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 79465.20000000298,
+      "yaw": 4.465783999998376,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 79679.10000000894,
+      "yaw": 4.482855999998851,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 79892.40000000596,
+      "yaw": 4.499935999998849,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 80105.80000001192,
+      "yaw": 4.517007999999324,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 80320,
+      "yaw": 4.534079999998607,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 80520.60000000894,
+      "yaw": 4.550103999998367,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 80732.60000000894,
+      "yaw": 4.56715199999908,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 80946.20000000298,
+      "yaw": 4.584223999998363,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 81148.40000000596,
+      "yaw": 4.600223999998361,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 81359.80000001192,
+      "yaw": 4.617319999998598,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 81573.30000001192,
+      "yaw": 4.634391999999073,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 81786.30000001192,
+      "yaw": 4.651447999999309,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 82000.5,
+      "yaw": 4.668511999999069,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 82213,
+      "yaw": 4.685599999998591,
+      "index": 4,
+      "phase": "gap",
+      "id": "jezero-j021",
+      "opacity": 0,
+      "inside": false
+    },
+    {
+      "time": 82414,
+      "yaw": 4.701591999999066,
+      "index": 0,
+      "phase": "visible",
+      "id": "valles-07",
+      "opacity": 1,
+      "inside": true
+    }
+  ],
+  "exceptions": []
+}

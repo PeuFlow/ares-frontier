@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -27,9 +28,7 @@ import { useMission } from "@/hooks/use-mission";
 import { apiRequest, AuthError } from "@/lib/auth-api";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({
-    meta: [{ title: "Administração — Ares Frontier" }, { name: "robots", content: "noindex" }],
-  }),
+  head: () => pageHead("/admin", "Administração — Ares Frontier", "Administração da plataforma Ares Frontier."),
   component: AdminPage,
 });
 

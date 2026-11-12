@@ -1,0 +1,80 @@
+{
+  "checks": [
+    {
+      "name": "Cadastro pela interface",
+      "ok": true
+    },
+    {
+      "name": "Sessão autenticada no backend",
+      "ok": true
+    },
+    {
+      "name": "Cookie HttpOnly e ausência de senha no armazenamento",
+      "ok": true,
+      "cookieHttpOnly": true,
+      "cookiePath": "/api",
+      "cookieSameSite": "Lax"
+    },
+    {
+      "name": "Sessão restaurada após recarregar",
+      "ok": true
+    },
+    {
+      "name": "Logout revoga a sessão",
+      "ok": true
+    },
+    {
+      "name": "Senha incorreta recusada",
+      "ok": true
+    },
+    {
+      "name": "Login correto pela interface",
+      "ok": true
+    },
+    {
+      "name": "Token de sessão renovado no login",
+      "ok": true
+    },
+    {
+      "name": "Guia contextual com API real",
+      "status": 200
+    },
+    {
+      "name": "Sessão de teste encerrada ao finalizar",
+      "ok": true
+    }
+  ],
+  "ai": [
+    {
+      "message": "Como posso explorar Marte?",
+      "status": 503,
+      "duplicateBlocked": true,
+      "error": "O rádio do astronauta está indisponível. Tente novamente em instantes.",
+      "errorVisible": true,
+      "draftRestored": true
+    }
+  ],
+  "exceptions": [],
+  "networkFailures": [
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 401
+    },
+    {
+      "path": "/api/ai/chat",
+      "status": 503
+    }
+  ]
+}

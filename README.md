@@ -54,6 +54,12 @@ Veja [backend/README.md](backend/README.md) para administração de usuários, t
 
 ### Astronauta com IA
 
+Para revisar o redesign visual sem depender de login, banco ou Gemini, execute
+`npm.cmd run demo:astronauta` e abra
+`http://127.0.0.1:8081/demos/astronauta.html`. A demonstração usa os componentes
+reais com respostas simuladas em um servidor local separado e fica fora do build
+de produção. Veja [a auditoria UX/UI e o roteiro de validação](docs/auditoria-astronauta-ux.md).
+
 Entre com sua conta e abra o botão da nave. **Soltar astronauta** ativa o guia com explicações sobre as seções e os itens selecionados; **Conversar com o astronauta** abre o chat. As explicações podem ser pausadas pela nave ou pelo balão.
 
 Para habilitar a IA, configure somente no `backend/.env`, preservando as demais variáveis:

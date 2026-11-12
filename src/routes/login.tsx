@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
@@ -6,16 +7,7 @@ import { AuthShell, Field, PasswordField, isEmail } from "@/components/frontier/
 import { useMission } from "@/hooks/use-mission";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({
-    meta: [
-      { title: "Entrar — Ares Frontier" },
-      { name: "description", content: "Acesse a Central de Missões da Ares Frontier." },
-      { property: "og:title", content: "Retorne à fronteira — Ares Frontier" },
-      { property: "og:description", content: "Acesse sua conta na plataforma Ares Frontier." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/login", "Entrar — Ares Frontier", "Acesse a Central de Missões da Ares Frontier."),
   component: Login,
 });
 

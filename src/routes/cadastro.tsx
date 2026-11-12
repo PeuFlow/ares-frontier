@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
@@ -6,16 +7,7 @@ import { AuthShell, Field, PasswordField, isEmail } from "@/components/frontier/
 import { useMission } from "@/hooks/use-mission";
 
 export const Route = createFileRoute("/cadastro")({
-  head: () => ({
-    meta: [
-      { title: "Criar conta — Ares Frontier" },
-      { name: "description", content: "Crie sua conta de explorador na Ares Frontier." },
-      { property: "og:title", content: "Criar conta — Ares Frontier" },
-      { property: "og:description", content: "Cadastro da plataforma conceitual Ares Frontier." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/cadastro", "Criar conta — Ares Frontier", "Crie sua conta de explorador na Ares Frontier."),
   component: SignUp,
 });
 

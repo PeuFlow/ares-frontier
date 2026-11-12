@@ -29,7 +29,10 @@ beforeEach(() => {
   state.chat.mockReset().mockResolvedValue({ message: "Vamos explorar Valles!" });
   state.section.mockReset().mockResolvedValue({ message: "Conheça os territórios." });
 });
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
 function show() {
   render(<AstroBuddy />);
   fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
@@ -37,6 +40,154 @@ function show() {
 }
 
 describe("astronaut conversation", () => {
+  it("stops the animation loop with reduced motion and repositions on resize", () => {
+    const matchMedia = window.matchMedia.bind(window);
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      ...matchMedia(query),
+      matches: query === "(prefers-reduced-motion: reduce)" || query === "(pointer: fine)",
+    }));
+    const frames = new Map<number, FrameRequestCallback>();
+    let nextId = 0;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      frames.set(++nextId, callback);
+      return nextId;
+    });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation((id) => {
+      frames.delete(id);
+    });
+    render(<AstroBuddy />);
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Soltar astronauta"));
+    const flushFrame = () =>
+      act(() => {
+        const callbacks = [...frames.values()];
+        frames.clear();
+        callbacks.forEach((callback) => callback(16));
+      });
+    expect(frames.size).toBeGreaterThan(0);
+    flushFrame();
+    expect(frames.size).toBe(0);
+    fireEvent(window, new Event("resize"));
+    expect(frames.size).toBe(1);
+    flushFrame();
+    expect(frames.size).toBe(0);
+  });
+
+  it("keeps the reader's position when a reply arrives and offers return to latest", async () => {
+    let resolve!: (value: { message: string }) => void;
+    state.chat.mockReturnValue(
+      new Promise((reply) => {
+        resolve = reply;
+      }),
+    );
+    show();
+    const input = screen.getByLabelText("Mensagem para o astronauta");
+    fireEvent.change(input, { target: { value: "Quais territórios existem?" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    await waitFor(() => expect(state.chat).toHaveBeenCalledOnce());
+    const log = screen.getByRole("log");
+    Object.defineProperties(log, {
+      scrollHeight: { configurable: true, value: 1000 },
+      clientHeight: { configurable: true, value: 200 },
+    });
+    const scroll = vi.fn();
+    log.scrollTo = scroll;
+    fireEvent.scroll(log, { target: { scrollTop: 0 } });
+    fireEvent(window, new Event("resize"));
+    expect(scroll).not.toHaveBeenCalled();
+    await act(async () => {
+      resolve({ message: "Resposta enquanto você lia o histórico." });
+    });
+    expect(scroll).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "Ir para o fim da conversa" }));
+    expect(scroll).toHaveBeenCalledWith({ behavior: "smooth", top: 1000 });
+    fireEvent(window, new Event("resize"));
+    expect(scroll).toHaveBeenLastCalledWith({ behavior: "instant", top: 1000 });
+    expect(
+      screen.queryByRole("button", { name: "Ir para o fim da conversa" }),
+    ).not.toBeInTheDocument();
+    const matchMedia = window.matchMedia.bind(window);
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      ...matchMedia(query),
+      matches: query === "(prefers-reduced-motion: reduce)",
+    }));
+    fireEvent.scroll(log, { target: { scrollTop: 0 } });
+    fireEvent.click(screen.getByRole("button", { name: "Ir para o fim da conversa" }));
+    expect(scroll).toHaveBeenLastCalledWith({ behavior: "instant", top: 1000 });
+  });
+
+  it("returns keyboard focus to the ship after closing the conversation", async () => {
+    show();
+    fireEvent.click(screen.getByRole("button", { name: "Fechar conversa" }));
+    await waitFor(() => expect(screen.getByLabelText("Abrir opções da nave")).toHaveFocus());
+  });
+
+  it("resizes a multiline draft when the conversation is mounted again", () => {
+    vi.spyOn(HTMLTextAreaElement.prototype, "scrollHeight", "get").mockImplementation(function (
+      this: HTMLTextAreaElement,
+    ) {
+      return this.value.split("\n").length * 20 + 24;
+    });
+    show();
+    fireEvent.change(screen.getByLabelText("Mensagem para o astronauta"), {
+      target: { value: "Primeira linha\nSegunda linha\nTerceira linha" },
+    });
+    expect(screen.getByLabelText("Mensagem para o astronauta")).toHaveStyle({ height: "84px" });
+    fireEvent.click(screen.getByRole("button", { name: "Fechar conversa" }));
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Conversar com o astronauta"));
+    expect(screen.getByLabelText("Mensagem para o astronauta")).toHaveStyle({ height: "84px" });
+  });
+
+  it("fills a suggestion without sending and supports Enter and Shift+Enter", async () => {
+    show();
+    fireEvent.click(screen.getByText("Como posso explorar Marte?"));
+    const input = screen.getByLabelText("Mensagem para o astronauta");
+    expect(input).toHaveValue("Como posso explorar Marte?");
+    expect(input).toHaveFocus();
+    expect(state.chat).not.toHaveBeenCalled();
+    fireEvent.keyDown(input, { key: "Enter", shiftKey: true });
+    expect(state.chat).not.toHaveBeenCalled();
+    fireEvent.keyDown(input, { key: "Enter", isComposing: true });
+    expect(state.chat).not.toHaveBeenCalled();
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(await screen.findByText("Vamos explorar Valles!")).toBeInTheDocument();
+  });
+
+  it("preserves messages and drafts when closing and reopening the ship", async () => {
+    show();
+    fireEvent.change(screen.getByLabelText("Mensagem para o astronauta"), {
+      target: { value: "Oi" },
+    });
+    fireEvent.keyDown(screen.getByLabelText("Mensagem para o astronauta"), { key: "Enter" });
+    await screen.findByText("Vamos explorar Valles!");
+    fireEvent.change(screen.getByLabelText("Mensagem para o astronauta"), {
+      target: { value: "Minha próxima pergunta" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Fechar conversa" }));
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Conversar com o astronauta"));
+    expect(screen.getByText("Vamos explorar Valles!")).toBeInTheDocument();
+    expect(screen.getByLabelText("Mensagem para o astronauta")).toHaveValue(
+      "Minha próxima pergunta",
+    );
+  });
+
+  it("clears the previous account's conversation on sign out", async () => {
+    const view = render(<AstroBuddy />);
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Conversar com o astronauta"));
+    fireEvent.change(screen.getByLabelText("Mensagem para o astronauta"), {
+      target: { value: "Oi" },
+    });
+    fireEvent.keyDown(screen.getByLabelText("Mensagem para o astronauta"), { key: "Enter" });
+    await screen.findByText("Vamos explorar Valles!");
+    state.user = { id: "visitor", guest: true };
+    view.rerender(<AstroBuddy />);
+    expect(screen.queryByText("Vamos explorar Valles!")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Enviar mensagem")).toBeDisabled();
+  });
+
   it("speaks AI explanations from the moving character instead of a separate panel", async () => {
     render(<AstroBuddy />);
     fireEvent.click(screen.getByLabelText("Abrir opções da nave"));

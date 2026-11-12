@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Minus, Plus, Users } from "lucide-react";
@@ -10,16 +11,7 @@ import { useMission } from "@/hooks/use-mission";
 import dome from "@/assets/stay-dome.jpg";
 
 export const Route = createFileRoute("/hospedagens")({
-  head: () => ({
-    meta: [
-      { title: "Hospedagens marcianas — Ares Frontier" },
-      { name: "description", content: "Habitats fictícios em Marte: Aurora Dome, Olympus Station e Elysium Habitat." },
-      { property: "og:title", content: "Hospedagens marcianas — Ares Frontier" },
-      { property: "og:description", content: "Escolha um habitat demonstrativo e simule o custo da sua estadia em Marte." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/hospedagens", "Hospedagens marcianas — Ares Frontier", "Habitats fictícios em Marte: Aurora Dome, Olympus Station e Elysium Habitat."),
   component: Stays,
 });
 

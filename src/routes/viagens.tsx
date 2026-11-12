@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, Check, Plus, Users, Clock } from "lucide-react";
@@ -11,16 +12,7 @@ import { useMission } from "@/hooks/use-mission";
 import canyon from "@/assets/trip-canyon.jpg";
 
 export const Route = createFileRoute("/viagens")({
-  head: () => ({
-    meta: [
-      { title: "Viagens a Marte — Ares Frontier" },
-      { name: "description", content: "Expedições fictícias para Marte: órbita, cânions, habitats e missões científicas." },
-      { property: "og:title", content: "Expedições para o desconhecido — Ares Frontier" },
-      { property: "og:description", content: "Pacotes demonstrativos de viagem a Marte com filtros por categoria, duração e preço." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/viagens", "Viagens a Marte — Ares Frontier", "Expedições fictícias para Marte: órbita, cânions, habitats e missões científicas."),
   component: Trips,
 });
 

@@ -1,19 +1,11 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AuthShell, Field, isEmail } from "@/components/frontier/AuthShell";
 
 export const Route = createFileRoute("/esqueci-senha")({
-  head: () => ({
-    meta: [
-      { title: "Recuperar senha — Ares Frontier" },
-      { name: "description", content: "Recuperação de senha demonstrativa da Ares Frontier." },
-      { property: "og:title", content: "Recuperar senha — Ares Frontier" },
-      { property: "og:description", content: "Fluxo demonstrativo de recuperação de acesso." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/esqueci-senha", "Recuperar senha — Ares Frontier", "Recuperação de senha demonstrativa da Ares Frontier."),
   component: Forgot,
 });
 

@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "name": "Entrada como visitante",
+      "ok": true
+    },
+    {
+      "name": "Chat protegido para visitante",
+      "ok": true
+    },
+    {
+      "name": "Proteção da API",
+      "ok": true,
+      "unauthenticated": 401,
+      "withoutCsrf": 403
+    },
+    {
+      "name": "Adicionar viagem",
+      "ok": true
+    },
+    {
+      "name": "Adicionar hospedagem",
+      "ok": true
+    },
+    {
+      "name": "Planejador reúne itens e permite simular reserva",
+      "ok": true
+    },
+    {
+      "name": "Reserva local gera protocolo",
+      "ok": true
+    },
+    {
+      "name": "Navegação /experiencias",
+      "ok": true
+    },
+    {
+      "name": "Navegação /territorios",
+      "ok": true
+    },
+    {
+      "name": "Navegação /conta",
+      "ok": true
+    },
+    {
+      "name": "Busca sem resultados",
+      "ok": true
+    },
+    {
+      "name": "Favoritar território",
+      "ok": true
+    },
+    {
+      "name": "Comparar dois territórios",
+      "ok": true
+    },
+    {
+      "name": "Favorito persiste ao recarregar",
+      "ok": true
+    },
+    {
+      "name": "Catálogo em celular sem rolagem horizontal",
+      "ok": true
+    },
+    {
+      "name": "Globo 3D ou fallback",
+      "canvas": true,
+      "fallback": false
+    }
+  ],
+  "exceptions": [],
+  "networkFailures": [
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/ai/chat",
+      "status": 401
+    },
+    {
+      "path": "/api/ai/chat",
+      "status": 403
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 401
+    }
+  ]
+}

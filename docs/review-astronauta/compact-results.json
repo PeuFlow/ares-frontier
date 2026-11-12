@@ -1,0 +1,74 @@
+{
+  "measurements": [
+    {
+      "width": 1440,
+      "height": 900,
+      "composerFits": true,
+      "sendFits": true,
+      "noHorizontalOverflow": true,
+      "logHeight": 446
+    },
+    {
+      "width": 720,
+      "height": 450,
+      "composerFits": true,
+      "sendFits": true,
+      "noHorizontalOverflow": true,
+      "logHeight": 233
+    },
+    {
+      "width": 390,
+      "height": 430,
+      "composerFits": true,
+      "sendFits": true,
+      "noHorizontalOverflow": true,
+      "logHeight": 213
+    },
+    {
+      "width": 390,
+      "height": 320,
+      "composerFits": true,
+      "sendFits": true,
+      "noHorizontalOverflow": true,
+      "logHeight": 103
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "composerFits": true,
+      "sendFits": true,
+      "noHorizontalOverflow": true,
+      "logHeight": 173
+    }
+  ],
+  "errors": [
+    {
+      "width": 390,
+      "height": 320,
+      "composerFits": true,
+      "sendFits": true,
+      "logHeight": 83
+    },
+    {
+      "width": 320,
+      "height": 320,
+      "composerFits": true,
+      "sendFits": true,
+      "logHeight": 63
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "composerFits": true,
+      "sendFits": true,
+      "logHeight": 139
+    }
+  ],
+  "errorBeforeResize": {
+    "distance": 0,
+    "height": 390,
+    "width": 844
+  },
+  "returnedFocus": true,
+  "exceptions": []
+}

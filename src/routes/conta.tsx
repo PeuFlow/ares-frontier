@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { LogOut } from "lucide-react";
@@ -8,17 +9,7 @@ import { useMission } from "@/hooks/use-mission";
 import { useFrontier } from "@/hooks/use-frontier";
 
 export const Route = createFileRoute("/conta")({
-  head: () => ({
-    meta: [
-      { title: "Central de Missões — Ares Frontier" },
-      { name: "description", content: "Sua área demonstrativa: missões, reservas simuladas, favoritos e histórico." },
-      { property: "og:title", content: "Central de Missões — Ares Frontier" },
-      { property: "og:description", content: "Área do explorador demonstrativa da Ares Frontier." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
+  head: () => pageHead("/conta", "Central de Missões — Ares Frontier", "Sua área demonstrativa: missões, reservas simuladas, favoritos e histórico."),
   component: Account,
 });
 

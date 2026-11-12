@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import type { GlobeProps } from "./MarsGlobe";
 
 const MarsGlobe = lazy(() => import("./MarsGlobe"));
@@ -23,23 +23,37 @@ function Loading() {
   );
 }
 
-function Fallback() {
+function Fallback({ children }: { children?: ReactNode }) {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+    <div
+      className={`absolute inset-0 flex flex-col items-center justify-center ${children ? "gap-4 pb-16" : "gap-6"}`}
+    >
       <div className="h-56 w-56 rounded-full bg-[radial-gradient(circle_at_35%_35%,var(--mineral),var(--primary)_45%,var(--background)_80%)] opacity-90" />
       <p className="eyebrow max-w-xs text-center">Visualização 3D indisponível neste dispositivo</p>
+      {children}
     </div>
   );
 }
 
-export function GlobeStage(props: GlobeProps) {
+export function GlobeStage({
+  fallbackContent,
+  onReady,
+  onFallback,
+  ...props
+}: GlobeProps & { fallbackContent?: ReactNode; onFallback?: () => void }) {
   const [state, setState] = useState<"pending" | "ok" | "nogl">("pending");
   useEffect(() => setState(hasWebGL() ? "ok" : "nogl"), []);
+  useEffect(() => {
+    if (state === "nogl") {
+      onReady?.();
+      onFallback?.();
+    }
+  }, [state, onReady, onFallback]);
   if (state === "pending") return <Loading />;
-  if (state === "nogl") return <Fallback />;
+  if (state === "nogl") return <Fallback>{fallbackContent}</Fallback>;
   return (
     <Suspense fallback={<Loading />}>
-      <MarsGlobe {...props} />
+      <MarsGlobe {...props} onReady={() => onReady?.()} />
     </Suspense>
   );
 }

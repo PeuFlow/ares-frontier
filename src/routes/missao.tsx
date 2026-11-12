@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { X, CheckCircle2 } from "lucide-react";
@@ -8,16 +9,7 @@ import { formatMC } from "@/data/territories";
 import { useMission, type DemoReservation } from "@/hooks/use-mission";
 
 export const Route = createFileRoute("/missao")({
-  head: () => ({
-    meta: [
-      { title: "Minha missão — Ares Frontier" },
-      { name: "description", content: "Monte seu pacote fictício para Marte: viagem, hospedagem, experiências e território." },
-      { property: "og:title", content: "Minha missão — Ares Frontier" },
-      { property: "og:description", content: "Planejador de missão demonstrativo com total calculado automaticamente." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => pageHead("/missao", "Minha missão — Ares Frontier", "Monte seu pacote fictício para Marte: viagem, hospedagem, experiências e território."),
   component: Mission,
 });
 

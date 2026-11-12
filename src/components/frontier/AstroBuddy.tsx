@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { AstronautGuide, type ExplorerSpeech } from "./AstronautGuide";
 import { AstronautText } from "./AstronautText";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -9,16 +9,19 @@ type Mood = "idle" | "happy" | "wow" | "think";
 export function AstroBuddy() {
   const [chatOpen, setChatOpen] = useState(false);
   const [out, setOut] = useState(false);
+  const rocketRef = useRef<HTMLButtonElement>(null);
   return (
     <AstronautGuide
       open={chatOpen}
       onOpenChange={setChatOpen}
       exploring={out}
+      returnFocusRef={rocketRef}
       renderExplorer={(speech) => (
         <MiniAstronaut
           out={out}
           setOut={setOut}
           speech={speech}
+          rocketRef={rocketRef}
           onChat={() => {
             setOut(false);
             setChatOpen(true);
@@ -34,16 +37,20 @@ function MiniAstronaut({
   setOut,
   onChat,
   speech,
+  rocketRef,
 }: {
   out: boolean;
   setOut: (value: boolean) => void;
   onChat: () => void;
   speech: ExplorerSpeech;
+  rocketRef: RefObject<HTMLButtonElement | null>;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const speechRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(true);
+  const reposition = useRef<() => void>(() => {});
   const [msg, setMsg] = useState<string | null>(null);
   const [mood, setMood] = useState<Mood>("idle");
   const [flip, setFlip] = useState(false);
@@ -51,15 +58,26 @@ function MiniAstronaut({
   const menuOpenRef = useRef(menuOpen);
   menuOpenRef.current = menuOpen;
   const [bye, setBye] = useState(false);
-  const rocketRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setEnabled(window.matchMedia("(pointer: fine)").matches);
+    const pointer = window.matchMedia("(pointer: fine)");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => {
+      setEnabled(pointer.matches);
+      setReducedMotion(motion.matches);
+    };
+    update();
+    pointer.addEventListener("change", update);
+    motion.addEventListener("change", update);
+    return () => {
+      pointer.removeEventListener("change", update);
+      motion.removeEventListener("change", update);
+    };
   }, []);
 
   useEffect(() => {
     if (!out) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced = reducedMotion || !enabled;
     const r0 = rocketRef.current?.getBoundingClientRect();
     const home = r0
       ? { x: r0.left + r0.width / 2 - 26, y: r0.top - 30 }
@@ -76,7 +94,9 @@ function MiniAstronaut({
     const onMove = (e: PointerEvent) => {
       if (
         leaving ||
+        reduced ||
         menuOpenRef.current ||
+        speechRef.current ||
         (e.target instanceof Element && e.target.closest("[data-astronaut-speech]"))
       )
         return;
@@ -103,6 +123,7 @@ function MiniAstronaut({
       }
     };
     const tick = (t: number) => {
+      raf = 0;
       const k = reduced ? 1 : 0.12;
       pos.x = Math.max(8, Math.min(pos.x + (target.x - pos.x) * k, window.innerWidth - 60));
       pos.y = Math.max(8, Math.min(pos.y + (target.y - pos.y) * k, window.innerHeight - 72));
@@ -120,9 +141,14 @@ function MiniAstronaut({
         speechRef.current.style.left = `${x - pos.x}px`;
         speechRef.current.style.top = `${y - pos.y - bob}px`;
       }
-      raf = requestAnimationFrame(tick);
+      if (!reduced) raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    reposition.current = schedule;
+    schedule();
+    window.addEventListener("resize", schedule);
     timer = setTimeout(() => {
       setMsg(null);
       setMood("idle");
@@ -131,9 +157,11 @@ function MiniAstronaut({
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(timer);
+      reposition.current = () => {};
+      window.removeEventListener("resize", schedule);
       window.removeEventListener("pointermove", onMove);
     };
-  }, [enabled, out, setOut]);
+  }, [enabled, out, setOut, reducedMotion, rocketRef]);
 
   const rocket = (
     <Popover open={menuOpen} onOpenChange={setMenuOpen}>
@@ -143,7 +171,7 @@ function MiniAstronaut({
           type="button"
           aria-label="Abrir opções da nave"
           title="Nave do explorador"
-          className="group fixed bottom-5 left-5 z-[59] flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card/90 backdrop-blur transition-transform hover:scale-110"
+          className="group fixed bottom-5 left-5 z-40 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card/90 backdrop-blur transition-transform hover:scale-110"
         >
           <svg width="30" height="30" viewBox="0 0 32 32" className={out ? "opacity-60" : ""}>
             <path d="M16 2c5 4 7 10 6 18H10C9 12 11 6 16 2z" fill="var(--foreground)" />
@@ -155,11 +183,9 @@ function MiniAstronaut({
               stroke="var(--border)"
             />
             <path d="M10 16l-4 6h5zM22 16l4 6h-5z" fill="var(--primary)" />
-            <path d="M13 22h6l-3 7z" fill="var(--mineral)" className={out ? "" : "animate-pulse"} />
+            <path d="M13 22h6l-3 7z" fill="var(--mineral)" />
           </svg>
-          {!out && (
-            <span className="glow-dot absolute right-1 top-1 h-2 w-2 rounded-full bg-primary" />
-          )}
+          {!out && <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-mineral" />}
           {bye && (
             <span className="animate-rise absolute bottom-full left-0 mb-2 whitespace-nowrap rounded-sm border border-border bg-card px-2 py-1 font-mono text-[10px] text-foreground">
               Astronauta a bordo 🚀
@@ -218,6 +244,14 @@ function MiniAstronaut({
       ? "Consultando o diário de bordo…"
       : speech.message || msg;
   const expression = thinking ? "think" : speech.message ? "happy" : mood;
+  useEffect(() => {
+    reposition.current();
+    const balloon = speechRef.current;
+    if (!balloon || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => reposition.current());
+    observer.observe(balloon);
+    return () => observer.disconnect();
+  }, [spoken]);
   const eyes =
     expression === "wow"
       ? "M22 26h0M30 26h0"
@@ -231,14 +265,14 @@ function MiniAstronaut({
       {out && (
         <div
           ref={ref}
-          className="pointer-events-none fixed left-0 top-0 z-[60] will-change-transform"
+          className="pointer-events-none fixed left-0 top-0 z-[45] will-change-transform"
         >
           {spoken && (
             <div
               ref={speechRef}
               data-astronaut-speech
               aria-label="Fala do astronauta"
-              className="pointer-events-auto absolute left-0 top-[-160px] w-[min(18rem,calc(100vw-24px))] max-h-[min(16rem,40dvh)] overflow-y-auto rounded-sm border border-border bg-card/95 p-3 text-xs leading-relaxed text-foreground shadow-lg backdrop-blur"
+              className="astronaut-message pointer-events-auto absolute left-0 top-[-160px] w-[min(20rem,calc(100vw-24px))] max-h-[min(20rem,45dvh)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground shadow-lg"
             >
               <div className="mb-2 flex items-center justify-between gap-3">
                 <span className="font-mono text-[10px] text-mineral">
@@ -247,6 +281,7 @@ function MiniAstronaut({
                 <button
                   type="button"
                   aria-label="Fechar explicação"
+                  className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg hover:bg-muted"
                   onClick={() => {
                     speech.dismiss();
                     setMsg(null);
@@ -260,7 +295,7 @@ function MiniAstronaut({
               </div>
               <button
                 type="button"
-                className="mt-2 font-mono text-[10px] text-muted-foreground underline"
+                className="mt-2 min-h-11 rounded-lg px-2 text-xs text-mineral hover:bg-muted"
                 onClick={speech.togglePaused}
               >
                 {speech.paused ? "Ativar explicações" : "Pausar explicações"}
