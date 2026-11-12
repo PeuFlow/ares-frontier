@@ -2,6 +2,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-libra
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AstroBuddy } from "@/components/frontier/AstroBuddy";
 import { recentHistory, type AIMessage } from "@/lib/ai-api";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const state = vi.hoisted(() => ({
   user: { id: "explorer", guest: false },
@@ -40,6 +41,100 @@ function show() {
 }
 
 describe("astronaut conversation", () => {
+  it("follows the pointer with the departure balloon visible and pauses only over its controls", () => {
+    const matchMedia = window.matchMedia.bind(window);
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({
+      ...matchMedia(query),
+      matches: query === "(pointer: fine)",
+    }));
+    const frames = new Map<number, FrameRequestCallback>();
+    let nextId = 0;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      frames.set(++nextId, callback);
+      return nextId;
+    });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation((id) => frames.delete(id));
+    render(<AstroBuddy />);
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Soltar astronauta"));
+    const explorer = document.querySelector<HTMLElement>("[data-astronaut-explorer]")!;
+    expect(explorer.parentElement).toBe(document.body);
+    const flushFrame = () =>
+      act(() => {
+        const callbacks = [...frames.values()];
+        frames.clear();
+        callbacks.forEach((callback) => callback(16));
+      });
+    flushFrame();
+    const start = explorer.style.transform;
+    expect(screen.getByLabelText("Fala do astronauta")).toHaveTextContent("Partiu exploração!");
+    fireEvent(
+      document.body,
+      new MouseEvent("pointermove", { bubbles: true, clientX: 500, clientY: 200 }),
+    );
+    flushFrame();
+    expect(explorer.style.transform).not.toBe(start);
+    // The balloon must remain operable without making the character chase its buttons.
+    for (let i = 0; i < 200; i++) flushFrame();
+    const settled = Number(explorer.style.transform.match(/translate3d\(([-\d.]+)/)?.[1]);
+    fireEvent(
+      screen.getByLabelText("Fechar explicação"),
+      new MouseEvent("pointermove", { bubbles: true, clientX: 100, clientY: 100 }),
+    );
+    flushFrame();
+    expect(Number(explorer.style.transform.match(/translate3d\(([-\d.]+)/)?.[1])).toBeCloseTo(
+      settled,
+    );
+  });
+
+  it("keeps details open when operating the astronaut balloon above them", () => {
+    const view = render(
+      <>
+        <AstroBuddy />
+        <Dialog open={false}>
+          <DialogContent>
+            <DialogTitle>Details</DialogTitle>
+            <DialogDescription>Trip</DialogDescription>
+          </DialogContent>
+        </Dialog>
+      </>,
+    );
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Soltar astronauta"));
+    const onOpenChange = vi.fn();
+    view.rerender(
+      <>
+        <AstroBuddy />
+        <Dialog open onOpenChange={onOpenChange}>
+          <DialogContent>
+            <DialogTitle>Details</DialogTitle>
+            <DialogDescription>Trip</DialogDescription>
+          </DialogContent>
+        </Dialog>
+      </>,
+    );
+    const pause = screen.getByText("Pausar explicações");
+    fireEvent.pointerDown(pause);
+    fireEvent.click(pause);
+    expect(onOpenChange).not.toHaveBeenCalled();
+    expect(screen.getByRole("dialog")).toHaveTextContent("Details");
+    expect(screen.getByText("Ativar explicações")).toBeInTheDocument();
+  });
+
+  it("explains a previously visited point again after returning to it", async () => {
+    const view = render(<AstroBuddy />);
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Soltar astronauta"));
+    await waitFor(() => expect(state.section).toHaveBeenCalledTimes(1), { timeout: 2500 });
+    state.context = { section: "territorios", element_id: "jezero-j021" };
+    view.rerender(<AstroBuddy />);
+    await waitFor(() => expect(state.section).toHaveBeenCalledTimes(2), { timeout: 2500 });
+    state.context = { section: "territorios", element_id: "valles-07" };
+    view.rerender(<AstroBuddy />);
+    await waitFor(() => expect(state.section).toHaveBeenCalledTimes(3), { timeout: 2500 });
+    expect(state.section).toHaveBeenLastCalledWith(state.context);
+  });
+
   it("stops the animation loop with reduced motion and repositions on resize", () => {
     const matchMedia = window.matchMedia.bind(window);
     vi.spyOn(window, "matchMedia").mockImplementation((query) => ({

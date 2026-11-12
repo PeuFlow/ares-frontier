@@ -41,6 +41,8 @@ export function Explorer() {
                 <button
                   key={t.id}
                   role="tab"
+                  data-ai-section="territorios"
+                  data-ai-element={t.id}
                   aria-selected={t.id === selectedId}
                   onClick={() => (t.id === selectedId ? setReselect((n) => n + 1) : select(t.id))}
                   className={cn(

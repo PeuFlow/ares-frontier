@@ -66,7 +66,7 @@ function Trips() {
 
         <div className="mt-6 space-y-6">
           {list.map((t, i) => (
-            <article key={t.id} className={`grid overflow-hidden border border-border bg-card md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+            <article data-ai-section="viagens" data-ai-element={t.id} key={t.id} className={`grid overflow-hidden border border-border bg-card md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
               <img src={t.image} alt={t.name} loading="lazy" width={1280} height={800} className="h-64 w-full object-cover md:h-full" />
               <div className="flex flex-col p-6 md:p-8">
                 <p className="eyebrow !text-mineral">{TRIP_CATEGORY_LABEL[t.category]}</p>
@@ -94,7 +94,7 @@ function Trips() {
       </div>
 
       <Dialog open={!!open} onOpenChange={(v) => !v && setOpen(null)}>
-        <DialogContent className="max-w-lg rounded-sm">
+        <DialogContent data-ai-section="viagens" data-ai-element={open?.id} className="max-w-lg rounded-sm">
           {open && (
             <>
               <img src={open.image} alt="" className="-mx-6 -mt-6 h-48 w-[calc(100%+3rem)] max-w-none object-cover" />

@@ -21,7 +21,7 @@ function StayRow({ s, onDetails }: { s: Stay; onDetails: () => void }) {
   const [nights, setNights] = useState(on ? mission.nights : 3);
   const clamp = (n: number) => Math.min(60, Math.max(1, n));
   return (
-    <article className="grid gap-6 border-b border-border py-10 lg:grid-cols-[1.2fr_1fr_280px]">
+    <article data-ai-section="hospedagens" data-ai-element={s.id} className="grid gap-6 border-b border-border py-10 lg:grid-cols-[1.2fr_1fr_280px]">
       <img src={s.image} alt={s.name} loading="lazy" width={1280} height={800} className="aspect-[16/9] w-full object-cover" />
       <div>
         <p className="eyebrow !text-mineral">{s.kind}</p>
@@ -63,7 +63,7 @@ function Stays() {
         <div className="mt-10"><DemoNotice /></div>
       </div>
       <Dialog open={!!open} onOpenChange={(v) => !v && setOpen(null)}>
-        <DialogContent className="rounded-sm">
+        <DialogContent data-ai-section="hospedagens" data-ai-element={open?.id} className="rounded-sm">
           {open && (
             <DialogHeader>
               <DialogTitle className="font-display text-2xl">{open.name}</DialogTitle>

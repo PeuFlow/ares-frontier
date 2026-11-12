@@ -22,7 +22,7 @@ function TerritoryCard({ t, index }: { t: Territory; index: number }) {
   const net = [...t.resources, ...t.risks].reduce((s, r) => s + r.impact, 0);
   const sel = selectedId === t.id;
   return (
-    <article className={cn("group flex flex-col border bg-card transition-colors duration-300", sel ? "border-mineral/70" : "border-border hover:border-muted-foreground/50")}>
+    <article data-ai-section="territorios" data-ai-element={t.id} className={cn("group flex flex-col border bg-card transition-colors duration-300", sel ? "border-mineral/70" : "border-border hover:border-muted-foreground/50")}>
       <div className="relative aspect-[16/10] overflow-hidden">
         <img src={t.image} alt={t.imageAlt} title={t.imageSource} loading="lazy" decoding="async" width={1440} height={912} className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card/70 to-transparent" />

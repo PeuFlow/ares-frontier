@@ -43,7 +43,7 @@ export function AstronautGuide({
   renderExplorer: (speech: ExplorerSpeech) => ReactNode;
   returnFocusRef?: RefObject<HTMLElement | null>;
 }) {
-  const context = useAstronautContext();
+  const context = useAstronautContext(exploring && !open);
   const contextKey = JSON.stringify(context);
   const { user } = useMission();
   const account = user?.guest ? null : user?.id;
@@ -55,7 +55,6 @@ export function AstronautGuide({
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const seen = useRef(new Set<string>());
   const request = useRef(false);
   const contextRequest = useRef<Promise<unknown> | null>(null);
   const generation = useRef(0);
@@ -79,14 +78,13 @@ export function AstronautGuide({
     setError("");
     setBusy(false);
     setBubble("");
-    seen.current.clear();
   }, [account]);
 
   useEffect(() => {
     setBubble("");
     setDismissed(false);
     clearTimeout(closeBubble.current);
-    if (!account || !exploring || muted || open || seen.current.has(contextKey)) return;
+    if (!account || !exploring || muted || open) return;
     let active = true;
     // Debounce scrolling and selections before spending a model request.
     const timer = setTimeout(async () => {
@@ -97,7 +95,6 @@ export function AstronautGuide({
       contextRequest.current = sectionContext(JSON.parse(contextKey))
         .then((reply) => {
           if (!active) return;
-          seen.current.add(contextKey);
           setBubble(reply.message);
           clearTimeout(closeBubble.current);
           closeBubble.current = setTimeout(() => setBubble(""), 14000);

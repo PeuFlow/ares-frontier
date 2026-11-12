@@ -15,7 +15,7 @@ export function DetailsDialog() {
   const t = detailsId ? byId(detailsId) : undefined;
   return (
     <Dialog open={!!t} onOpenChange={(o) => !o && openDetails(null)}>
-      <DialogContent className={cn(panel, "max-w-2xl gap-0 overflow-hidden p-0")}>
+      <DialogContent data-ai-section="territorios" data-ai-element={t?.id} className={cn(panel, "max-w-2xl gap-0 overflow-hidden p-0")}>
         {t && (
           <>
             <img key={t.id} src={t.image} alt={t.imageAlt} title={t.imageSource} className="h-44 w-full object-cover" />

@@ -1,4 +1,4 @@
-import { act, cleanup, renderHook } from "@testing-library/react";
+import { act, cleanup, fireEvent, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { useAstronautContext } from "@/hooks/use-astronaut-context";
 
@@ -73,4 +73,42 @@ it("uses explicit element metadata and clears it on navigation", () => {
   state.path = "/conta";
   rerender();
   expect(result.current).toEqual({ section: "conta" });
+});
+
+it("recognizes the entire card without a click and allows returning to a previous point", () => {
+  document.body.innerHTML = `
+    <article data-ai-section="viagens" data-ai-element="orbita-vermelha"><img alt="Orbit" /></article>
+    <article data-ai-section="viagens" data-ai-element="horizonte-valles"><span>Canyon</span></article>
+    <div data-astronaut-speech><button>Pause</button></div>`;
+  const { result } = renderHook(() => useAstronautContext(true));
+  const orbit = document.querySelector("img")!;
+  fireEvent(orbit, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "viagens", element_id: "orbita-vermelha" });
+  fireEvent(document.querySelector("span")!, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "viagens", element_id: "horizonte-valles" });
+  fireEvent(document.querySelector("button")!, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "viagens", element_id: "horizonte-valles" });
+  fireEvent(orbit, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "viagens", element_id: "orbita-vermelha" });
+  fireEvent(document.body, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "inicio" });
+});
+
+it("does not follow hover while the astronaut is aboard", () => {
+  const card = document.createElement("article");
+  card.dataset["aiSection"] = "viagens";
+  document.body.append(card);
+  const { result } = renderHook(useAstronautContext);
+  fireEvent(card, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "inicio" });
+});
+
+it("keeps the open details context when the pointer moves outside the dialog", () => {
+  document.body.innerHTML = `<div role="dialog" data-ai-section="viagens" data-ai-element="horizonte-valles"></div>`;
+  const { result } = renderHook(() => useAstronautContext(true));
+  fireEvent(document.body, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "viagens", element_id: "horizonte-valles" });
+  document.querySelector('[role="dialog"]')!.remove();
+  fireEvent(document.body, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "inicio" });
 });

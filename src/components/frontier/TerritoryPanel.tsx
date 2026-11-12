@@ -10,7 +10,7 @@ export function TerritoryPanel() {
   const t = byId(selectedId)!;
   const inCompare = compare.includes(t.id);
   return (
-    <aside className="instrument corner-ticks flex flex-col p-6" aria-live="polite">
+    <aside data-ai-section="territorios" data-ai-element={t.id} className="instrument corner-ticks flex flex-col p-6" aria-live="polite">
       <div className="flex items-center justify-between">
         <span className="eyebrow">Terreno selecionado</span>
         <span className="font-mono text-[10px] text-muted-foreground">ID·{t.id.toUpperCase()}</span>

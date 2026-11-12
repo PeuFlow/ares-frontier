@@ -20,7 +20,7 @@ const sections: Record<string, AISection> = {
   "como-funciona": "como-funciona",
 };
 
-export function useAstronautContext(): AIContext {
+export function useAstronautContext(exploring = false): AIContext {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const { detailsId, selectedId } = useFrontier();
   const [visible, setVisible] = useState<AISection | null>(null);
@@ -63,8 +63,36 @@ export function useAstronautContext(): AIContext {
       document.removeEventListener("click", select);
     };
   }, [path]);
+  useEffect(() => {
+    if (!exploring) return;
+    const hover = (event: PointerEvent) => {
+      if (!(event.target instanceof Element)) return;
+      // Reading or operating the balloon must keep its current explanation.
+      if (event.target.closest("[data-astronaut-speech]")) return;
+      const target =
+        document.querySelector<HTMLElement>('[role="dialog"][data-ai-section]') ??
+        event.target.closest<HTMLElement>("[data-ai-section], section[id], [id='top']");
+      const section = target?.dataset["aiSection"] ?? sections[target?.id ?? ""];
+      const next: AIContext | null = section
+        ? {
+            section: section as AISection,
+            ...(target?.dataset["aiElement"] ? { element_id: target.dataset["aiElement"] } : {}),
+          }
+        : null;
+      setElement((previous) =>
+        previous?.section === next?.section && previous?.element_id === next?.element_id
+          ? previous
+          : next,
+      );
+    };
+    document.addEventListener("pointermove", hover);
+    return () => document.removeEventListener("pointermove", hover);
+  }, [exploring, path]);
   if (detailsId) return { section: "territorios", element_id: detailsId };
-  if (element) return element;
+  if (element)
+    return element.section === "explorar" && !element.element_id
+      ? { ...element, element_id: selectedId }
+      : element;
   const section = visible ?? routes[path] ?? "inicio";
   if (section === "explorar") return { section, element_id: selectedId };
   return { section };

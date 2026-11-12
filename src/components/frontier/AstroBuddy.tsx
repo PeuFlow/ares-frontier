@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
+import { createPortal } from "react-dom";
 import { AstronautGuide, type ExplorerSpeech } from "./AstronautGuide";
 import { AstronautText } from "./AstronautText";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -96,7 +97,6 @@ function MiniAstronaut({
         leaving ||
         reduced ||
         menuOpenRef.current ||
-        speechRef.current ||
         (e.target instanceof Element && e.target.closest("[data-astronaut-speech]"))
       )
         return;
@@ -262,113 +262,116 @@ function MiniAstronaut({
   return (
     <>
       {rocket}
-      {out && (
-        <div
-          ref={ref}
-          className="pointer-events-none fixed left-0 top-0 z-[45] will-change-transform"
-        >
-          {spoken && (
-            <div
-              ref={speechRef}
-              data-astronaut-speech
-              aria-label="Fala do astronauta"
-              className="astronaut-message pointer-events-auto absolute left-0 top-[-160px] w-[min(20rem,calc(100vw-24px))] max-h-[min(20rem,45dvh)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground shadow-lg"
-            >
-              <div className="mb-2 flex items-center justify-between gap-3">
-                <span className="font-mono text-[10px] text-mineral">
-                  Astronauta · {thinking ? "pensando" : "explorando"}
-                </span>
+      {out &&
+        createPortal(
+          <div
+            ref={ref}
+            data-astronaut-explorer
+            className="pointer-events-none fixed left-0 top-0 z-[60] will-change-transform"
+          >
+            {spoken && (
+              <div
+                ref={speechRef}
+                data-astronaut-speech
+                aria-label="Fala do astronauta"
+                className="astronaut-message pointer-events-auto absolute left-0 top-[-160px] w-[min(20rem,calc(100vw-24px))] max-h-[min(20rem,45dvh)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground shadow-lg"
+              >
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <span className="font-mono text-[10px] text-mineral">
+                    Astronauta · {thinking ? "pensando" : "explorando"}
+                  </span>
+                  <button
+                    type="button"
+                    aria-label="Fechar explicação"
+                    className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg hover:bg-muted"
+                    onClick={() => {
+                      speech.dismiss();
+                      setMsg(null);
+                    }}
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+                <div role="status" aria-live="polite">
+                  <AstronautText text={spoken} />
+                </div>
                 <button
                   type="button"
-                  aria-label="Fechar explicação"
-                  className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg hover:bg-muted"
-                  onClick={() => {
-                    speech.dismiss();
-                    setMsg(null);
-                  }}
+                  className="mt-2 min-h-11 rounded-lg px-2 text-xs text-mineral hover:bg-muted"
+                  onClick={speech.togglePaused}
                 >
-                  <X className="h-3 w-3" />
+                  {speech.paused ? "Ativar explicações" : "Pausar explicações"}
                 </button>
               </div>
-              <div role="status" aria-live="polite">
-                <AstronautText text={spoken} />
-              </div>
-              <button
-                type="button"
-                className="mt-2 min-h-11 rounded-lg px-2 text-xs text-mineral hover:bg-muted"
-                onClick={speech.togglePaused}
+            )}
+            <div ref={bodyRef}>
+              <svg
+                aria-hidden="true"
+                width="52"
+                height="60"
+                viewBox="0 0 52 60"
+                style={{ transform: flip ? "scaleX(-1)" : undefined }}
+                className={expression === "wow" ? "drop-shadow-[0_0_8px_var(--primary)]" : ""}
               >
-                {speech.paused ? "Ativar explicações" : "Pausar explicações"}
-              </button>
-            </div>
-          )}
-          <div ref={bodyRef}>
-            <svg
-              aria-hidden="true"
-              width="52"
-              height="60"
-              viewBox="0 0 52 60"
-              style={{ transform: flip ? "scaleX(-1)" : undefined }}
-              className={expression === "wow" ? "drop-shadow-[0_0_8px_var(--primary)]" : ""}
-            >
-              {/* backpack */}
-              <rect
-                x="8"
-                y="30"
-                width="36"
-                height="20"
-                rx="6"
-                fill="var(--muted)"
-                stroke="var(--border)"
-              />
-              {/* body */}
-              <rect x="13" y="32" width="26" height="22" rx="8" fill="var(--foreground)" />
-              <rect x="21" y="38" width="10" height="6" rx="1.5" fill="var(--primary)" />
-              {/* arms */}
-              <rect
-                x="6"
-                y={expression === "happy" ? 26 : 36}
-                width="8"
-                height="12"
-                rx="4"
-                fill="var(--foreground)"
-                transform={expression === "happy" ? "rotate(-30 10 32)" : undefined}
-              />
-              <rect x="38" y="36" width="8" height="12" rx="4" fill="var(--foreground)" />
-              {/* legs */}
-              <rect x="16" y="50" width="8" height="9" rx="3" fill="var(--foreground)" />
-              <rect x="28" y="50" width="8" height="9" rx="3" fill="var(--foreground)" />
-              {/* helmet */}
-              <circle cx="26" cy="22" r="17" fill="var(--foreground)" />
-              <rect x="13" y="14" width="26" height="18" rx="9" fill="var(--background)" />
-              <path
-                d={eyes}
-                stroke="var(--mineral)"
-                strokeWidth={expression === "wow" ? 4 : 2.2}
-                strokeLinecap="round"
-                fill="none"
-              />
-              {expression === "think" && (
-                <path
-                  d="M23 30h6"
-                  stroke="var(--mineral)"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
+                {/* backpack */}
+                <rect
+                  x="8"
+                  y="30"
+                  width="36"
+                  height="20"
+                  rx="6"
+                  fill="var(--muted)"
+                  stroke="var(--border)"
                 />
-              )}
-              <path
-                d="M17 17q3-3 7-3"
-                stroke="var(--muted-foreground)"
-                strokeWidth="1.5"
-                fill="none"
-                opacity=".6"
-              />
-              <line x1="26" y1="5" x2="26" y2="0" stroke="var(--border)" strokeWidth="1.5" />
-              <circle cx="26" cy="1" r="1.8" fill="var(--primary)" />
-            </svg>
-          </div>
-        </div>
-      )}
+                {/* body */}
+                <rect x="13" y="32" width="26" height="22" rx="8" fill="var(--foreground)" />
+                <rect x="21" y="38" width="10" height="6" rx="1.5" fill="var(--primary)" />
+                {/* arms */}
+                <rect
+                  x="6"
+                  y={expression === "happy" ? 26 : 36}
+                  width="8"
+                  height="12"
+                  rx="4"
+                  fill="var(--foreground)"
+                  transform={expression === "happy" ? "rotate(-30 10 32)" : undefined}
+                />
+                <rect x="38" y="36" width="8" height="12" rx="4" fill="var(--foreground)" />
+                {/* legs */}
+                <rect x="16" y="50" width="8" height="9" rx="3" fill="var(--foreground)" />
+                <rect x="28" y="50" width="8" height="9" rx="3" fill="var(--foreground)" />
+                {/* helmet */}
+                <circle cx="26" cy="22" r="17" fill="var(--foreground)" />
+                <rect x="13" y="14" width="26" height="18" rx="9" fill="var(--background)" />
+                <path
+                  d={eyes}
+                  stroke="var(--mineral)"
+                  strokeWidth={expression === "wow" ? 4 : 2.2}
+                  strokeLinecap="round"
+                  fill="none"
+                />
+                {expression === "think" && (
+                  <path
+                    d="M23 30h6"
+                    stroke="var(--mineral)"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                )}
+                <path
+                  d="M17 17q3-3 7-3"
+                  stroke="var(--muted-foreground)"
+                  strokeWidth="1.5"
+                  fill="none"
+                  opacity=".6"
+                />
+                <line x1="26" y1="5" x2="26" y2="0" stroke="var(--border)" strokeWidth="1.5" />
+                <circle cx="26" cy="1" r="1.8" fill="var(--primary)" />
+              </svg>
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
