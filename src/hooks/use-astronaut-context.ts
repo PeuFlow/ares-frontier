@@ -17,6 +17,7 @@ const sections: Record<string, AISection> = {
   top: "inicio",
   explorar: "explorar",
   terrenos: "territorios",
+  galeria: "territorios",
   "como-funciona": "como-funciona",
 };
 
@@ -65,14 +66,19 @@ export function useAstronautContext(exploring = false): AIContext {
   }, [path]);
   useEffect(() => {
     if (!exploring) return;
-    const hover = (event: PointerEvent) => {
-      if (!(event.target instanceof Element)) return;
+    let pointer: { x: number; y: number } | null = null;
+    let lastTarget: Element | null = null;
+    const identify = (source: Element) => {
       // Reading or operating the balloon must keep its current explanation.
-      if (event.target.closest("[data-astronaut-speech]")) return;
+      if (source.closest("[data-astronaut-speech]")) return;
       const target =
         document.querySelector<HTMLElement>('[role="dialog"][data-ai-section]') ??
-        event.target.closest<HTMLElement>("[data-ai-section], section[id], [id='top']");
-      const section = target?.dataset["aiSection"] ?? sections[target?.id ?? ""];
+        source.closest<HTMLElement>("[data-ai-section], a[href], section[id], [id='top']");
+      const href = target?.getAttribute("href");
+      const section =
+        target?.dataset["aiSection"] ??
+        sections[target?.id ?? ""] ??
+        (href?.startsWith("#") ? sections[href.slice(1)] : routes[href ?? ""]);
       const next: AIContext | null = section
         ? {
             section: section as AISection,
@@ -85,8 +91,37 @@ export function useAstronautContext(exploring = false): AIContext {
           : next,
       );
     };
+    const hover = (event: PointerEvent) => {
+      if (!(event.target instanceof Element)) return;
+      pointer = { x: event.clientX, y: event.clientY };
+      lastTarget = event.target;
+      identify(event.target);
+    };
+    const refresh = () => {
+      if (!pointer) return;
+      const target =
+        typeof document.elementFromPoint === "function"
+          ? document.elementFromPoint(pointer.x, pointer.y)
+          : lastTarget;
+      if (target) identify(target);
+    };
+    // Scrolling and the rotating showcase can change the point beneath a stationary cursor.
+    const observer = new MutationObserver(refresh);
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["data-ai-element", "data-ai-section"],
+    });
     document.addEventListener("pointermove", hover);
-    return () => document.removeEventListener("pointermove", hover);
+    document.addEventListener("scroll", refresh, true);
+    window.addEventListener("resize", refresh);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("pointermove", hover);
+      document.removeEventListener("scroll", refresh, true);
+      window.removeEventListener("resize", refresh);
+    };
   }, [exploring, path]);
   if (detailsId) return { section: "territorios", element_id: detailsId };
   if (element)

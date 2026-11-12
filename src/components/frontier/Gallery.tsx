@@ -55,6 +55,8 @@ export function Gallery() {
       <Dialog open={open} onOpenChange={(o) => !o && setOpenIndex(null)}>
         {t && (
           <DialogContent
+            data-ai-section="territorios"
+            data-ai-element={t.id}
             className="fixed inset-0 left-0 top-0 z-50 flex max-h-screen max-w-none translate-x-0 translate-y-0 flex-col items-center justify-center gap-4 overflow-hidden border-0 bg-background/95 p-4 sm:rounded-none md:p-8"
           >
             <div className="sr-only">
@@ -106,6 +108,8 @@ function GalleryThumb({ t, index, onOpen }: { t: Territory; index: number; onOpe
     <li>
       <button
         type="button"
+        data-ai-section="territorios"
+        data-ai-element={t.id}
         onClick={onOpen}
         aria-label={`Abrir ${t.region} em tela cheia`}
         className="group relative block w-full overflow-hidden border border-border transition-colors hover:border-mineral/70 focus-visible:outline focus-visible:outline-1 focus-visible:outline-ring"

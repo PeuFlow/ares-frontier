@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { useMission } from "@/hooks/use-mission";
 import { useAstronautContext } from "@/hooks/use-astronaut-context";
 import { astronautChat, sectionContext, type AIMessage } from "@/lib/ai-api";
+import { explainAstronautContext } from "@/lib/astronaut-context";
 
 export interface ExplorerSpeech {
   message: string;
@@ -88,11 +89,14 @@ export function AstronautGuide({
     let active = true;
     // Debounce scrolling and selections before spending a model request.
     const timer = setTimeout(async () => {
+      const currentContext = JSON.parse(contextKey);
+      const description = explainAstronautContext(currentContext);
+      setBubble(description);
+      closeBubble.current = setTimeout(() => setBubble(""), 14000);
       await contextRequest.current;
       if (!active) return;
       setContextBusy(true);
-      setBubble("");
-      contextRequest.current = sectionContext(JSON.parse(contextKey))
+      contextRequest.current = sectionContext(currentContext)
         .then((reply) => {
           if (!active) return;
           setBubble(reply.message);
@@ -101,8 +105,10 @@ export function AstronautGuide({
         })
         .catch(() => {
           if (active) {
-            setBubble("Meu rádio está sem sinal. Você pode tentar conversar comigo na nave.");
-            closeBubble.current = setTimeout(() => setBubble(""), 8000);
+            if (!description) {
+              setBubble("Meu rádio está sem sinal. Você pode tentar conversar comigo na nave.");
+              closeBubble.current = setTimeout(() => setBubble(""), 8000);
+            }
           }
         })
         .finally(() => {
@@ -224,7 +230,7 @@ export function AstronautGuide({
           : !account && exploring
             ? "Entre na sua conta para explorar comigo com a IA ligada."
             : bubble,
-        thinking: contextBusy && !dismissed,
+        thinking: contextBusy && !bubble && !dismissed,
         paused: muted,
         dismiss: () => {
           setBubble("");

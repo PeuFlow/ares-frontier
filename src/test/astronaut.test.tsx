@@ -304,7 +304,7 @@ describe("astronaut conversation", () => {
     expect(screen.queryByLabelText("Fala do astronauta")).not.toBeInTheDocument();
   });
 
-  it("shows thinking on the character and ignores a response for the previous context", async () => {
+  it("explains the point while AI is pending and ignores a response for the previous context", async () => {
     let resolve!: (value: { message: string }) => void;
     state.section.mockReturnValue(
       new Promise((r) => {
@@ -316,9 +316,7 @@ describe("astronaut conversation", () => {
     fireEvent.click(screen.getByText("Soltar astronauta"));
     await waitFor(
       () =>
-        expect(screen.getByLabelText("Fala do astronauta")).toHaveTextContent(
-          "Consultando o diário",
-        ),
+        expect(screen.getByLabelText("Fala do astronauta")).toHaveTextContent("Valles Marineris:"),
       { timeout: 2500 },
     );
     state.context = { section: "territorios", element_id: "jezero-j021" };
@@ -327,6 +325,20 @@ describe("astronaut conversation", () => {
       resolve({ message: "Resposta antiga de Valles" });
     });
     expect(screen.queryByText("Resposta antiga de Valles")).not.toBeInTheDocument();
+  });
+
+  it("keeps a specific catalog explanation when the contextual AI request fails", async () => {
+    state.context = { section: "viagens", element_id: "horizonte-valles" };
+    state.section.mockRejectedValue(new Error("Serviço indisponível"));
+    render(<AstroBuddy />);
+    fireEvent.click(screen.getByLabelText("Abrir opções da nave"));
+    fireEvent.click(screen.getByText("Soltar astronauta"));
+    await waitFor(() => expect(state.section).toHaveBeenCalledOnce(), { timeout: 2500 });
+    expect(screen.getByLabelText("Fala do astronauta")).toHaveTextContent("Horizonte de Valles:");
+    expect(screen.getByLabelText("Fala do astronauta")).toHaveTextContent(
+      "acampamentos pressurizados",
+    );
+    expect(screen.queryByText(/Meu rádio está sem sinal/)).not.toBeInTheDocument();
   });
 
   it("offers exploration and chat from the same ship on touch devices", () => {

@@ -112,3 +112,30 @@ it("keeps the open details context when the pointer moves outside the dialog", (
   fireEvent(document.body, new MouseEvent("pointermove", { bubbles: true }));
   expect(result.current).toEqual({ section: "inicio" });
 });
+
+it("recognizes a navigation destination without navigating", () => {
+  document.body.innerHTML = '<nav><a href="/hospedagens"><span>Hospedagens</span></a></nav>';
+  const { result } = renderHook(() => useAstronautContext(true));
+  fireEvent(document.querySelector("span")!, new MouseEvent("pointermove", { bubbles: true }));
+  expect(result.current).toEqual({ section: "hospedagens" });
+});
+
+it("updates the point beneath a stationary pointer after scrolling and showcase changes", async () => {
+  document.body.innerHTML =
+    '<figure data-ai-section="territorios" data-ai-element="valles-07"></figure><article data-ai-section="viagens" data-ai-element="horizonte-valles"></article>';
+  const figure = document.querySelector("figure")!;
+  const hitTest = vi.fn().mockReturnValue(figure);
+  Object.defineProperty(document, "elementFromPoint", { configurable: true, value: hitTest });
+  const { result } = renderHook(() => useAstronautContext(true));
+  fireEvent(figure, new MouseEvent("pointermove", { bubbles: true, clientX: 300, clientY: 200 }));
+  expect(result.current.element_id).toBe("valles-07");
+  await act(async () => {
+    figure.dataset["aiElement"] = "jezero-j021";
+  });
+  expect(result.current).toEqual({ section: "territorios", element_id: "jezero-j021" });
+  hitTest.mockReturnValue(document.querySelector("article"));
+  fireEvent.scroll(document);
+  expect(hitTest).toHaveBeenCalledWith(300, 200);
+  expect(result.current).toEqual({ section: "viagens", element_id: "horizonte-valles" });
+  Reflect.deleteProperty(document, "elementFromPoint");
+});

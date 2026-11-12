@@ -19,6 +19,8 @@ export function TerritoryShowcase() {
     <figure
       ref={ref}
       data-territory-presentation
+      data-ai-section="territorios"
+      data-ai-element={item.territory.id}
       data-presentation-index={index}
       data-presentation-phase={phase}
       className="relative isolate -mx-5 h-[460px] overflow-hidden sm:h-[560px] lg:mx-0 lg:h-[720px]"
