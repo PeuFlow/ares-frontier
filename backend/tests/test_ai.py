@@ -19,7 +19,7 @@ from app.models import User
 from app.models.entities import ContentBlock
 from app.routers.auth import current_user, get_db
 from app.routers import ai
-from app.schemas.ai import SectionInput
+from app.schemas.ai import SectionInput, RecommendationIntent
 from app.services import gemini_service
 from app.services.knowledge_service import retrieve
 
@@ -43,9 +43,12 @@ class AITests(unittest.TestCase):
         self.generate = patch.object(gemini_service, 'generate', new_callable=AsyncMock)
         self.mock = self.generate.start()
         self.mock.return_value = 'Fala, explorador! Estes dados são demonstrativos.'
+        self.recommendations = patch.object(ai, 'recommend', new_callable=AsyncMock, return_value=None)
+        self.recommendations.start()
 
     def tearDown(self):
         self.generate.stop()
+        self.recommendations.stop()
         self.client.close()
         app.dependency_overrides.clear()
         self.engine.dispose()
@@ -68,12 +71,13 @@ class AITests(unittest.TestCase):
         response = self.client.post('/api/ai/chat', json={'message': 'Qual a diferença entre as hospedagens?', 'context': {'section': 'inicio'}})
         self.assertEqual(response.status_code, 200)
         records = self.mock.call_args.args[0]
-        self.assertIn('aurora-dome', [r['slug'] for r in records])
+        self.assertIn('hospedagens', [r['slug'] for r in records])
+        self.assertNotIn('aurora-dome', [r['slug'] for r in records])
         self.assertLessEqual(len(records), 6)
         response = self.client.post('/api/ai/chat', json={'message': 'E quanto custa?', 'history': [
             {'role': 'user', 'content': 'Conte sobre Aurora Dome'}, {'role': 'assistant', 'content': 'Um habitat fictício.'}]})
         self.assertEqual(response.status_code, 200)
-        self.assertIn('aurora-dome', [r['slug'] for r in self.mock.call_args.args[0]])
+        self.assertNotIn('aurora-dome', [r['slug'] for r in self.mock.call_args.args[0]])
 
     def test_unknown_element_and_invalid_inputs(self):
         self.assertEqual(self.client.post('/api/ai/section-context', json={'section': 'territorios', 'element_id': 'inexistente'}).status_code, 404)
@@ -139,6 +143,13 @@ class GeminiSDKTests(unittest.IsolatedAsyncioTestCase):
             kwargs = client.models.generate_content.call_args.kwargs
             self.assertIn('BASE', kwargs['config'].system_instruction)
             self.assertEqual(kwargs['model'], 'test-model')
+            client.models.generate_content.return_value = SimpleNamespace(text='{"action":"search","category":"terrain"}')
+            structured = await gemini_service.generate([], 'Quero terreno', [], schema=RecommendationIntent)
+            self.assertEqual(RecommendationIntent.model_validate_json(structured).category, 'terrain')
+            structured_config = client.models.generate_content.call_args.kwargs['config']
+            self.assertEqual(structured_config.response_mime_type, 'application/json')
+            self.assertIn('properties', structured_config.response_json_schema)
+            self.assertIsNone(structured_config.response_schema)
             for cause, status in [(errors.ClientError(429, {'error': {'message': 'secret-provider-message'}}), 429),
                                   (errors.ServerError(503, {'error': {'message': 'secret-provider-message'}}), 503),
                                   (TimeoutError(), 504), (OSError(), 504), (RuntimeError('secret-provider-message'), 503)]:

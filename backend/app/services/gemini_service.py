@@ -35,7 +35,7 @@ sensíveis. Não diga ter acesso a perfis ou missões pessoais.
 '''
 
 
-async def generate(records: list[dict], message: str, history: list[HistoryMessage], *, contextual=False) -> str:
+async def generate(records: list[dict], message: str, history: list[HistoryMessage], *, contextual=False, schema=None, instruction='') -> str:
     settings = get_settings()
     if not settings.gemini_api_key or not settings.gemini_model:
         raise HTTPException(503, 'Comunicação com o astronauta ainda não configurada.')
@@ -52,14 +52,15 @@ async def generate(records: list[dict], message: str, history: list[HistoryMessa
                     model=settings.gemini_model, contents=contents,
                     config=types.GenerateContentConfig(
                         system_instruction=SYSTEM + ('\nExplique a seção/elemento em 1 ou 2 frases, no máximo 35 palavras.' if contextual else '\nResponda em até 70 palavras. Use mais detalhes somente se forem solicitados explicitamente, no máximo 120 palavras.')
-                            + '\nBASE (dados JSON):\n' + json.dumps(records, ensure_ascii=False),
-                        temperature=0.2, max_output_tokens=600 if contextual else 1000,
+                            + '\n' + instruction + '\nBASE (dados JSON):\n' + json.dumps(records, ensure_ascii=False),
+                        temperature=0.2, max_output_tokens=600 if contextual else 2400,
+                        **({'response_mime_type': 'application/json', 'response_json_schema': schema.model_json_schema()} if schema else {}),
                     ),
                 )
         text = (result.text or '').strip()
         if not text:
             raise HTTPException(502, 'O astronauta não conseguiu formular uma resposta. Tente outra pergunta.')
-        return text[:2000]
+        return text if schema else text[:2000]
     except errors.APIError as error:
         if error.code == 429:
             raise HTTPException(429, 'A comunicação está ocupada. Aguarde um minuto e tente novamente.', headers={'Retry-After': '60'}) from None

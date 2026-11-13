@@ -374,10 +374,15 @@ describe("astronaut conversation", () => {
     fireEvent.submit(input.closest("form")!);
     expect(await screen.findByText("Vamos explorar Valles!")).toBeInTheDocument();
     expect(screen.getByText("Oi")).toBeInTheDocument();
-    expect(state.chat).toHaveBeenCalledWith("Oi", [], {
-      section: "territorios",
-      element_id: "valles-07",
-    });
+    expect(state.chat).toHaveBeenCalledWith(
+      "Oi",
+      [],
+      {
+        section: "territorios",
+        element_id: "valles-07",
+      },
+      null,
+    );
     fireEvent.click(screen.getByText("Nova conversa"));
     expect(screen.queryByText("Vamos explorar Valles!")).not.toBeInTheDocument();
   });

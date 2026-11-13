@@ -30,7 +30,7 @@ export async function apiRequest<T>(
 ): Promise<T> {
   let response: Response;
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15000);
+  const timeout = setTimeout(() => controller.abort(), path === "ai/chat" ? 40000 : 15000);
   try {
     response = await fetch(`${apiUrl}/api/${path}`, {
       method,

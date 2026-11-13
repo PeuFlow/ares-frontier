@@ -1,3 +1,4 @@
+import { CatalogItemDetails, catalogSearch } from "@/components/frontier/CatalogItemDetails";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
@@ -12,6 +13,7 @@ import { useMission } from "@/hooks/use-mission";
 import canyon from "@/assets/trip-canyon.jpg";
 
 export const Route = createFileRoute("/viagens")({
+  validateSearch: catalogSearch,
   head: () => pageHead("/viagens", "Viagens a Marte — Ares Frontier", "Expedições fictícias para Marte: órbita, cânions, habitats e missões científicas."),
   component: Trips,
 });
@@ -44,6 +46,7 @@ function Trips() {
 
   return (
     <main>
+      <CatalogItemDetails category="trip" />
       <PageHeader eyebrow="Módulo 03 · Viagens" title="EXPEDIÇÕES PARA O DESCONHECIDO" image={canyon}>
         Escolha a viagem que abre a sua missão. Uma viagem por missão.
       </PageHeader>

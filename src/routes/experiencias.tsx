@@ -1,3 +1,4 @@
+import { CatalogItemDetails, catalogSearch } from "@/components/frontier/CatalogItemDetails";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Plus } from "lucide-react";
@@ -8,6 +9,7 @@ import { useMission } from "@/hooks/use-mission";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/experiencias")({
+  validateSearch: catalogSearch,
   head: () => pageHead("/experiencias", "Experiências em Marte — Ares Frontier", "Rover, observação astronômica, treino de astronauta e mais atividades fictícias."),
   component: Experiences,
 });
@@ -16,6 +18,7 @@ function Experiences() {
   const { mission, toggleExperience } = useMission();
   return (
     <main>
+      <CatalogItemDetails category="experience" />
       <PageHeader eyebrow="Módulo 05 · Experiências" title="Complemente a sua missão">
         Adicione quantas atividades quiser. Toque novamente para remover.
       </PageHeader>

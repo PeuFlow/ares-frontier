@@ -1,3 +1,4 @@
+import { CatalogItemDetails, catalogSearch } from "@/components/frontier/CatalogItemDetails";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import { useMission } from "@/hooks/use-mission";
 import dome from "@/assets/stay-dome.jpg";
 
 export const Route = createFileRoute("/hospedagens")({
+  validateSearch: catalogSearch,
   head: () => pageHead("/hospedagens", "Hospedagens marcianas — Ares Frontier", "Habitats fictícios em Marte: Aurora Dome, Olympus Station e Elysium Habitat."),
   component: Stays,
 });
@@ -55,6 +57,7 @@ function Stays() {
   const [open, setOpen] = useState<Stay | null>(null);
   return (
     <main>
+      <CatalogItemDetails category="accommodation" />
       <PageHeader eyebrow="Módulo 04 · Hospedagens" title="Habitats sob o céu cor de ferrugem" image={dome}>
         Escolha a duração simulada e veja o total calculado na hora.
       </PageHeader>

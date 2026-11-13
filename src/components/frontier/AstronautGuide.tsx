@@ -9,6 +9,7 @@ import {
 } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, RotateCcw, Send, Radio } from "lucide-react";
+import { RecommendationCard } from "./RecommendationCard";
 import { AstronautText } from "./AstronautText";
 import {
   Dialog,
@@ -53,6 +54,7 @@ export function AstronautGuide({
   const [contextBusy, setContextBusy] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [messages, setMessages] = useState<AIMessage[]>([]);
+  const recommendationContext = useRef<string | null>(null);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -75,6 +77,7 @@ export function AstronautGuide({
     generation.current++;
     request.current = false;
     setMessages([]);
+    recommendationContext.current = null;
     setInput("");
     setError("");
     setBusy(false);
@@ -165,6 +168,7 @@ export function AstronautGuide({
     generation.current++;
     request.current = false;
     setMessages([]);
+    recommendationContext.current = null;
     setInput("");
     setError("");
     setBusy(false);
@@ -197,15 +201,18 @@ export function AstronautGuide({
     try {
       await contextRequest.current;
       if (version !== generation.current) return;
-      const reply = await astronautChat(text, previous, context);
-      if (version === generation.current)
+      const reply = await astronautChat(text, previous, context, recommendationContext.current);
+      if (version === generation.current) {
+        recommendationContext.current =
+          reply.recommendation_context ?? recommendationContext.current;
         setMessages(
           [
             ...previous,
             { role: "user", content: text },
-            { role: "assistant", content: reply.message },
+            { role: "assistant", content: reply.message, recommendations: reply.recommendations },
           ].slice(-40) as AIMessage[],
         );
+      }
     } catch (cause) {
       if (version === generation.current) {
         setMessages(previous);
@@ -379,6 +386,13 @@ export function AstronautGuide({
                     {m.role === "user" ? "Você" : "Astronauta"}
                   </span>
                   {m.role === "assistant" ? <AstronautText text={m.content} /> : m.content}
+                  {m.recommendations?.map((item) => (
+                    <RecommendationCard
+                      key={item.id}
+                      item={item}
+                      onNavigate={() => changeOpen(false)}
+                    />
+                  ))}
                 </div>
               ))}
               {busy && (

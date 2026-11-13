@@ -34,11 +34,11 @@ def normalize(value):
     return ''.join(c for c in unicodedata.normalize('NFKD', value.lower()) if not unicodedata.combining(c))
 
 
-def retrieve(db: Session, context: SectionInput | None, query: str = '') -> list[dict]:
+def retrieve(db: Session, context: SectionInput | None, query: str = '', *, include_demo=True) -> list[dict]:
     section = context.section if context else 'nave'
     element = context.element_id if context else None
     base = [{'slug': key, 'section': key, 'title': title, 'summary': body, 'context_data': {'fictional': True}}
-            for key, (title, body) in SECTIONS.items()] + CATALOG
+            for key, (title, body) in SECTIONS.items()] + (CATALOG if include_demo else [])
     # Only relevant sections/slugs are fetched; never dump the platform into a prompt.
     terms = set(re.findall(r'[a-z0-9-]{3,}', normalize(query))) - {'que', 'para', 'uma', 'como', 'qual', 'quais', 'por', 'com', 'tem', 'sao', 'mais'}
     aliases = {'viagens': ['viag', 'pacote', 'expedicao'], 'hospedagens': ['hosped', 'habitat', 'diaria', 'dormir'],
